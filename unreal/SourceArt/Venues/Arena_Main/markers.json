@@ -1,0 +1,6591 @@
+{
+ "venue": "Arena_Main",
+ "title": "Arena (original design, ~19k end-stage concert)",
+ "notes": "Greybox layout blockout. Dress with the Fab International Arena shell and the Concert Arena Stage kit; keep these markers and seat points as the source of truth.",
+ "units": "loc_m: Blender meters, Z up, stage at -X. ue_loc_cm: Unreal cm (Y flipped). The venue is symmetric about X so the flip never moves geometry.",
+ "capacity": {
+  "suites": 72,
+  "suite_seats_est": 1152,
+  "bowl_seats_total": 22260,
+  "lower_bowl_seats": 8660,
+  "upper_bowl_seats": 13600,
+  "end_stage_bowl_seats_sold": 15037,
+  "floor_ga_standing": 2463,
+  "end_stage_concert_total": 17500,
+  "end_stage_total_incl_suites": 18652,
+  "ga_density_per_m2": 2.5
+ },
+ "parts": [
+  {
+   "file": "SM_Arena_Main_EventFloor.fbx",
+   "part": "EventFloor",
+   "objects": [
+    "SM_Arena_Main_EventFloor"
+   ],
+   "tris": 204
+  },
+  {
+   "file": "SM_Arena_Main_BowlLower.fbx",
+   "part": "BowlLower",
+   "objects": [
+    "SM_Arena_Main_L101",
+    "SM_Arena_Main_L102",
+    "SM_Arena_Main_L103",
+    "SM_Arena_Main_L104",
+    "SM_Arena_Main_L105",
+    "SM_Arena_Main_L106",
+    "SM_Arena_Main_L107",
+    "SM_Arena_Main_L108",
+    "SM_Arena_Main_L109",
+    "SM_Arena_Main_L110",
+    "SM_Arena_Main_L111",
+    "SM_Arena_Main_L112",
+    "SM_Arena_Main_L113",
+    "SM_Arena_Main_L114",
+    "SM_Arena_Main_L115",
+    "SM_Arena_Main_L116",
+    "SM_Arena_Main_L117",
+    "SM_Arena_Main_L118",
+    "SM_Arena_Main_L119",
+    "SM_Arena_Main_L120"
+   ],
+   "tris": 23120
+  },
+  {
+   "file": "SM_Arena_Main_BowlUpper.fbx",
+   "part": "BowlUpper",
+   "objects": [
+    "SM_Arena_Main_U201",
+    "SM_Arena_Main_U202",
+    "SM_Arena_Main_U203",
+    "SM_Arena_Main_U204",
+    "SM_Arena_Main_U205",
+    "SM_Arena_Main_U206",
+    "SM_Arena_Main_U207",
+    "SM_Arena_Main_U208",
+    "SM_Arena_Main_U209",
+    "SM_Arena_Main_U210",
+    "SM_Arena_Main_U211",
+    "SM_Arena_Main_U212",
+    "SM_Arena_Main_U213",
+    "SM_Arena_Main_U214",
+    "SM_Arena_Main_U215",
+    "SM_Arena_Main_U216",
+    "SM_Arena_Main_U217",
+    "SM_Arena_Main_U218",
+    "SM_Arena_Main_U219",
+    "SM_Arena_Main_U220"
+   ],
+   "tris": 29360
+  },
+  {
+   "file": "SM_Arena_Main_Suites.fbx",
+   "part": "Suites",
+   "objects": [
+    "SM_Arena_Main_Suites"
+   ],
+   "tris": 1728
+  },
+  {
+   "file": "SM_Arena_Main_Concourse.fbx",
+   "part": "Concourse",
+   "objects": [
+    "SM_Arena_Main_Concourse"
+   ],
+   "tris": 4832
+  },
+  {
+   "file": "SM_Arena_Main_OuterWall.fbx",
+   "part": "OuterWall",
+   "objects": [
+    "SM_Arena_Main_OuterWall"
+   ],
+   "tris": 1792
+  },
+  {
+   "file": "SM_Arena_Main_Roof.fbx",
+   "part": "Roof",
+   "objects": [
+    "SM_Arena_Main_Roof"
+   ],
+   "tris": 360
+  },
+  {
+   "file": "SM_Arena_Main_CenterBoard.fbx",
+   "part": "CenterBoard",
+   "objects": [
+    "SM_Arena_Main_CenterBoard"
+   ],
+   "tris": 24
+  },
+  {
+   "file": "SM_Arena_Main_Stage_Main.fbx",
+   "part": "Stage_Main",
+   "objects": [
+    "SM_Arena_Main_Stage_Main"
+   ],
+   "tris": 36
+  },
+  {
+   "file": "SM_Arena_Main_Stage_Runway.fbx",
+   "part": "Stage_Runway",
+   "objects": [
+    "SM_Arena_Main_Stage_Runway"
+   ],
+   "tris": 12
+  },
+  {
+   "file": "SM_Arena_Main_Stage_BStage.fbx",
+   "part": "Stage_BStage",
+   "objects": [
+    "SM_Arena_Main_Stage_BStage"
+   ],
+   "tris": 156
+  },
+  {
+   "file": "SM_Arena_Main_Stage_Video.fbx",
+   "part": "Stage_Video",
+   "objects": [
+    "SM_Arena_Main_Stage_Video"
+   ],
+   "tris": 36
+  },
+  {
+   "file": "SM_Arena_Main_Stage_Truss.fbx",
+   "part": "Stage_Truss",
+   "objects": [
+    "SM_Arena_Main_Stage_Truss"
+   ],
+   "tris": 60
+  },
+  {
+   "file": "SM_Arena_Main_FloorProduction.fbx",
+   "part": "FloorProduction",
+   "objects": [
+    "SM_Arena_Main_FloorProduction"
+   ],
+   "tris": 444
+  }
+ ],
+ "markers": [
+  {
+   "id": "Vom_L101",
+   "type": "vomitory",
+   "loc_m": [
+    35.4,
+    -3.25,
+    0.9
+   ],
+   "ue_loc_cm": [
+    3540.0,
+    325.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 180.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L103",
+   "type": "vomitory",
+   "loc_m": [
+    34.38,
+    11.628,
+    0.9
+   ],
+   "ue_loc_cm": [
+    3438.0,
+    -1162.8,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 157.5,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L105",
+   "type": "vomitory",
+   "loc_m": [
+    16.5,
+    19.9,
+    0.9
+   ],
+   "ue_loc_cm": [
+    1650.0,
+    -1990.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 90.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L107",
+   "type": "vomitory",
+   "loc_m": [
+    -5.5,
+    19.9,
+    0.9
+   ],
+   "ue_loc_cm": [
+    -550.0,
+    -1990.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 90.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L109",
+   "type": "vomitory",
+   "loc_m": [
+    -27.128,
+    18.88,
+    0.9
+   ],
+   "ue_loc_cm": [
+    -2712.8,
+    -1888.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 67.5,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L111",
+   "type": "vomitory",
+   "loc_m": [
+    -35.4,
+    3.25,
+    0.9
+   ],
+   "ue_loc_cm": [
+    -3540.0,
+    -325.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L113",
+   "type": "vomitory",
+   "loc_m": [
+    -34.38,
+    -11.628,
+    0.9
+   ],
+   "ue_loc_cm": [
+    -3438.0,
+    1162.8,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -22.5,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L115",
+   "type": "vomitory",
+   "loc_m": [
+    -16.5,
+    -19.9,
+    0.9
+   ],
+   "ue_loc_cm": [
+    -1650.0,
+    1990.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -90.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L117",
+   "type": "vomitory",
+   "loc_m": [
+    5.5,
+    -19.9,
+    0.9
+   ],
+   "ue_loc_cm": [
+    550.0,
+    1990.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -90.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Vom_L119",
+   "type": "vomitory",
+   "loc_m": [
+    27.128,
+    -18.88,
+    0.9
+   ],
+   "ue_loc_cm": [
+    2712.8,
+    1888.0,
+    90.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -112.5,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "rows": [
+    1,
+    8
+   ],
+   "width_m": 2.6
+  },
+  {
+   "id": "Rig_CenterHung",
+   "type": "rig_point",
+   "loc_m": [
+    0,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 45000,
+   "note": "board trims to 22 m for end stage"
+  },
+  {
+   "id": "Zone_MainDeck",
+   "type": "stage_zone",
+   "loc_m": [
+    -21.25,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2125.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    14.5,
+    22.0,
+    0
+   ],
+   "ue_size_cm": [
+    1450.0,
+    2200.0,
+    0
+   ]
+  },
+  {
+   "id": "Zone_Runway",
+   "type": "stage_zone",
+   "loc_m": [
+    -6.75,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -675.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    14.5,
+    3.0,
+    0
+   ],
+   "ue_size_cm": [
+    1450.0,
+    300.0,
+    0
+   ]
+  },
+  {
+   "id": "Zone_BStage",
+   "type": "stage_zone",
+   "loc_m": [
+    5.0,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    500.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    9.0,
+    9.0,
+    0
+   ],
+   "ue_size_cm": [
+    900.0,
+    900.0,
+    0
+   ],
+   "shape": "disc"
+  },
+  {
+   "id": "Zone_Wing_SL",
+   "type": "stage_zone",
+   "loc_m": [
+    -23.25,
+    12.6,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2325.0,
+    -1260.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    10.5,
+    3.2,
+    0
+   ],
+   "ue_size_cm": [
+    1050.0,
+    320.0,
+    0
+   ]
+  },
+  {
+   "id": "Zone_Wing_SR",
+   "type": "stage_zone",
+   "loc_m": [
+    -23.25,
+    -12.6,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2325.0,
+    1260.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    10.5,
+    3.2,
+    0
+   ],
+   "ue_size_cm": [
+    1050.0,
+    320.0,
+    0
+   ]
+  },
+  {
+   "id": "Zone_LEDWall",
+   "type": "stage_zone",
+   "loc_m": [
+    -28.1,
+    0,
+    7.3
+   ],
+   "ue_loc_cm": [
+    -2810.0,
+    0,
+    730.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    0.3,
+    20.0,
+    10.0
+   ],
+   "ue_size_cm": [
+    30.0,
+    2000.0,
+    1000.0
+   ]
+  },
+  {
+   "id": "Zone_Pit",
+   "type": "crowd_zone",
+   "loc_m": [
+    -13.25,
+    0,
+    0
+   ],
+   "ue_loc_cm": [
+    -1325.0,
+    0,
+    0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    1.5,
+    26.0,
+    2.0
+   ],
+   "ue_size_cm": [
+    150.0,
+    2600.0,
+    200.0
+   ],
+   "note": "security only"
+  },
+  {
+   "id": "Zone_FOH",
+   "type": "crowd_zone",
+   "loc_m": [
+    18.0,
+    0,
+    0.6
+   ],
+   "ue_loc_cm": [
+    1800.0,
+    0,
+    60.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    6.0,
+    8.0,
+    3.0
+   ],
+   "ue_size_cm": [
+    600.0,
+    800.0,
+    300.0
+   ]
+  },
+  {
+   "id": "Zone_FloorA",
+   "type": "crowd_zone",
+   "loc_m": [
+    -4.25,
+    0,
+    0
+   ],
+   "ue_loc_cm": [
+    -425.0,
+    0,
+    0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    16.5,
+    30.0,
+    2.0
+   ],
+   "ue_size_cm": [
+    1650.0,
+    3000.0,
+    200.0
+   ],
+   "section": "FLOOR_A"
+  },
+  {
+   "id": "Zone_FloorB",
+   "type": "crowd_zone",
+   "loc_m": [
+    17.25,
+    0,
+    0
+   ],
+   "ue_loc_cm": [
+    1725.0,
+    0,
+    0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "size_m": [
+    26.5,
+    30.0,
+    2.0
+   ],
+   "ue_size_cm": [
+    2650.0,
+    3000.0,
+    200.0
+   ],
+   "section": "FLOOR_B"
+  },
+  {
+   "id": "Mark_Upstage",
+   "type": "performer_mark",
+   "loc_m": [
+    -24.5,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2450.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Center",
+   "type": "performer_mark",
+   "loc_m": [
+    -19.25,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1925.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Downstage",
+   "type": "performer_mark",
+   "loc_m": [
+    -15.5,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1550.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_RunwayMid",
+   "type": "performer_mark",
+   "loc_m": [
+    -6.75,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -675.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_BStage",
+   "type": "performer_mark",
+   "loc_m": [
+    5.0,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    500.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Dancer_SL1",
+   "type": "performer_mark",
+   "loc_m": [
+    -20.25,
+    5,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2025.0,
+    -500,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Dancer_SL2",
+   "type": "performer_mark",
+   "loc_m": [
+    -23.25,
+    8,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2325.0,
+    -800,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Entrance_SL",
+   "type": "performer_mark",
+   "loc_m": [
+    -23.25,
+    12.6,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2325.0,
+    -1260.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 90.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Dancer_SR1",
+   "type": "performer_mark",
+   "loc_m": [
+    -20.25,
+    -5,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2025.0,
+    500,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Dancer_SR2",
+   "type": "performer_mark",
+   "loc_m": [
+    -23.25,
+    -8,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2325.0,
+    800,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Mark_Entrance_SR",
+   "type": "performer_mark",
+   "loc_m": [
+    -23.25,
+    -12.6,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2325.0,
+    1260.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -90.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Grid_-30_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-30_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -30,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -3000,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-27_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -27,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-24_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -24,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2400,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-21_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -21,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2100,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-18_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -18,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1800,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-15_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -15,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-12_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -12,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1200,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-09_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -9,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -900,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-06_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -6,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -600,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_-03_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    -3,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -300,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+00_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    0,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    0,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+03_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    3,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    300,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+06_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    6,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    600,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+09_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    9,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    900,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+12_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    12,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1200,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+15_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    15,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1500,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+18_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    18,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    1800,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+21_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    21,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2100,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+24_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    24,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2400,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+27_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    27,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    2700,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_-15",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    -15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_-12",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    -12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_-09",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_-06",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    -6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_-03",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_+00",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_+03",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_+06",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    6,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    -600,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_+09",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_+12",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    12,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    -1200,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Grid_+30_+15",
+   "type": "rig_grid",
+   "loc_m": [
+    30,
+    15,
+    31.0
+   ],
+   "ue_loc_cm": [
+    3000,
+    -1500,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1000
+  },
+  {
+   "id": "Rig_LEDWall_1",
+   "type": "rig_point",
+   "loc_m": [
+    -28.1,
+    -9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2810.0,
+    900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 2000
+  },
+  {
+   "id": "Rig_LEDWall_2",
+   "type": "rig_point",
+   "loc_m": [
+    -28.1,
+    -3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2810.0,
+    300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 2000
+  },
+  {
+   "id": "Rig_LEDWall_3",
+   "type": "rig_point",
+   "loc_m": [
+    -28.1,
+    3,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2810.0,
+    -300,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 2000
+  },
+  {
+   "id": "Rig_LEDWall_4",
+   "type": "rig_point",
+   "loc_m": [
+    -28.1,
+    9,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2810.0,
+    -900,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 2000
+  },
+  {
+   "id": "Rig_TrussFront_SR",
+   "type": "rig_point",
+   "loc_m": [
+    -14.5,
+    -13.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1450.0,
+    1300.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussFront_C",
+   "type": "rig_point",
+   "loc_m": [
+    -14.5,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1450.0,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussFront_SL",
+   "type": "rig_point",
+   "loc_m": [
+    -14.5,
+    13.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1450.0,
+    -1300.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussMid_SR",
+   "type": "rig_point",
+   "loc_m": [
+    -21.25,
+    -13.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2125.0,
+    1300.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussMid_C",
+   "type": "rig_point",
+   "loc_m": [
+    -21.25,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2125.0,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussMid_SL",
+   "type": "rig_point",
+   "loc_m": [
+    -21.25,
+    13.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2125.0,
+    -1300.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussBack_SR",
+   "type": "rig_point",
+   "loc_m": [
+    -27.0,
+    -13.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700.0,
+    1300.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussBack_C",
+   "type": "rig_point",
+   "loc_m": [
+    -27.0,
+    0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700.0,
+    0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_TrussBack_SL",
+   "type": "rig_point",
+   "loc_m": [
+    -27.0,
+    13.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -2700.0,
+    -1300.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_PA_Main_SL",
+   "type": "rig_point",
+   "loc_m": [
+    -15.0,
+    13.5,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500.0,
+    -1350.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 3000,
+   "trim_m": 14.0
+  },
+  {
+   "id": "Rig_PA_Side_SL",
+   "type": "rig_point",
+   "loc_m": [
+    -10.0,
+    16.5,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1000.0,
+    -1650.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 2500,
+   "trim_m": 15.0
+  },
+  {
+   "id": "Rig_IMAG_SL",
+   "type": "rig_point",
+   "loc_m": [
+    -17.0,
+    15.5,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1700.0,
+    -1550.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 8.0
+  },
+  {
+   "id": "Rig_DelayPA_SL",
+   "type": "rig_point",
+   "loc_m": [
+    8.0,
+    14.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    800.0,
+    -1400.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1200,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_PA_Main_SR",
+   "type": "rig_point",
+   "loc_m": [
+    -15.0,
+    -13.5,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1500.0,
+    1350.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 3000,
+   "trim_m": 14.0
+  },
+  {
+   "id": "Rig_PA_Side_SR",
+   "type": "rig_point",
+   "loc_m": [
+    -10.0,
+    -16.5,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1000.0,
+    1650.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 2500,
+   "trim_m": 15.0
+  },
+  {
+   "id": "Rig_IMAG_SR",
+   "type": "rig_point",
+   "loc_m": [
+    -17.0,
+    -15.5,
+    31.0
+   ],
+   "ue_loc_cm": [
+    -1700.0,
+    1550.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1500,
+   "trim_m": 8.0
+  },
+  {
+   "id": "Rig_DelayPA_SR",
+   "type": "rig_point",
+   "loc_m": [
+    8.0,
+    -14.0,
+    31.0
+   ],
+   "ue_loc_cm": [
+    800.0,
+    1400.0,
+    3100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 1200,
+   "trim_m": 16.0
+  },
+  {
+   "id": "Rig_Spidercam_WS",
+   "type": "rig_point",
+   "loc_m": [
+    -40.0,
+    -32.0,
+    28.0
+   ],
+   "ue_loc_cm": [
+    -4000.0,
+    3200.0,
+    2800.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 800
+  },
+  {
+   "id": "Rig_Spidercam_WN",
+   "type": "rig_point",
+   "loc_m": [
+    -40.0,
+    32.0,
+    28.0
+   ],
+   "ue_loc_cm": [
+    -4000.0,
+    -3200.0,
+    2800.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 800
+  },
+  {
+   "id": "Rig_Spidercam_ES",
+   "type": "rig_point",
+   "loc_m": [
+    40.0,
+    -32.0,
+    28.0
+   ],
+   "ue_loc_cm": [
+    4000.0,
+    3200.0,
+    2800.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 800
+  },
+  {
+   "id": "Rig_Spidercam_EN",
+   "type": "rig_point",
+   "loc_m": [
+    40.0,
+    32.0,
+    28.0
+   ],
+   "ue_loc_cm": [
+    4000.0,
+    -3200.0,
+    2800.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "load_kg": 800
+  },
+  {
+   "id": "FX_Pyro_DS_SL1",
+   "type": "fx_point",
+   "loc_m": [
+    -14.3,
+    4.0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1430.0,
+    -400.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Pyro_DS_SL2",
+   "type": "fx_point",
+   "loc_m": [
+    -14.3,
+    9.0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1430.0,
+    -900.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_CO2_SL",
+   "type": "fx_point",
+   "loc_m": [
+    -14.5,
+    10.8,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1450.0,
+    -1080.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Confetti_SL",
+   "type": "fx_point",
+   "loc_m": [
+    6.0,
+    14.0,
+    0.0
+   ],
+   "ue_loc_cm": [
+    600.0,
+    -1400.0,
+    0.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Laser_SL",
+   "type": "fx_point",
+   "loc_m": [
+    -26.5,
+    10.5,
+    2.0
+   ],
+   "ue_loc_cm": [
+    -2650.0,
+    -1050.0,
+    200.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Pyro_DS_SR1",
+   "type": "fx_point",
+   "loc_m": [
+    -14.3,
+    -4.0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1430.0,
+    400.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Pyro_DS_SR2",
+   "type": "fx_point",
+   "loc_m": [
+    -14.3,
+    -9.0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1430.0,
+    900.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_CO2_SR",
+   "type": "fx_point",
+   "loc_m": [
+    -14.5,
+    -10.8,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -1450.0,
+    1080.0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Confetti_SR",
+   "type": "fx_point",
+   "loc_m": [
+    6.0,
+    -14.0,
+    0.0
+   ],
+   "ue_loc_cm": [
+    600.0,
+    1400.0,
+    0.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Laser_SR",
+   "type": "fx_point",
+   "loc_m": [
+    -26.5,
+    -10.5,
+    2.0
+   ],
+   "ue_loc_cm": [
+    -2650.0,
+    1050.0,
+    200.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "FX_Haze_US",
+   "type": "fx_point",
+   "loc_m": [
+    -27.5,
+    0,
+    1.8
+   ],
+   "ue_loc_cm": [
+    -2750.0,
+    0,
+    180.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -0.0,
+    "pitch": 0.0,
+    "roll": 0.0
+   }
+  },
+  {
+   "id": "Cam_FOH_Wide",
+   "type": "camera",
+   "loc_m": [
+    18.0,
+    0,
+    4.5
+   ],
+   "ue_loc_cm": [
+    1800.0,
+    0,
+    450.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -180.0,
+    "pitch": -1.58,
+    "roll": 0.0
+   },
+   "target_m": [
+    -18.25,
+    0,
+    3.5
+   ],
+   "lens_mm": 35
+  },
+  {
+   "id": "Cam_FOH_Tele",
+   "type": "camera",
+   "loc_m": [
+    17.0,
+    0.8,
+    4.5
+   ],
+   "ue_loc_cm": [
+    1700.0,
+    -80.0,
+    450.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 178.66,
+    "pitch": -1.84,
+    "roll": 0.0
+   },
+   "target_m": [
+    -17.25,
+    0,
+    3.4000000000000004
+   ],
+   "lens_mm": 200
+  },
+  {
+   "id": "Cam_Pit_Dolly_Start",
+   "type": "camera",
+   "loc_m": [
+    -13.2,
+    -10,
+    1.4
+   ],
+   "ue_loc_cm": [
+    -1320.0,
+    1000,
+    140.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -128.83,
+    "pitch": 8.86,
+    "roll": 0.0
+   },
+   "target_m": [
+    -21.25,
+    0,
+    3.4000000000000004
+   ],
+   "lens_mm": 24,
+   "track_end_m": [
+    -13.2,
+    10,
+    1.4
+   ]
+  },
+  {
+   "id": "Cam_Runway_End",
+   "type": "camera",
+   "loc_m": [
+    2.0,
+    2.5,
+    1.0
+   ],
+   "ue_loc_cm": [
+    200.0,
+    -250.0,
+    100.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 171.12,
+    "pitch": 8.78,
+    "roll": 0.0
+   },
+   "target_m": [
+    -14.0,
+    0,
+    3.5
+   ],
+   "lens_mm": 50
+  },
+  {
+   "id": "Cam_Wing_SL",
+   "type": "camera",
+   "loc_m": [
+    -20.25,
+    12.0,
+    3.4
+   ],
+   "ue_loc_cm": [
+    -2025.0,
+    -1200.0,
+    340.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 65.94,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "target_m": [
+    -14.0,
+    -2,
+    3.4000000000000004
+   ],
+   "lens_mm": 24,
+   "handheld": true
+  },
+  {
+   "id": "Cam_LowerBowl_SL",
+   "type": "camera",
+   "loc_m": [
+    0.0,
+    28.4,
+    7.467
+   ],
+   "ue_loc_cm": [
+    0.0,
+    -2840.0,
+    746.7
+   ],
+   "ue_rot_deg": {
+    "yaw": 122.73,
+    "pitch": -6.7,
+    "roll": 0.0
+   },
+   "target_m": [
+    -18.25,
+    0,
+    3.5
+   ],
+   "lens_mm": 85
+  },
+  {
+   "id": "Cam_Wing_SR",
+   "type": "camera",
+   "loc_m": [
+    -20.25,
+    -12.0,
+    3.4
+   ],
+   "ue_loc_cm": [
+    -2025.0,
+    1200.0,
+    340.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -65.94,
+    "pitch": 0.0,
+    "roll": 0.0
+   },
+   "target_m": [
+    -14.0,
+    2,
+    3.4000000000000004
+   ],
+   "lens_mm": 24,
+   "handheld": true
+  },
+  {
+   "id": "Cam_LowerBowl_SR",
+   "type": "camera",
+   "loc_m": [
+    0.0,
+    -28.4,
+    7.467
+   ],
+   "ue_loc_cm": [
+    0.0,
+    2840.0,
+    746.7
+   ],
+   "ue_rot_deg": {
+    "yaw": -122.73,
+    "pitch": -6.7,
+    "roll": 0.0
+   },
+   "target_m": [
+    -18.25,
+    0,
+    3.5
+   ],
+   "lens_mm": 85
+  },
+  {
+   "id": "Cam_UpperBowl_EastWide",
+   "type": "camera",
+   "loc_m": [
+    68.9,
+    0.0,
+    27.426
+   ],
+   "ue_loc_cm": [
+    6890.0,
+    -0.0,
+    2742.6
+   ],
+   "ue_rot_deg": {
+    "yaw": -180.0,
+    "pitch": -14.57,
+    "roll": 0.0
+   },
+   "target_m": [
+    -21.25,
+    0,
+    4.0
+   ],
+   "lens_mm": 28
+  },
+  {
+   "id": "Cam_Spidercam",
+   "type": "camera",
+   "loc_m": [
+    -4.0,
+    0,
+    14.0
+   ],
+   "ue_loc_cm": [
+    -400.0,
+    0,
+    1400.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -180.0,
+    "pitch": -36.38,
+    "roll": 0.0
+   },
+   "target_m": [
+    -18.25,
+    0,
+    3.5
+   ],
+   "lens_mm": 24,
+   "rig": "Rig_Spidercam_*"
+  },
+  {
+   "id": "Cam_CrowdPOV",
+   "type": "camera",
+   "loc_m": [
+    6.0,
+    4.0,
+    1.65
+   ],
+   "ue_loc_cm": [
+    600.0,
+    -400.0,
+    165.0
+   ],
+   "ue_rot_deg": {
+    "yaw": 170.63,
+    "pitch": 4.3,
+    "roll": 0.0
+   },
+   "target_m": [
+    -18.25,
+    0,
+    3.5
+   ],
+   "lens_mm": 18,
+   "note": "fan eye height"
+  },
+  {
+   "id": "Cam_Overhead",
+   "type": "camera",
+   "loc_m": [
+    -20.0,
+    0,
+    28.0
+   ],
+   "ue_loc_cm": [
+    -2000.0,
+    0,
+    2800.0
+   ],
+   "ue_rot_deg": {
+    "yaw": -180.0,
+    "pitch": -88.98,
+    "roll": 0.0
+   },
+   "target_m": [
+    -20.5,
+    0,
+    0
+   ],
+   "lens_mm": 18
+  }
+ ]
+}
