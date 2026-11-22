@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "example/handmade",
+  "tracks": [
+    {
+      "type": "camera",
+      "id": "program",
+      "cues": [
+        {
+          "section": {
+            "index": 0,
+            "label": "intro"
+          },
+          "shot": "wide_front"
+        },
+        {
+          "section": {
+            "index": 1,
+            "label": "verse"
+          },
+          "shot": "mid_front"
+        },
+        {
+          "section": {
+            "index": 2,
+            "label": "prechorus"
+          },
+          "shot": "close_lead"
+        },
+        {
+          "section": {
+            "index": 3,
+            "label": "chorus"
+          },
+          "shot": "crane_sweep",
+          "blendMs": 800
+        },
+        {
+          "section": {
+            "index": 4,
+            "label": "verse"
+          },
+          "shot": "mid_front"
+        },
+        {
+          "section": {
+            "index": 5,
+            "label": "chorus"
+          },
+          "shot": "crane_sweep",
+          "blendMs": 800
+        },
+        {
+          "section": {
+            "index": 6,
+            "label": "bridge"
+          },
+          "shot": "close_lead"
+        },
+        {
+          "section": {
+            "index": 7,
+            "label": "drop"
+          },
+          "shot": "wide_front"
+        },
+        {
+          "section": {
+            "index": 8,
+            "label": "outro"
+          },
+          "shot": "wide_back"
+        }
+      ]
+    },
+    {
+      "type": "lights",
+      "id": "main_rig",
+      "cues": [
+        {
+          "section": {
+            "index": 0,
+            "label": "intro"
+          },
+          "preset": "blue_wash",
+          "intensity": 0.55
+        },
+        {
+          "section": {
+            "index": 1,
+            "label": "verse"
+          },
+          "preset": "warm_spot",
+          "intensity": 0.67
+        },
+        {
+          "section": {
+            "index": 2,
+            "label": "prechorus"
+          },
+          "preset": "build_chase",
+          "intensity": 0.76
+        },
+        {
+          "section": {
+            "index": 3,
+            "label": "chorus"
+          },
+          "preset": "full_rig_white",
+          "intensity": 0.91
+        },
+        {
+          "section": {
+            "index": 4,
+            "label": "verse"
+          },
+          "preset": "warm_spot",
+          "intensity": 0.7
+        },
+        {
+          "section": {
+            "index": 5,
+            "label": "chorus"
+          },
+          "preset": "full_rig_white",
+          "intensity": 0.94
+        },
+        {
+          "section": {
+            "index": 6,
+            "label": "bridge"
+          },
+          "preset": "single_spot",
+          "intensity": 0.64
+        },
+        {
+          "section": {
+            "index": 7,
+            "label": "drop"
+          },
+          "preset": "strobe_white",
+          "intensity": 1.0
+        },
+        {
+          "section": {
+            "index": 8,
+            "label": "outro"
+          },
+          "preset": "blue_wash",
+          "intensity": 0.58
+        }
+      ]
+    },
+    {
+      "type": "led",
+      "id": "center_board",
+      "cues": [
+        {
+          "t": 0,
+          "content": "arizona_rae_logo_loop",
+          "palette": "desert_dusk",
+          "surface": "center_hung"
+        },
+        {
+          "section": {
+            "index": 3,
+            "label": "chorus"
+          },
+          "content": "audio_reactive_bars",
+          "palette": "desert_dusk",
+          "surface": "center_hung"
+        },
+        {
+          "section": {
+            "index": 7,
+            "label": "drop"
+          },
+          "content": "strobe_flash",
+          "palette": "white",
+          "surface": "center_hung"
+        }
+      ]
+    },
+    {
+      "type": "pyro",
+      "id": "stage_front",
+      "cues": [
+        {
+          "section": {
+            "index": 3,
+            "label": "chorus"
+          },
+          "effect": "co2_jet",
+          "positions": [
+            "front_l",
+            "front_r"
+          ]
+        },
+        {
+          "section": {
+            "index": 5,
+            "label": "chorus"
+          },
+          "effect": "spark_fountain",
+          "positions": [
+            "front_l",
+            "front_r"
+          ]
+        },
+        {
+          "section": {
+            "index": 7,
+            "label": "drop"
+          },
+          "offsetBeats": -0.5,
+          "effect": "flame",
+          "positions": [
+            "upstage_l",
+            "upstage_r"
+          ]
+        },
+        {
+          "section": {
+            "index": 8,
+            "label": "outro",
+            "at": "end"
+          },
+          "offsetBeats": -2,
+          "effect": "confetti",
+          "positions": [
+            "over_floor"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "crowd",
+      "id": "bowl",
+      "cues": [
+        {
+          "section": {
+            "index": 0,
+            "label": "intro"
+          },
+          "state": "idle",
+          "intensity": 0.25
+        },
+        {
+          "section": {
+            "index": 1,
+            "label": "verse"
+          },
+          "state": "sway",
+          "intensity": 0.45
+        },
+        {
+          "section": {
+            "index": 2,
+            "label": "prechorus"
+          },
+          "state": "clap",
+          "intensity": 0.6
+        },
+        {
+          "section": {
+            "index": 3,
+            "label": "chorus"
+          },
+          "state": "jump",
+          "intensity": 0.85
+        },
+        {
+          "section": {
+            "index": 4,
+            "label": "verse"
+          },
+          "state": "sway",
+          "intensity": 0.5
+        },
+        {
+          "section": {
+            "index": 5,
+            "label": "chorus"
+          },
+          "state": "jump",
+          "intensity": 0.9
+        },
+        {
+          "section": {
+            "index": 6,
+            "label": "bridge"
+          },
+          "state": "phone_lights",
+          "intensity": 0.4
+        },
+        {
+          "section": {
+            "index": 7,
+            "label": "drop"
+          },
+          "state": "hands_up",
+          "intensity": 1.0
+        },
+        {
+          "section": {
+            "index": 8,
+            "label": "outro"
+          },
+          "state": "cheer",
+          "intensity": 0.3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+name: pipeline
+
+on:
+  push:
+    branches: [main]
+    paths: ["schema/**", "pipeline/**", ".github/workflows/pipeline.yml"]
+  pull_request:
+    paths: ["schema/**", "pipeline/**", ".github/workflows/pipeline.yml"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipeline
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e ".[dev]"
+      - run: pytest -q
+      - run: python -m stageverse_schema validate ../schema/examples/arizona-rae-demo --schema-only

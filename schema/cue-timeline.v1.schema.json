@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stageverse.dev/schema/cue-timeline.v1.schema.json",
+  "title": "StageVerse cue timeline (cues/timeline.json), v1",
+  "description": "Tracks of timed cues. Each cue is anchored to exactly one of: a time in ms (t), a beat index (beat), or a song section (section). Beat and section anchors are resolved to ms at load time from analysis/beats.json, so fixing the tempo does not break cues. Unknown track types and extra cue params are allowed so newer shows still load in older clients, which ignore what they do not understand.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "tracks"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedBy": {
+      "type": "string",
+      "description": "Who wrote this timeline, e.g. 'auto-director/0.1' or 'show-producer/2.0'."
+    },
+    "tracks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/track" }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$", "maxLength": 64 },
+    "anchor": {
+      "oneOf": [
+        { "required": ["t"], "not": { "anyOf": [{ "required": ["beat"] }, { "required": ["section"] }] } },
+        { "required": ["beat"], "not": { "anyOf": [{ "required": ["t"] }, { "required": ["section"] }] } },
+        { "required": ["section"], "not": { "anyOf": [{ "required": ["t"] }, { "required": ["beat"] }] } }
+      ]
+    },
+    "cueBase": {
+      "type": "object",
+      "properties": {
+        "t": { "type": "integer", "minimum": 0, "description": "Milliseconds from the start of the master track." },
+        "beat": { "type": "integer", "minimum": 0, "description": "Index into analysis beats[]." },
+        "section": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["index"],
+          "description": "Index into analysis sections[]. The label is informational and checked by the validator.",
+          "properties": {
+            "index": { "type": "integer", "minimum": 0 },
+            "label": { "type": "string" },
+            "at": { "enum": ["start", "end"], "default": "start" }
+          }
+        },
+        "offsetBeats": {
+          "type": "number",
+          "default": 0,
+          "description": "Shift from the anchor, in beats. Lets a cue land e.g. half a beat before a section."
+        },
+        "durationBeats": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "allOf": [{ "$ref": "#/$defs/anchor" }]
+    },
+    "track": {
+      "type": "object",
+      "required": ["type", "cues"],
+      "properties": {
+        "type": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "id": { "$ref": "#/$defs/slug" },
+        "cues": { "type": "array", "items": { "$ref": "#/$defs/cueBase" } }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "camera" } } },
+          "then": {
+            "properties": {
+              "cues": {
+                "items": {
+                  "required": ["shot"],
+                  "properties": {
+                    "shot": { "$ref": "#/$defs/slug" },
+                    "blendMs": { "type": "integer", "minimum": 0, "maximum": 10000, "default": 0 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "lights" } } },
+          "then": {
+            "properties": {
+              "cues": {
+                "items": {
+                  "required": ["preset"],
+                  "properties": {
+                    "preset": { "$ref": "#/$defs/slug" },
+                    "intensity": { "type": "number", "minimum": 0, "maximum": 1, "default": 1 },
+                    "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+                    "group": { "$ref": "#/$defs/slug" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "led" } } },
+          "then": {
+            "properties": {
+              "cues": {
+                "items": {
+                  "required": ["content"],
+                  "properties": {
+                    "content": { "$ref": "#/$defs/slug" },
+                    "palette": { "$ref": "#/$defs/slug" },
+                    "surface": { "$ref": "#/$defs/slug" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "pyro" } } },
+          "then": {
+            "properties": {
+              "cues": {
+                "items": {
+                  "required": ["effect", "positions"],
+                  "properties": {
+                    "effect": { "enum": ["co2_jet", "flame", "spark_fountain", "confetti", "streamer", "fog"] },
+                    "positions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/slug" } }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "type": { "const": "crowd" } } },
+          "then": {
+            "properties": {
+              "cues": {
+                "items": {
+                  "required": ["state"],
+                  "properties": {
+                    "state": { "enum": ["idle", "sway", "clap", "jump", "hands_up", "phone_lights", "cheer"] },
+                    "intensity": { "type": "number", "minimum": 0, "maximum": 1, "default": 1 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
