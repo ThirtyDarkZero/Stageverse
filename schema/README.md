@@ -27,6 +27,10 @@ cues/timeline.json                cue tracks          cue-timeline.v1.schema.jso
 - **Forward compatible.** Unknown track types and extra cue fields are allowed; older clients
   ignore what they do not understand. Known types (`camera`, `lights`, `led`, `pyro`, `crowd`)
   have required params.
+- **Act types are declared up front.** An optional `act` block says whether the show is a
+  `solo`, `group`, `dj` or `band` act, with a genre and style tags. Performer roles cover groups
+  (`lead`, `member`), DJs and band instruments, and each performer can carry a `style` (dance
+  preset and stage persona) for Phase 2's style library. A show without `act` is a solo act.
 - **Paths stay inside the package.** No absolute paths, no `..`.
 - **Checksums.** `checksums` maps every file to its sha256 so clients can verify CDN downloads.
 

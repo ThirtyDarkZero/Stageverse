@@ -143,3 +143,17 @@ def test_example_is_up_to_date(tmp_path):
 def test_timestamps_must_be_rfc3339(pkg):
     edit(pkg, "show.json", lambda s: s.update(createdAt="last tuesday"))
     assert not validate_package(pkg).ok
+
+
+def test_act_types_and_band_roles(pkg):
+    def band(s):
+        s["act"] = {"type": "band", "genre": "rock"}
+        s["performers"][0]["role"] = "lead"
+        s["performers"].append({**s["performers"][0], "performerId": "drummer", "role": "drums"})
+    edit(pkg, "show.json", band)
+    assert validate_package(pkg).ok
+
+
+def test_unknown_act_type_is_rejected(pkg):
+    edit(pkg, "show.json", lambda s: s["act"].update(type="orchestra"))
+    assert not validate_package(pkg).ok

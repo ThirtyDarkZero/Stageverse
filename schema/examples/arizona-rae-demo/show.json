@@ -10,6 +10,14 @@
     "venueId": "arena_main_01",
     "stageKit": "kit_end_stage"
   },
+  "act": {
+    "type": "solo",
+    "genre": "pop",
+    "styleTags": [
+      "dance_pop",
+      "rnb"
+    ]
+  },
   "audio": {
     "master": "audio/master.ogg",
     "stems": {
@@ -32,7 +40,11 @@
       "body": "motion/body_arizona_rae.fbx",
       "face": "motion/face_arizona_rae.json",
       "offsetMs": 0,
-      "mark": "center"
+      "mark": "center",
+      "style": {
+        "dance": "pop",
+        "persona": "diva"
+      }
     }
   ],
   "cues": "cues/timeline.json",

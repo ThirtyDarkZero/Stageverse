@@ -85,6 +85,7 @@ show = {
     "artistId": "art_01JDXR4E5V9Q8M7K6H5G4F3E2A",
     "durationMs": DURATION_MS,
     "venue": {"tier": "arena", "venueId": "arena_main_01", "stageKit": "kit_end_stage"},
+    "act": {"type": "solo", "genre": "pop", "styleTags": ["dance_pop", "rnb"]},
     "audio": {
         "master": "audio/master.ogg",
         "stems": {k: f"audio/stems/{k}.ogg" for k in ("vocals", "drums", "bass", "other")},
@@ -100,6 +101,7 @@ show = {
         "face": "motion/face_arizona_rae.json",
         "offsetMs": 0,
         "mark": "center",
+        "style": {"dance": "pop", "persona": "diva"},
     }],
     "cues": "cues/timeline.json",
     "rights": {
