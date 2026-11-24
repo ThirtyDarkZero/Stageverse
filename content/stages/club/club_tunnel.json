@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "tier": "club",
+  "stageKit": "club_tunnel",
+  "name": "Tunnel",
+  "venueId": "club_main_01",
+  "shape": "end_stage",
+  "concept": "A corridor of light frames pulls the eye to one point; the artist is always at the end of the tunnel.",
+  "object": "7 square portal frames edged in LED, receding from over the crowd to upstage",
+  "photoMoment": "All seven frames chasing toward the artist in white, shot from the back of the room down the tunnel.",
+  "palette": [
+    "#080808",
+    "#F1EEE8",
+    "#FF1F2E"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -11.5,
+      "y": 0,
+      "w": 5,
+      "d": 10,
+      "z": 1.0,
+      "h": 0.0
+    },
+    {
+      "id": "portal_1",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -13.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "portal_2",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -10.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "portal_3",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -7.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "portal_4",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -4.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "portal_5",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -1.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "portal_6",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": 2.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "portal_7",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": 5.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 9.0,
+      "z": 0.0,
+      "h": 4.6,
+      "note": "Square frame, LED edge both faces. Frames 1-3 over the deck, 4-7 over the crowd at 4.6 m clear."
+    },
+    {
+      "id": "haze_floor",
+      "kind": "fx_zone",
+      "shape": "rect",
+      "x": -9.0,
+      "y": 0,
+      "w": 2,
+      "d": 10,
+      "z": 0.0,
+      "h": 0.0,
+      "note": "Low fog along the deck edge."
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": -12.0,
+      "y": 0,
+      "z": 1.0
+    },
+    {
+      "id": "downstage",
+      "x": -9.6,
+      "y": 0,
+      "z": 1.0
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "portal_1",
+      "portal_2",
+      "portal_3",
+      "portal_4",
+      "portal_5",
+      "portal_6",
+      "portal_7"
+    ],
+    "lightGroups": [
+      "portal_edges",
+      "key_front",
+      "backlight",
+      "strobe_room"
+    ],
+    "pyroPositions": [
+      "co2_sl",
+      "co2_sr",
+      "fog_ds"
+    ],
+    "kinetics": [
+      "portal_1",
+      "portal_2",
+      "portal_3"
+    ]
+  },
+  "fx": [
+    {
+      "id": "co2_sl",
+      "x": -9.5,
+      "y": 4.5,
+      "z": 1.0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_sr",
+      "x": -9.5,
+      "y": -4.5,
+      "z": 1.0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "fog_ds",
+      "x": -9.0,
+      "y": 0,
+      "z": 1.0,
+      "effects": [
+        "fog"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Silhouette",
+      "when": "intro",
+      "state": "Only the upstage frame lit, artist backlit inside it.",
+      "light": "One paper-white backlight, everything else black."
+    },
+    {
+      "name": "Chase",
+      "when": "verses and choruses",
+      "state": "Frames chase on the beat toward the stage (back of room first).",
+      "light": "Paper white, red on the downbeat of each bar."
+    },
+    {
+      "name": "Collapse",
+      "when": "breakdown",
+      "state": "The three stage frames tilt off-axis (10 degrees) so the tunnel breaks.",
+      "light": "Red only, low fog."
+    },
+    {
+      "name": "Run-out",
+      "when": "final chorus",
+      "state": "Frames re-align and strobe in sequence; CO2 on the last hit.",
+      "light": "Full white, blackout on the last word."
+    }
+  ],
+  "buildNotes": "Frames 4-7 hang over the crowd, so they must clear 4.6 m (ceiling 5 m). Frames 1-3 tilt on two hoists each. In-game: one frame mesh, emissive edge material with a per-instance chase offset."
+}

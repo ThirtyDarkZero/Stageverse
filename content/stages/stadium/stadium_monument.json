@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "tier": "stadium",
+  "stageKit": "stadium_monument",
+  "name": "Monument",
+  "venueId": "stadium_main_01",
+  "shape": "end_stage_thrust",
+  "concept": "A sealed 30 m monolith stands at the end of the field; the show is about getting it to open.",
+  "object": "A split black monolith whose two halves slide apart to reveal the artist on a lift inside",
+  "photoMoment": "The halves parting on the drop, white light bursting through the gap, the artist 10 m up on the lift inside.",
+  "palette": [
+    "#080808",
+    "#F1EEE8",
+    "#FF1F2E"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -62.0,
+      "y": 0,
+      "w": 16,
+      "d": 44,
+      "z": 2.5,
+      "h": 0.0
+    },
+    {
+      "id": "mono_left",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -70.0,
+      "y": 6.5,
+      "w": 6,
+      "d": 13,
+      "z": 2.5,
+      "h": 30,
+      "travel_m": [
+        0.0,
+        10.0
+      ],
+      "note": "Half monolith on tracks; slides stage-left up to 10 m. Projection-mapped outside, LED inside face."
+    },
+    {
+      "id": "mono_right",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -70.0,
+      "y": -6.5,
+      "w": 6,
+      "d": 13,
+      "z": 2.5,
+      "h": 30,
+      "travel_m": [
+        0.0,
+        10.0
+      ]
+    },
+    {
+      "id": "inner_led",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -72.5,
+      "y": 0,
+      "w": 0.5,
+      "d": 8,
+      "z": 2.5,
+      "h": 28
+    },
+    {
+      "id": "inner_lift",
+      "kind": "lift",
+      "shape": "rect",
+      "x": -70.0,
+      "y": 0,
+      "w": 3,
+      "d": 3,
+      "z": 2.5,
+      "h": 0.0,
+      "travel_m": [
+        0.0,
+        10.0
+      ]
+    },
+    {
+      "id": "thrust",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -42.0,
+      "y": 0,
+      "w": 30,
+      "d": 10,
+      "z": 2.0,
+      "h": 0.0
+    },
+    {
+      "id": "imag_sl",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -64.0,
+      "y": 30.0,
+      "w": 1,
+      "d": 10,
+      "z": 6.0,
+      "h": 18
+    },
+    {
+      "id": "imag_sr",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -64.0,
+      "y": -30.0,
+      "w": 1,
+      "d": 10,
+      "z": 6.0,
+      "h": 18
+    }
+  ],
+  "marks": [
+    {
+      "id": "lift",
+      "x": -70.0,
+      "y": 0,
+      "z": 2.5
+    },
+    {
+      "id": "center",
+      "x": -60.0,
+      "y": 0,
+      "z": 2.5
+    },
+    {
+      "id": "thrust_end",
+      "x": -28.0,
+      "y": 0,
+      "z": 2.0
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "inner_led",
+      "mono_outer_projection",
+      "imag_sl",
+      "imag_sr"
+    ],
+    "lightGroups": [
+      "seam_light",
+      "key_front",
+      "thrust_edges",
+      "stadium_blinders"
+    ],
+    "pyroPositions": [
+      "mono_top_sl",
+      "mono_top_sr",
+      "flame_thrust_sl",
+      "flame_thrust_sr"
+    ],
+    "kinetics": [
+      "mono_left",
+      "mono_right",
+      "inner_lift"
+    ]
+  },
+  "fx": [
+    {
+      "id": "mono_top_sl",
+      "x": -70.0,
+      "y": 6.5,
+      "z": 32.5,
+      "effects": [
+        "flame",
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "mono_top_sr",
+      "x": -70.0,
+      "y": -6.5,
+      "z": 32.5,
+      "effects": [
+        "flame",
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "flame_thrust_sl",
+      "x": -35.0,
+      "y": 5.5,
+      "z": 2.0,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_thrust_sr",
+      "x": -35.0,
+      "y": -5.5,
+      "z": 2.0,
+      "effects": [
+        "flame"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Sealed",
+      "when": "opener",
+      "state": "Monolith closed; slow projected texture over its skin; artist on the thrust in front of it.",
+      "light": "Low white, IMAG only."
+    },
+    {
+      "name": "Seam",
+      "when": "songs 2-4",
+      "state": "Light leaks through a thin open seam, a little wider each song.",
+      "light": "White seam, red key."
+    },
+    {
+      "name": "Open",
+      "when": "the big drop",
+      "state": "Halves slide 10 m apart; the artist is revealed rising on the inner lift.",
+      "light": "Blinding white from inside, blinders on the crowd."
+    },
+    {
+      "name": "Inside",
+      "when": "closer",
+      "state": "Inner LED and outer projection play together; flames from the monolith tops.",
+      "light": "Red and white, blackout on the last hit."
+    }
+  ],
+  "buildNotes": "Each half is about 30 x 13 x 6 m. Wind load would make this unrealistic outdoors; fine in-game. In-game: two meshes with a projection decal outside and an LED material inside."
+}

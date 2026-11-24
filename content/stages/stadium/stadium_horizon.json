@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "tier": "stadium",
+  "stageKit": "stadium_horizon",
+  "name": "Horizon",
+  "venueId": "stadium_main_01",
+  "shape": "end_stage_runway_bstage",
+  "concept": "A city skyline of light the artist builds one tower at a time, then walks away from to meet the crowd.",
+  "object": "Nine LED columns of different heights forming an 80 m skyline",
+  "photoMoment": "Fireworks bursting off the tops of all nine columns while the artist stands alone on the midfield stage.",
+  "palette": [
+    "#080808",
+    "#F1EEE8",
+    "#FF1F2E",
+    "#A8E8FF"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -63.0,
+      "y": 0,
+      "w": 18,
+      "d": 60,
+      "z": 2.5,
+      "h": 0.0
+    },
+    {
+      "id": "column_1",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": -36,
+      "w": 2.0,
+      "d": 6,
+      "z": 2.5,
+      "h": 14
+    },
+    {
+      "id": "column_2",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": -27,
+      "w": 2.0,
+      "d": 6,
+      "z": 2.5,
+      "h": 20
+    },
+    {
+      "id": "column_3",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": -18,
+      "w": 2.0,
+      "d": 8,
+      "z": 2.5,
+      "h": 26
+    },
+    {
+      "id": "column_4",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": -9,
+      "w": 2.0,
+      "d": 6,
+      "z": 2.5,
+      "h": 18
+    },
+    {
+      "id": "column_5",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": 0,
+      "w": 2.0,
+      "d": 8,
+      "z": 2.5,
+      "h": 32
+    },
+    {
+      "id": "column_6",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": 9,
+      "w": 2.0,
+      "d": 6,
+      "z": 2.5,
+      "h": 18
+    },
+    {
+      "id": "column_7",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": 18,
+      "w": 2.0,
+      "d": 8,
+      "z": 2.5,
+      "h": 26
+    },
+    {
+      "id": "column_8",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": 27,
+      "w": 2.0,
+      "d": 6,
+      "z": 2.5,
+      "h": 20
+    },
+    {
+      "id": "column_9",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -71.0,
+      "y": 36,
+      "w": 2.0,
+      "d": 6,
+      "z": 2.5,
+      "h": 14
+    },
+    {
+      "id": "runway",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -27.0,
+      "y": 0,
+      "w": 54,
+      "d": 4,
+      "z": 2.0,
+      "h": 0.0
+    },
+    {
+      "id": "bstage",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 8.0,
+      "y": 0,
+      "r": 8.0,
+      "z": 2.0,
+      "h": 0.0
+    },
+    {
+      "id": "bstage_lift",
+      "kind": "lift",
+      "shape": "disc",
+      "x": 8.0,
+      "y": 0,
+      "r": 2.0,
+      "z": 2.0,
+      "h": 0.0,
+      "travel_m": [
+        0.0,
+        4.0
+      ]
+    },
+    {
+      "id": "imag_sl",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -60.0,
+      "y": 44.0,
+      "w": 1,
+      "d": 12,
+      "z": 8.0,
+      "h": 20,
+      "note": "IMAG framed as the outermost towers."
+    },
+    {
+      "id": "imag_sr",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -60.0,
+      "y": -44.0,
+      "w": 1,
+      "d": 12,
+      "z": 8.0,
+      "h": 20
+    },
+    {
+      "id": "tower_sl",
+      "kind": "truss",
+      "shape": "rect",
+      "x": 30.0,
+      "y": 30.0,
+      "w": 3,
+      "d": 3,
+      "z": 0.0,
+      "h": 18,
+      "note": "Delay / follow-spot tower."
+    },
+    {
+      "id": "tower_sr",
+      "kind": "truss",
+      "shape": "rect",
+      "x": 30.0,
+      "y": -30.0,
+      "w": 3,
+      "d": 3,
+      "z": 0.0,
+      "h": 18,
+      "note": "Delay / follow-spot tower."
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": -60.0,
+      "y": 0,
+      "z": 2.5
+    },
+    {
+      "id": "downstage",
+      "x": -55.0,
+      "y": 0,
+      "z": 2.5
+    },
+    {
+      "id": "runway_mid",
+      "x": -27.0,
+      "y": 0,
+      "z": 2.0
+    },
+    {
+      "id": "bstage",
+      "x": 8.0,
+      "y": 0,
+      "z": 2.0
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "column_1",
+      "column_2",
+      "column_3",
+      "column_4",
+      "column_5",
+      "column_6",
+      "column_7",
+      "column_8",
+      "column_9",
+      "imag_sl",
+      "imag_sr"
+    ],
+    "lightGroups": [
+      "column_tops",
+      "key_front",
+      "runway_edges",
+      "stadium_blinders",
+      "lasers"
+    ],
+    "pyroPositions": [
+      "firework_1",
+      "firework_2",
+      "firework_3",
+      "firework_4",
+      "firework_5",
+      "firework_6",
+      "firework_7",
+      "firework_8",
+      "firework_9",
+      "flame_runway_sl",
+      "flame_runway_sr"
+    ],
+    "kinetics": [
+      "bstage_lift"
+    ]
+  },
+  "fx": [
+    {
+      "id": "firework_1",
+      "x": -71.0,
+      "y": -36,
+      "z": 16.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_2",
+      "x": -71.0,
+      "y": -27,
+      "z": 22.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_3",
+      "x": -71.0,
+      "y": -18,
+      "z": 28.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_4",
+      "x": -71.0,
+      "y": -9,
+      "z": 20.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_5",
+      "x": -71.0,
+      "y": 0,
+      "z": 34.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_6",
+      "x": -71.0,
+      "y": 9,
+      "z": 20.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_7",
+      "x": -71.0,
+      "y": 18,
+      "z": 28.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_8",
+      "x": -71.0,
+      "y": 27,
+      "z": 22.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "firework_9",
+      "x": -71.0,
+      "y": 36,
+      "z": 16.5,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "flame_runway_sl",
+      "x": -27.0,
+      "y": 3.0,
+      "z": 2.0,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_runway_sr",
+      "x": -27.0,
+      "y": -3.0,
+      "z": 2.0,
+      "effects": [
+        "flame"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Dawn",
+      "when": "opener (daylight if open-air)",
+      "state": "Columns dark; the artist walks out in plain light.",
+      "light": "No colour, just white key and sun."
+    },
+    {
+      "name": "City",
+      "when": "songs 2-5",
+      "state": "Columns light one at a time, building the skyline song by song.",
+      "light": "Paper white windows, red on the tallest column."
+    },
+    {
+      "name": "Long Walk",
+      "when": "runway song",
+      "state": "Artist walks 54 m to the midfield stage; flame bars along the runway on the beat.",
+      "light": "Ice runway edges, follow spots from the delay towers."
+    },
+    {
+      "name": "Skyline",
+      "when": "closer",
+      "state": "Lift raises the artist at midfield; fireworks from every column top.",
+      "light": "Full white, then red on the last hit."
+    }
+  ],
+  "buildNotes": "Upstage of the end line (stage frame: field ends at x = -55). Fireworks only for open-air or retractable roof; with the roof closed swap to spark fountains. In-game: columns are scaled instances of one LED box."
+}

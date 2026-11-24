@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "tier": "arena",
+  "stageKit": "arena_halo",
+  "name": "Halo",
+  "venueId": "arena_main_01",
+  "shape": "end_stage_runway_bstage",
+  "concept": "A ring of light hangs over the crowd like a promise; the whole show is the artist's walk to stand inside it.",
+  "object": "A 24 m kinetic ring of light that tilts, lowers and rains sparks over the B-stage",
+  "photoMoment": "The ring lowered around the artist on the raised B-stage, spark rain falling from it on every side.",
+  "palette": [
+    "#080808",
+    "#F1EEE8",
+    "#A8E8FF",
+    "#FF1F2E"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -21.25,
+      "y": 0,
+      "w": 14.5,
+      "d": 22,
+      "z": 1.8,
+      "h": 0.0,
+      "finish": "black mirror"
+    },
+    {
+      "id": "runway",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -6.75,
+      "y": 0,
+      "w": 14.5,
+      "d": 3,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "bstage",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 5.0,
+      "y": 0,
+      "r": 4.5,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "bstage_lift",
+      "kind": "lift",
+      "shape": "disc",
+      "x": 5.0,
+      "y": 0,
+      "r": 1.5,
+      "z": 1.8,
+      "h": 0.0,
+      "travel_m": [
+        0.0,
+        3.0
+      ]
+    },
+    {
+      "id": "halo",
+      "kind": "kinetic",
+      "shape": "ring",
+      "x": 5.0,
+      "y": 0,
+      "r": 12.0,
+      "width": 1.2,
+      "z": 24.0,
+      "h": 0.0,
+      "travel_m": [
+        8.0,
+        24.0
+      ],
+      "tilt_deg": [
+        0,
+        20
+      ],
+      "note": "Ring truss with an LED band inside and outside and 48 beam fixtures; 4 hoists."
+    },
+    {
+      "id": "void_wall",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -28.1,
+      "y": 0,
+      "w": 0.3,
+      "d": 20,
+      "z": 1.8,
+      "h": 10,
+      "note": "Black scrim replacing the LED wall."
+    },
+    {
+      "id": "slot",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -28.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 2,
+      "z": 1.8,
+      "h": 10,
+      "note": "One 2 x 10 m vertical LED slot, the only screen upstage."
+    },
+    {
+      "id": "imag_sl",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -23.25,
+      "y": 16.5,
+      "w": 0.3,
+      "d": 6,
+      "z": 4.0,
+      "h": 10,
+      "note": "Portrait IMAG screen."
+    },
+    {
+      "id": "imag_sr",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -23.25,
+      "y": -16.5,
+      "w": 0.3,
+      "d": 6,
+      "z": 4.0,
+      "h": 10,
+      "note": "Portrait IMAG screen."
+    }
+  ],
+  "marks": [
+    {
+      "id": "upstage",
+      "x": -24.5,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "center",
+      "x": -19.25,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "downstage",
+      "x": -15.5,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "runway_mid",
+      "x": -6.75,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "bstage",
+      "x": 5.0,
+      "y": 0,
+      "z": 1.8
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "slot",
+      "halo_band",
+      "imag_sl",
+      "imag_sr"
+    ],
+    "lightGroups": [
+      "halo_beams",
+      "halo_band",
+      "floor_uplight",
+      "key_front",
+      "audience_blinders"
+    ],
+    "pyroPositions": [
+      "halo_rain",
+      "co2_runway_sl",
+      "co2_runway_sr",
+      "confetti_floor"
+    ],
+    "kinetics": [
+      "halo",
+      "bstage_lift"
+    ]
+  },
+  "fx": [
+    {
+      "id": "halo_rain",
+      "x": 5.0,
+      "y": 0,
+      "z": 8.0,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "co2_runway_sl",
+      "x": -6.75,
+      "y": 2.0,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_runway_sr",
+      "x": -6.75,
+      "y": -2.0,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "confetti_floor",
+      "x": 5.0,
+      "y": 0,
+      "z": 26.0,
+      "effects": [
+        "confetti",
+        "streamer"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Descent",
+      "when": "opener",
+      "state": "Halo flat at 24 m, dark; only the upstage slot lit, artist appears in it.",
+      "light": "White slot, everything else black."
+    },
+    {
+      "name": "Pressure",
+      "when": "songs 2-3",
+      "state": "Halo tilts 15 degrees toward the stage and pulses with the kick.",
+      "light": "Ice band, red beams on choruses."
+    },
+    {
+      "name": "Walk",
+      "when": "the runway song",
+      "state": "Artist walks the runway; halo lowers to 8 m around the B-stage.",
+      "light": "Follow spot and blinders on the crowd."
+    },
+    {
+      "name": "Inside",
+      "when": "closer",
+      "state": "Lift raises the artist into the ring; spark rain falls from it; confetti.",
+      "light": "Full white, then a single red ring on the last word."
+    }
+  ],
+  "buildNotes": "The centre-hung board is hidden for this kit and the halo hangs from the grid over the B-stage (4 x 1 t points). In-game: ring is 1 mesh plus 48 instanced fixtures; spark rain is one Niagara system."
+}

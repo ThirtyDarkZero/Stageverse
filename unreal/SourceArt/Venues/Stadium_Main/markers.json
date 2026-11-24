@@ -1,0 +1,363 @@
+{
+  "venue": "Stadium_Main",
+  "title": "Stadium (de-branded, from a purchased stadium model; licence check pending)",
+  "notes": "Real-venue name and logo removed. Do not ship until the model licence and real-venue likeness are cleared (docs/venues/stadium_main.md).",
+  "units": "loc_m: metres, Z up, stage at -X, field centre at origin. ue_loc_cm: Unreal cm (Y flipped).",
+  "removed_branding": [
+    "Sofi_stadium_Logo"
+  ],
+  "frame": {
+    "field_size_m": [
+      109.95,
+      62.89
+    ],
+    "moved_by_m": [
+      0.24,
+      -2.7,
+      27.13
+    ]
+  },
+  "capacity": {
+    "note": "estimate; the source seats are one merged mesh",
+    "end_stage_concert_total_est": 70000
+  },
+  "parts": [
+    {
+      "file": "SM_Stadium_Main_Field.fbx",
+      "part": "Field",
+      "source_object": "Sofi_stadium",
+      "tris": 17164
+    },
+    {
+      "file": "SM_Stadium_Main_FieldMarkings.fbx",
+      "part": "FieldMarkings",
+      "source_object": "Sofi_stadium_Target",
+      "tris": 1852
+    },
+    {
+      "file": "SM_Stadium_Main_FieldSurround.fbx",
+      "part": "FieldSurround",
+      "source_object": "Sofi_stadium_Land_Scabe_IN",
+      "tris": 267
+    },
+    {
+      "file": "SM_Stadium_Main_Seats.fbx",
+      "part": "Seats",
+      "source_object": "sofi_stadium_Chairs",
+      "tris": 4630848
+    },
+    {
+      "file": "SM_Stadium_Main_Bowl.fbx",
+      "part": "Bowl",
+      "source_object": "sofi_stadium_Buldding",
+      "tris": 148415
+    },
+    {
+      "file": "SM_Stadium_Main_BowlFrame.fbx",
+      "part": "BowlFrame",
+      "source_object": "Sofi_stadium_Frame",
+      "tris": 86372
+    },
+    {
+      "file": "SM_Stadium_Main_InteriorGlass.fbx",
+      "part": "InteriorGlass",
+      "source_object": "Sofi_stadium_Interior_Glass",
+      "tris": 418
+    },
+    {
+      "file": "SM_Stadium_Main_InteriorStructure.fbx",
+      "part": "InteriorStructure",
+      "source_object": "Sofi_stadium_Interior__Structure",
+      "tris": 111502
+    },
+    {
+      "file": "SM_Stadium_Main_CenterBoard.fbx",
+      "part": "CenterBoard",
+      "source_object": "Sofi_stadium_TV_Smart",
+      "tris": 564
+    },
+    {
+      "file": "SM_Stadium_Main_Canopy.fbx",
+      "part": "Canopy",
+      "source_object": "Sofi_stadium_Main_Structure",
+      "tris": 19788
+    },
+    {
+      "file": "SM_Stadium_Main_CanopyBody.fbx",
+      "part": "CanopyBody",
+      "source_object": "Sofi_stadium_Main_Body",
+      "tris": 7420
+    },
+    {
+      "file": "SM_Stadium_Main_CanopyFrame.fbx",
+      "part": "CanopyFrame",
+      "source_object": "Sofi_stadium_Frame_Body",
+      "tris": 3710
+    },
+    {
+      "file": "SM_Stadium_Main_CanopyGlass.fbx",
+      "part": "CanopyGlass",
+      "source_object": "Sofi_stadium_Glass_Body",
+      "tris": 12064
+    },
+    {
+      "file": "SM_Stadium_Main_Glass2.fbx",
+      "part": "Glass2",
+      "source_object": "Sofi_stadium_Glass_2",
+      "tris": 148
+    },
+    {
+      "file": "SM_Stadium_Main_Landscape.fbx",
+      "part": "Landscape",
+      "source_object": "Sofi_stadium_Land_Scabe",
+      "tris": 3192
+    },
+    {
+      "file": "SM_Stadium_Main_LandscapeFeatures.fbx",
+      "part": "LandscapeFeatures",
+      "source_object": "Sofi_stadium_Land_Scabe_F",
+      "tris": 6504
+    },
+    {
+      "file": "SM_Stadium_Main_Ground.fbx",
+      "part": "Ground",
+      "source_object": "sofi_stadium_Ground",
+      "tris": 588
+    }
+  ],
+  "markers": [
+    {
+      "id": "Zone_MainDeck",
+      "type": "stage_zone",
+      "loc_m": [
+        -63.0,
+        0,
+        2.5
+      ],
+      "ue_loc_cm": [
+        -6300.0,
+        0,
+        250.0
+      ],
+      "size_m": [
+        18,
+        60,
+        0
+      ]
+    },
+    {
+      "id": "Zone_Field",
+      "type": "crowd_zone",
+      "loc_m": [
+        0,
+        0,
+        0
+      ],
+      "ue_loc_cm": [
+        0,
+        0,
+        0
+      ],
+      "size_m": [
+        109.95,
+        62.89,
+        2.0
+      ],
+      "section": "FIELD_GA"
+    },
+    {
+      "id": "Zone_Pit",
+      "type": "crowd_zone",
+      "loc_m": [
+        -52.5,
+        0,
+        0
+      ],
+      "ue_loc_cm": [
+        -5250.0,
+        0,
+        0
+      ],
+      "size_m": [
+        2.0,
+        60,
+        2.0
+      ],
+      "note": "security only"
+    },
+    {
+      "id": "Zone_FOH",
+      "type": "crowd_zone",
+      "loc_m": [
+        10.0,
+        0,
+        0.6
+      ],
+      "ue_loc_cm": [
+        1000.0,
+        0,
+        60.0
+      ],
+      "size_m": [
+        8,
+        10,
+        3
+      ]
+    },
+    {
+      "id": "Mark_Upstage",
+      "type": "performer_mark",
+      "loc_m": [
+        -68.0,
+        0,
+        2.5
+      ],
+      "ue_loc_cm": [
+        -6800.0,
+        0,
+        250.0
+      ]
+    },
+    {
+      "id": "Mark_Center",
+      "type": "performer_mark",
+      "loc_m": [
+        -63.0,
+        0,
+        2.5
+      ],
+      "ue_loc_cm": [
+        -6300.0,
+        0,
+        250.0
+      ]
+    },
+    {
+      "id": "Mark_Downstage",
+      "type": "performer_mark",
+      "loc_m": [
+        -56.0,
+        0,
+        2.5
+      ],
+      "ue_loc_cm": [
+        -5600.0,
+        0,
+        250.0
+      ]
+    },
+    {
+      "id": "Mark_Midfield",
+      "type": "performer_mark",
+      "loc_m": [
+        0.0,
+        0,
+        2.5
+      ],
+      "ue_loc_cm": [
+        0.0,
+        0,
+        250.0
+      ]
+    },
+    {
+      "id": "Rig_CenterBoard",
+      "type": "rig_point",
+      "loc_m": [
+        0,
+        0,
+        55.0
+      ],
+      "ue_loc_cm": [
+        0,
+        0,
+        5500.0
+      ],
+      "note": "Centre board; trim or hide for in-the-round kits."
+    },
+    {
+      "id": "Cam_FOH",
+      "type": "camera",
+      "loc_m": [
+        12,
+        0,
+        4
+      ],
+      "ue_loc_cm": [
+        1200,
+        0,
+        400
+      ]
+    },
+    {
+      "id": "Cam_Pit_SL",
+      "type": "camera",
+      "loc_m": [
+        -52,
+        18,
+        1.5
+      ],
+      "ue_loc_cm": [
+        -5200,
+        -1800,
+        150.0
+      ]
+    },
+    {
+      "id": "Cam_Pit_SR",
+      "type": "camera",
+      "loc_m": [
+        -52,
+        -18,
+        1.5
+      ],
+      "ue_loc_cm": [
+        -5200,
+        1800,
+        150.0
+      ]
+    },
+    {
+      "id": "Cam_Upper_SL",
+      "type": "camera",
+      "loc_m": [
+        40,
+        70,
+        35
+      ],
+      "ue_loc_cm": [
+        4000,
+        -7000,
+        3500
+      ]
+    },
+    {
+      "id": "Cam_Upper_SR",
+      "type": "camera",
+      "loc_m": [
+        40,
+        -70,
+        35
+      ],
+      "ue_loc_cm": [
+        4000,
+        7000,
+        3500
+      ]
+    },
+    {
+      "id": "Cam_Wide",
+      "type": "camera",
+      "loc_m": [
+        90,
+        0,
+        45
+      ],
+      "ue_loc_cm": [
+        9000,
+        0,
+        4500
+      ]
+    }
+  ]
+}

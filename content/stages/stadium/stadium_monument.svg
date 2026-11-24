@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860">
+<rect width="1200" height="860" fill="#080808"/>
+<style>text{font-family:"Space Mono","JetBrains Mono",monospace;fill:#F1EEE8}.h{font-family:Anton,"Big Shoulders Display",Impact,sans-serif;font-size:52px;letter-spacing:1px}.s{font-size:15px}.l{font-size:11px;opacity:.8}</style>
+<text class="h" x="40" y="62">MONUMENT</text>
+<text class="s" x="40" y="90" fill="#FF1F2E" style="fill:#FF1F2E">STADIUM · END STAGE THRUST · stadium_monument</text>
+<ellipse cx="600.0" cy="468.6" rx="358.6" ry="448.3" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<ellipse cx="600.0" cy="468.6" rx="233.1" ry="349.7" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<rect x="490.6" y="222.1" width="218.8" height="493.1" fill="#F1EEE8" fill-opacity=".04" stroke="none"/>
+<rect x="501.4" y="154.8" width="197.2" height="71.7" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="577.6" y="213.1" width="44.8" height="134.5" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="593.3" y="148.1" width="13.4" height="13.4" fill="none" stroke="#FF1F2E" stroke-width="1.4" stroke-dasharray="4 3"/>
+<rect x="582.1" y="142.5" width="35.9" height="2.2" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.0" fill-opacity="0.85"/>
+<rect x="712.1" y="179.5" width="44.8" height="4.5" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.0" fill-opacity="0.85"/>
+<rect x="443.1" y="179.5" width="44.8" height="4.5" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.0" fill-opacity="0.85"/>
+<rect x="600.0" y="141.4" width="58.3" height="26.9" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="541.7" y="141.4" width="58.3" height="26.9" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<circle cx="629.1" cy="154.8" r="4" fill="#FF1F2E"/>
+<circle cx="570.9" cy="154.8" r="4" fill="#FF1F2E"/>
+<circle cx="624.7" cy="311.7" r="4" fill="#FF1F2E"/>
+<circle cx="575.3" cy="311.7" r="4" fill="#FF1F2E"/>
+<path d="M595.0 154.8h10M600.0 149.8v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 199.7h10M600.0 194.7v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 343.1h10M600.0 338.1v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M40 830h224.1" stroke="#F1EEE8" stroke-width="2"/><text class="l" x="40" y="822">50 m</text>
+<rect x="304.1" y="818" width="14" height="10" fill="#141414" stroke="#F1EEE8" stroke-width="1.5"/><text class="l" x="324.1" y="827">deck</text>
+<rect x="394.1" y="818" width="14" height="10" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.5"/><text class="l" x="414.1" y="827">LED</text>
+<rect x="484.1" y="818" width="14" height="10" fill="none" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="504.1" y="827">kinetic</text>
+<rect x="574.1" y="818" width="14" height="10" fill="none" stroke="#2E6BFF" stroke-width="1.5"/><text class="l" x="594.1" y="827">scrim</text>
+<rect x="664.1" y="818" width="14" height="10" fill="#FF1F2E" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="684.1" y="827">FX</text>
+<text class="l" x="754.1" y="827">+ performer mark · stage at top, audience below</text>
+</svg>
