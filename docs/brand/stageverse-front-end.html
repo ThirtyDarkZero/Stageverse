@@ -1,0 +1,930 @@
+<title>StageVerse Front End</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@62..125,400..900&family=UnifrakturMaguntia&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: "house lights down". A 16:9 game frame for the prototype, editorial sheets for brand/flow/build.
+   Colors are named after real stage lighting gels. Single dark look by choice: a concert UI lives in the dark. */
+:root{
+  /* Street poster x live lasers. Paper and black like wheatpaste posters, one riot red, and laser ice for light. */
+  --house:#080808;      /* blackout: ground */
+  --haze:#141414;       /* concrete: surfaces */
+  --haze-2:#2A2A2A;     /* concrete, worn: lines */
+  --congo:#2E6BFF;      /* laser blue: depth */
+  --magenta:#FF1F2E;    /* riot red: primary action, live */
+  --amber:#A8E8FF;      /* laser ice: selection, data */
+  --spot:#F1EEE8;       /* wheatpaste paper: text */
+  --dim:#9A9794;        /* faded print */
+  --live:#FF1F2E;
+  --gel: linear-gradient(100deg,#FF1F2E 0%,#FF3B2B 100%);
+  --f-display:"Anton","Oswald","Arial Narrow",Impact,sans-serif;
+  --f-wide:"Archivo","Arial Black",sans-serif;
+  --f-body:"Archivo","Segoe UI",system-ui,sans-serif;
+  --f-black:"UnifrakturMaguntia","Old English Text MT",serif;
+  --f-mono:"Space Mono",ui-monospace,Menlo,Consolas,monospace;
+  --snap:cubic-bezier(.2,.9,.1,1);
+  color-scheme:dark;
+}
+html,body{background:var(--house);color:var(--spot)}
+body{font-family:var(--f-body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-block:20px 64px}
+
+/* ---------- top nav ---------- */
+.topnav{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding-block:8px 20px}
+.brandline{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:400;font-size:26px;letter-spacing:.04em;text-transform:uppercase}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.tabs a{font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:15px;color:var(--dim);text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid var(--haze-2)}
+.tabs a[aria-current="page"]{color:var(--house);background:var(--spot);border-color:var(--spot)}
+.view{display:none}.view.on{display:block}
+
+/* ---------- game frame ---------- */
+.frame{position:relative;width:100%;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;background:var(--house);container-type:inline-size;box-shadow:0 0 0 1px var(--haze-2),0 30px 80px -30px #2E6BFF88;user-select:none}
+.scr{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .35s ease}
+.scr.on{opacity:1;pointer-events:auto}
+.hint{color:var(--dim);font-size:13px;margin-top:12px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.hint kbd{font-family:var(--f-mono);font-size:12px;border:1px solid var(--haze-2);border-radius:5px;padding:1px 6px;color:var(--spot)}
+
+/* beams (shared) */
+.beams{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.beam{position:absolute;top:-10%;width:22cqw;height:130%;transform-origin:50% 0;filter:blur(1.2cqw);opacity:.55;
+  background:linear-gradient(180deg,var(--c,#FF1F2E) 0%,transparent 85%);clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);animation:sweep 7s ease-in-out infinite alternate}
+@keyframes sweep{from{transform:rotate(var(--a,-18deg))}to{transform:rotate(var(--b,18deg))}}
+.haze{position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 110%,#2E6BFF66,transparent 70%),radial-gradient(40% 30% at 20% 0%,#FF1F2E22,transparent 70%)}
+@media (prefers-reduced-motion:reduce){.beam,.eq i,.pulse{animation:none!important}}
+
+/* ---------- screen: title ---------- */
+.title-scr{display:grid;place-items:center;text-align:center}
+.wordmark{font-family:var(--f-display);font-weight:400;text-transform:uppercase;line-height:.82;letter-spacing:-.01em;font-size:15cqw;position:relative;z-index:2}
+.wordmark .v{display:inline-block;background:var(--gel);-webkit-background-clip:text;background-clip:text;color:transparent}
+.presents{font-family:var(--f-mono);font-size:1.1cqw;letter-spacing:.4em;color:var(--dim);text-transform:uppercase;margin-bottom:1.6cqw;position:relative;z-index:2}
+.press{margin-top:3cqw;font-family:var(--f-display);font-weight:400;font-size:1.8cqw;letter-spacing:.3em;text-transform:uppercase;position:relative;z-index:2;background:none;border:0;animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.35}}
+.pool{position:absolute;left:50%;bottom:7%;width:46cqw;height:6cqw;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,#F1EEE855,transparent);filter:blur(.6cqw)}
+
+/* ---------- in-game chrome ---------- */
+.chrome{position:absolute;inset:0;display:grid;grid-template-columns:15cqw 1fr;grid-template-rows:1fr 3.6cqw}
+.rail{grid-row:1/3;background:linear-gradient(180deg,#080808,#101010);border-right:1px solid var(--haze-2);padding:2.2cqw 1.4cqw;display:flex;flex-direction:column;gap:.5cqw}
+.rail .logo{display:flex;align-items:center;gap:.6cqw;font-family:var(--f-display);font-weight:400;font-size:1.9cqw;text-transform:uppercase;margin-bottom:2cqw}
+.rail .logo svg{width:2.2cqw;height:2.2cqw}
+.nav{display:flex;align-items:center;gap:.8cqw;border:0;background:none;text-align:left;padding:.85cqw 1cqw;border-radius:.6cqw;font-family:var(--f-display);font-weight:400;font-size:1.55cqw;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);transition:background .2s,color .2s}
+.nav .dot{width:.6cqw;height:.6cqw;border-radius:50%;background:currentColor;opacity:.4}
+.nav:hover{color:var(--spot);background:var(--haze)}
+.nav.on{color:var(--house);background:var(--spot)}
+.nav.on .dot{opacity:1;background:var(--live)}
+.rail .me{margin-top:auto;display:flex;align-items:center;gap:.7cqw;font-size:1cqw;color:var(--dim)}
+.avatar{width:2.4cqw;height:2.4cqw;border-radius:50%;background:conic-gradient(from 200deg,var(--magenta),var(--amber),var(--congo),var(--magenta))}
+.main{position:relative;overflow:hidden;padding:2.2cqw 2.6cqw 0}
+.prompts{grid-column:2;display:flex;align-items:center;gap:2cqw;justify-content:flex-end;padding:0 2.6cqw;border-top:1px solid var(--haze-2);font-size:1cqw;color:var(--dim)}
+.btnglyph{display:inline-grid;place-items:center;width:1.6cqw;height:1.6cqw;border-radius:50%;border:1px solid var(--dim);font-family:var(--f-mono);font-size:.8cqw;color:var(--spot);margin-right:.4cqw}
+.clock{margin-right:auto;font-family:var(--f-mono);letter-spacing:.06em}
+
+/* buttons / chips */
+.cta{display:inline-flex;align-items:center;gap:.8cqw;border:0;border-radius:999px;padding:1cqw 2.2cqw;font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:1.7cqw;color:var(--house);background:var(--gel);box-shadow:0 .6cqw 2.4cqw -.6cqw #FF1F2EAA;transition:transform .18s var(--snap),box-shadow .18s}
+.cta:hover,.cta:focus-visible{transform:translateY(-.2cqw) scale(1.03);box-shadow:0 1cqw 3cqw -.6cqw #A8E8FFCC}
+.ghost{display:inline-flex;align-items:center;gap:.6cqw;border:1px solid #F1EEE855;background:#08080866;border-radius:999px;padding:.95cqw 1.8cqw;font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:1.45cqw;backdrop-filter:blur(6px)}
+.ghost:hover{border-color:var(--spot)}
+.chip{display:inline-flex;align-items:center;gap:.4cqw;font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.12em;text-transform:uppercase;padding:.3cqw .7cqw;border-radius:.4cqw;background:#080808AA;border:1px solid #F1EEE833}
+.chip.live{background:var(--live);border-color:var(--live);color:#fff}
+.pulse{width:.55cqw;height:.55cqw;border-radius:50%;background:#fff;animation:pl 1s ease-in-out infinite}
+@keyframes pl{50%{opacity:.2}}
+.tier{color:var(--amber);border-color:#A8E8FF66}
+
+/* home */
+.hero{position:relative;height:23.5cqw;border-radius:1.2cqw;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:2.4cqw;background:radial-gradient(80% 120% at 85% 10%,#FF1F2E66,transparent 60%),radial-gradient(70% 90% at 60% 100%,#2E6BFF,transparent 70%),#0E0E0E}
+.hero .beams .beam{width:14cqw;opacity:.45}
+.hero h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:5.2cqw;line-height:.85;margin:.6cqw 0 .4cqw;position:relative}
+.hero p{margin:0 0 1.4cqw;font-size:1.2cqw;color:#F1EEE8CC;position:relative;max-width:40cqw}
+.hero .row{display:flex;gap:1cqw;align-items:center;position:relative}
+.meta{display:flex;gap:.6cqw;position:relative}
+.figure{position:absolute;right:4cqw;bottom:0;height:19cqw;width:13cqw}
+.sect{display:flex;align-items:baseline;justify-content:space-between;margin:1.8cqw 0 1cqw}
+.sect h3{margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:2cqw;letter-spacing:.04em}
+.sect span{font-size:1cqw;color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2cqw}
+.card{position:relative;border:0;padding:0;border-radius:1cqw;overflow:hidden;aspect-ratio:19/17.5;text-align:left;background:var(--haze);transition:transform .2s var(--snap),box-shadow .2s;outline-offset:2px}
+.card:hover,.card:focus-visible{transform:translateY(-.5cqw);box-shadow:0 0 0 2px var(--spot)}
+.poster{position:absolute;inset:0}
+.card .txt{position:absolute;inset:auto 0 0 0;padding:1.1cqw;background:linear-gradient(0deg,#080808F2 30%,transparent)}
+.card .date{font-family:var(--f-mono);font-size:.85cqw;color:var(--amber);letter-spacing:.08em}
+.card .name{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:2cqw;line-height:.9;margin:.3cqw 0}
+.card .who{font-size:.95cqw;color:var(--dim)}
+.card .chip{position:absolute;top:1cqw;left:1cqw}
+
+/* show page */
+.showpage{display:grid;grid-template-columns:22cqw 1fr;gap:2.4cqw;height:100%;padding-bottom:2cqw}
+.bigposter{position:relative;border-radius:1.2cqw;overflow:hidden;height:100%}
+.showpage h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:5.4cqw;line-height:.85;margin:.6cqw 0}
+.showpage .by{font-size:1.3cqw;color:#F1EEE8CC;margin:0 0 1.4cqw}
+.facts{display:flex;gap:2.4cqw;margin-bottom:1.6cqw}
+.facts div{font-size:.9cqw;color:var(--dim);text-transform:uppercase;letter-spacing:.12em}
+.facts b{display:block;font-family:var(--f-display);font-size:2.2cqw;color:var(--spot);letter-spacing:.02em;font-weight:700}
+.label{font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 .7cqw}
+.views{display:grid;grid-template-columns:repeat(4,1fr);gap:.8cqw;margin-bottom:1.8cqw}
+.vw{border:1px solid var(--haze-2);background:var(--haze);border-radius:.8cqw;padding:.9cqw;text-align:left;transition:border-color .2s,background .2s}
+.vw b{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:1.5cqw;letter-spacing:.04em}
+.vw span{font-size:.9cqw;color:var(--dim)}
+.vw.on{border-color:var(--amber);background:#A8E8FF1A}
+.vw .mini{height:3.6cqw;border-radius:.4cqw;margin-bottom:.7cqw;background:#080808;position:relative;overflow:hidden}
+.setlist{display:flex;gap:.6cqw;flex-wrap:wrap;margin-bottom:1.8cqw}
+.setlist span{font-size:1cqw;padding:.35cqw .8cqw;border-radius:999px;background:var(--haze);color:#F1EEE8CC}
+
+/* joining */
+.join{display:grid;place-items:center;text-align:center}
+.join h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:8cqw;line-height:.85;margin:0;position:relative}
+.join .sync{font-family:var(--f-mono);font-size:1.2cqw;color:var(--amber);margin-top:1.6cqw;position:relative;letter-spacing:.08em}
+.bar{width:30cqw;height:.35cqw;background:var(--haze-2);border-radius:9px;margin:1.6cqw auto 0;overflow:hidden;position:relative}
+.bar i{display:block;height:100%;width:0;background:var(--gel);transition:width 2.4s linear}
+
+/* live */
+.live-scr{background:#050505}
+.stage{position:absolute;left:12%;right:12%;bottom:19%;height:9%;background:linear-gradient(180deg,#2A2A2A,#0B0B0B);clip-path:polygon(6% 0,94% 0,100% 100%,0 100%)}
+.screenwall{position:absolute;left:24%;right:24%;bottom:30%;height:30%;border-radius:.4cqw;background:radial-gradient(60% 80% at 50% 60%,#FF1F2E,transparent 70%),linear-gradient(90deg,#2E6BFF,#FF1F2E,#A8E8FF);opacity:.8;filter:saturate(1.2)}
+.screenwall::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0004 0 2px,transparent 2px 4px)}
+.performer{position:absolute;left:50%;bottom:27%;width:4.5cqw;height:12cqw;transform:translateX(-50%)}
+.crowd{position:absolute;left:0;right:0;bottom:0;height:24%;background:radial-gradient(circle at 50% 0,#000 0 1.1cqw,transparent 1.15cqw) 0 0/2.6cqw 2.2cqw,radial-gradient(circle at 50% 0,#060606 0 1.3cqw,transparent 1.35cqw) 1.3cqw 1.2cqw/2.6cqw 2.2cqw,linear-gradient(0deg,#000 40%,#050505)}
+.hud-top{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:1cqw;padding:1.6cqw 2cqw;background:linear-gradient(180deg,#000A,transparent)}
+.hud-top .t{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:1.8cqw}
+.hud-top .tc{margin-left:auto;font-family:var(--f-mono);font-size:1.1cqw;color:var(--spot)}
+.hud-bot{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:1cqw;padding:1.6cqw 2cqw;background:linear-gradient(0deg,#000C,transparent)}
+.react{display:flex;gap:.6cqw}
+.react button{width:3.6cqw;height:3.6cqw;border-radius:50%;border:1px solid #F1EEE844;background:#080808AA;font-family:var(--f-display);font-weight:400;font-size:1.1cqw;letter-spacing:.04em;transition:transform .15s var(--snap)}
+.react button:active{transform:scale(.88)}
+.cams{display:flex;gap:.5cqw}
+.cams button{border:1px solid #F1EEE844;background:#080808AA;border-radius:.5cqw;padding:.6cqw 1cqw;font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.1em;text-transform:uppercase}
+.cams button.on{background:var(--spot);color:var(--house)}
+.float{position:absolute;font-family:var(--f-display);font-weight:400;font-size:2cqw;pointer-events:none;animation:rise 1.6s ease-out forwards}
+@keyframes rise{to{transform:translateY(-14cqw);opacity:0}}
+.section-now{position:absolute;top:5.4cqw;left:2cqw;font-family:var(--f-mono);font-size:.9cqw;color:var(--amber);letter-spacing:.12em;text-transform:uppercase}
+
+/* studio */
+.steps{display:flex;gap:.8cqw;margin:1.2cqw 0 1.6cqw}
+.step{flex:1;border:1px solid var(--haze-2);background:var(--haze);border-radius:.8cqw;padding:1cqw;text-align:left}
+.step .n{font-family:var(--f-mono);font-size:.85cqw;color:var(--dim)}
+.step b{display:block;font-family:var(--f-display);font-size:1.6cqw;text-transform:uppercase;letter-spacing:.04em;margin:.2cqw 0}
+.step span{font-size:.9cqw;color:var(--dim)}
+.step.done{border-color:#A8E8FF66}.step.done .n{color:var(--amber)}
+.step.cur{border-color:var(--magenta);background:#FF1F2E14}
+.studio-h{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:3.4cqw;line-height:.9;margin:0}
+.producer{display:grid;grid-template-columns:16cqw 1fr;gap:1.4cqw}
+.venues{display:flex;flex-direction:column;gap:.6cqw}
+.venue{border:1px solid var(--haze-2);background:var(--haze);border-radius:.7cqw;padding:.8cqw 1cqw;text-align:left;display:flex;justify-content:space-between;align-items:baseline}
+.venue b{font-family:var(--f-display);font-size:1.5cqw;text-transform:uppercase}
+.venue span{font-family:var(--f-mono);font-size:.8cqw;color:var(--dim)}
+.venue.on{border-color:var(--amber);background:#A8E8FF1A}
+.venue[disabled]{opacity:.4;cursor:not-allowed}
+.timeline{border:1px solid var(--haze-2);border-radius:.8cqw;background:#0E0E0E;padding:1cqw;overflow:hidden}
+.tl-head{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.8cqw;color:var(--dim);margin-bottom:.7cqw}
+.secs{display:flex;gap:2px;margin-bottom:.6cqw}
+.secs div{height:1.8cqw;border-radius:.3cqw;font-family:var(--f-mono);font-size:.75cqw;display:flex;align-items:center;padding-left:.5cqw;text-transform:uppercase;letter-spacing:.06em;color:var(--house)}
+.lane{display:grid;grid-template-columns:5.5cqw 1fr;align-items:center;gap:.6cqw;height:2.2cqw;border-top:1px solid #FFFFFF0D}
+.lane span{font-family:var(--f-mono);font-size:.75cqw;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.lane .trk{position:relative;height:100%}
+.cue{position:absolute;top:22%;height:56%;border-radius:.25cqw}
+.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--spot);box-shadow:0 0 8px var(--spot)}
+
+.office-h{display:flex;justify-content:space-between;align-items:flex-end;gap:1cqw;margin-bottom:1.2cqw}
+.office{display:grid;grid-template-columns:24cqw 1fr;gap:1.2cqw}
+.panel{background:var(--haze);border-radius:1cqw;padding:1.2cqw;min-width:0}
+.itin{display:grid;grid-template-columns:6.5cqw 1fr auto;gap:.6cqw;align-items:center;padding:.75cqw 0;border-bottom:1px solid var(--haze-2);font-size:1.05cqw}
+.itin .d{font-family:var(--f-mono);font-size:.8cqw;color:var(--dim)}
+.itin .n small{display:block;color:var(--dim);font-size:.85cqw}
+.itin .s{font-family:var(--f-mono);font-size:.8cqw;text-transform:uppercase;letter-spacing:.06em}
+.depts{display:grid;grid-template-columns:repeat(3,1fr);gap:.7cqw}
+.dept{border:1px solid var(--haze-2);background:#0E0E0E;border-radius:.8cqw;padding:.9cqw;text-align:left;transition:border-color .2s,transform .18s var(--snap)}
+.dept:hover,.dept:focus-visible{border-color:var(--spot);transform:translateY(-.15cqw)}
+.dept b{display:block;font-family:var(--f-display);font-size:1.6cqw;text-transform:uppercase;letter-spacing:.03em;margin:.2cqw 0}
+.dept>span:last-child{font-size:.9cqw;color:var(--dim)}
+.dept .st{font-family:var(--f-mono);font-size:.75cqw;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.dept.you{border-color:var(--magenta);background:#FF1F2E14}.dept.you .st{color:var(--magenta)}
+.wsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:.6cqw;margin-bottom:1.2cqw}
+.ws{border:0;border-bottom:.25cqw solid var(--haze-2);background:none;text-align:left;padding:.4cqw 0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.06em;font-size:1.25cqw;color:var(--dim)}
+.ws.done{border-color:var(--amber);color:var(--amber)}.ws.cur{border-color:var(--magenta);color:var(--spot)}
+.wbody{height:30.5cqw;overflow:hidden}
+.wfoot{display:flex;justify-content:space-between;align-items:center;gap:1cqw;margin-top:.8cqw}
+.opts{display:grid;gap:.6cqw}.opts.c5{grid-template-columns:repeat(5,1fr)}.opts.c4{grid-template-columns:repeat(4,1fr)}.opts.c3{grid-template-columns:repeat(3,1fr)}
+.opt{border:1px solid var(--haze-2);background:var(--haze);border-radius:.7cqw;padding:.7cqw .9cqw;text-align:left;transition:border-color .2s,background .2s,transform .18s var(--snap)}
+.opt b{display:block;font-family:var(--f-display);font-size:1.4cqw;text-transform:uppercase;letter-spacing:.03em;line-height:1}
+.opt span{display:block;font-size:.85cqw;color:var(--dim);margin-top:.25cqw;line-height:1.3}
+.opt:hover{border-color:#F1EEE888}
+.opt.on{border-color:var(--amber);background:#A8E8FF1F;transform:scale(1.02)}
+.opt[disabled]{opacity:.4;cursor:not-allowed}
+.lineup{display:flex;gap:.8cqw}
+.mem{flex:1;min-width:0;background:var(--haze);border-radius:.8cqw;padding:.8cqw;text-align:center;border:1px solid var(--haze-2)}
+.mem.empty{border-style:dashed}
+.mfig{height:9cqw;display:flex;justify-content:center;margin-bottom:.5cqw}.mfig svg{height:100%}
+.mem b{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:1.3cqw}
+.mem span{font-size:.85cqw;color:var(--amber);font-family:var(--f-mono)}
+.songs{display:flex;flex-direction:column;gap:.5cqw}
+.song{display:grid;grid-template-columns:2.4cqw 14cqw 1fr auto;align-items:center;gap:1cqw;background:var(--haze);border:1px solid var(--haze-2);border-radius:.7cqw;padding:.8cqw 1cqw;font-size:1.1cqw;text-align:left}
+.song .no{font-family:var(--f-mono);color:var(--dim);font-size:.9cqw}
+.song b{font-family:var(--f-display);text-transform:uppercase;font-size:1.5cqw;letter-spacing:.03em}
+.song .chips{display:flex;gap:.4cqw;flex-wrap:wrap}
+.song .chips i{font-style:normal;font-family:var(--f-mono);font-size:.75cqw;padding:.15cqw .5cqw;border-radius:.3cqw;background:#080808;color:var(--dim)}
+.song .chips i:first-child{color:var(--amber)}
+.song .ok{font-family:var(--f-mono);font-size:.8cqw;color:var(--amber)}
+.song.add{display:block;border-style:dashed;color:var(--dim);font-family:var(--f-display);text-transform:uppercase;letter-spacing:.06em;font-size:1.3cqw}
+.hintline{font-size:1cqw;color:var(--dim);margin-top:1cqw}
+.moves{display:grid;grid-template-columns:1fr 24cqw;gap:1.2cqw}
+.moves .opt{padding:.5cqw .7cqw}.moves .opt b{font-size:1.2cqw}.moves .opt span{font-size:.75cqw}
+.preview{background:#050505;border:1px solid var(--haze-2);border-radius:.9cqw;position:relative;overflow:hidden;display:flex;flex-direction:column;background-image:radial-gradient(60% 50% at 50% 100%,#2E6BFF88,transparent),radial-gradient(30% 60% at 50% 0,#FF1F2E44,transparent)}
+.formation{flex:1;display:flex;justify-content:center;align-items:flex-end;gap:.4cqw;padding:0 1cqw 1cqw}
+.formation i{height:11cqw;display:block;animation:bob var(--bob,.5s) ease-in-out infinite alternate}
+.formation svg{height:100%}
+@keyframes bob{from{translate:0 0}to{translate:0 -.8cqw}}
+@media (prefers-reduced-motion:reduce){.formation i{animation:none}}
+.energy{display:flex;align-items:center;gap:.6cqw;padding:0 1cqw .8cqw;font-family:var(--f-mono);font-size:.8cqw;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
+.energy input{flex:1;accent-color:#FF1F2E}
+.upl{margin:0 1cqw 1cqw;border:1px dashed #F1EEE866;background:none;border-radius:.6cqw;padding:.6cqw;font-size:.9cqw;color:var(--spot)}
+.summary{margin-top:1.4cqw;padding:1cqw 1.2cqw;border-radius:.8cqw;background:#A8E8FF14;border:1px solid #A8E8FF55;font-family:var(--f-mono);font-size:.95cqw;color:var(--amber);letter-spacing:.04em}
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:.7cqw;height:30.5cqw;align-content:start;margin-top:.6cqw}
+.job{background:var(--haze);border:1px solid var(--haze-2);border-radius:.8cqw;padding:1cqw;opacity:.45;transition:opacity .3s,border-color .3s}
+.job b{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:1.6cqw;margin:.3cqw 0 .2cqw}
+.job span{font-size:.9cqw;color:var(--dim)}
+.job .tick{display:block;width:1.4cqw;height:1.4cqw;border-radius:50%;border:2px solid var(--haze-2)}
+.job.done{opacity:1;border-color:#A8E8FF66}
+.job.done .tick{border-color:var(--amber);background:var(--amber);box-shadow:0 0 1cqw var(--amber)}
+
+/* ---------- editorial sheets ---------- */
+.sheet h2{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(40px,7vw,88px);line-height:.85;margin:8px 0 12px;text-wrap:balance}
+.sheet h3{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:28px;letter-spacing:.03em;margin:0 0 12px}
+.lede{max-width:64ch;color:#F1EEE8CC;font-size:17px;margin:0 0 32px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
+.block{border-top:1px solid var(--haze-2);padding-block:32px;display:grid;grid-template-columns:240px 1fr;gap:24px}
+.block>div{min-width:0}
+.block .side p{color:var(--dim);font-size:14px;margin:0}
+@media (max-width:760px){.block{grid-template-columns:1fr}}
+.logos{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+.lg{border-radius:12px;min-height:200px;display:grid;place-items:center;padding:24px;position:relative;overflow:hidden}
+.lg small{position:absolute;left:14px;bottom:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+@media (max-width:760px){.logos{grid-template-columns:1fr}}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.sw{border-radius:12px;overflow:hidden;background:var(--haze)}
+.sw .c{height:110px}
+.sw .i{padding:10px 12px;font-size:13px}
+.sw .i b{display:block;font-family:var(--f-display);text-transform:uppercase;font-size:18px;letter-spacing:.03em}
+.sw .i code{font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.typespec{display:grid;gap:18px}
+.ts{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:baseline;border-bottom:1px solid var(--haze-2);padding-bottom:14px}
+.ts>div{min-width:0;overflow-wrap:anywhere}
+.ts .k{font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+@media (max-width:600px){.ts{grid-template-columns:1fr}}
+.motion{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.mo{background:var(--haze);border-radius:12px;padding:16px}
+.mo .demo{height:90px;border-radius:8px;background:#080808;margin-bottom:12px;position:relative;overflow:hidden}
+.mo b{font-family:var(--f-display);text-transform:uppercase;font-size:20px}
+.mo p{margin:4px 0 0;font-size:13px;color:var(--dim)}
+.mo code{font-family:var(--f-mono);font-size:12px;color:var(--amber)}
+.d-sweep::before{content:"";position:absolute;left:50%;top:-20%;width:60px;height:140%;margin-left:-30px;transform-origin:50% 0;background:linear-gradient(180deg,var(--magenta),transparent);clip-path:polygon(45% 0,55% 0,100% 100%,0 100%);animation:sweep 2.4s ease-in-out infinite alternate;--a:-35deg;--b:35deg;filter:blur(3px)}
+.d-snap{display:grid;place-items:center}
+.d-snap span{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:20px;padding:6px 18px;border-radius:99px;background:var(--gel);color:var(--house);animation:snap 1.8s var(--snap) infinite}
+@keyframes snap{0%,60%{transform:scale(1)}70%{transform:scale(1.12);filter:brightness(1.6)}80%,100%{transform:scale(1)}}
+.d-fade::before{content:"BLACKOUT";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-display);font-weight:400;font-size:26px;letter-spacing:.1em;background:var(--gel);color:var(--house);animation:bo 2.6s ease-in-out infinite}
+@keyframes bo{0%,30%{opacity:1}45%,70%{opacity:0}85%,100%{opacity:1}}
+.d-beat{display:flex;align-items:flex-end;justify-content:center;gap:4px;padding-bottom:14px}
+.eq i{display:block;width:8px;border-radius:2px;background:var(--amber);animation:eq .47s ease-in-out infinite alternate}
+@keyframes eq{from{height:12px}to{height:56px}}
+.voice{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.voice div{background:var(--haze);border-radius:12px;padding:16px;font-size:14px}
+.voice .y{border-left:3px solid var(--amber)}.voice .n{border-left:3px solid #5A5753;color:var(--dim)}
+@media (max-width:600px){.voice{grid-template-columns:1fr}}
+.rules{margin:0;padding-left:20px;max-width:70ch}.rules li{margin:6px 0}
+
+/* flow */
+.lane-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:8px 0 6px}
+.node{flex:1 1 150px;min-width:0;background:var(--haze);border-radius:12px;padding:14px;position:relative;border:1px solid var(--haze-2)}
+.node b{display:block;font-family:var(--f-display);font-size:20px;text-transform:uppercase;letter-spacing:.03em}
+.node span{font-size:13px;color:var(--dim)}
+.node .p{position:absolute;top:10px;right:12px;font-family:var(--f-mono);font-size:11px;color:var(--amber)}
+.node.goal{background:#FF1F2E18;border-color:var(--magenta)}
+.arrow{align-self:center;color:var(--dim);font-family:var(--f-mono)}
+@media (max-width:700px){.arrow{display:none}}
+.counter{font-family:var(--f-display);font-weight:400;font-size:64px;line-height:1;background:var(--gel);-webkit-background-clip:text;background-clip:text;color:transparent}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tw{overflow-x:auto}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--haze-2);vertical-align:top}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:500}
+td code{font-family:var(--f-mono);font-size:12.5px;color:var(--amber)}
+
+/* ===== v3 street + lasers ===== */
+html{font-synthesis:none}
+body{font-stretch:100%}
+#lasers{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.frame{background:#000;border-radius:4px;box-shadow:0 0 0 1px #2A2A2A,0 40px 90px -30px #FF1F2E55}
+.frame.nogl{background:radial-gradient(60% 60% at 50% 100%,#FF1F2E33,transparent),#000}
+.frame.flash::after{content:"";position:absolute;inset:0;z-index:9;pointer-events:none;background:#F1EEE8;animation:fl .5s ease-out forwards}
+@keyframes fl{from{opacity:.55}to{opacity:0}}
+.frame::before{content:"";position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.10;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay}
+.scr{z-index:1}
+.scr.on.glitch{animation:gcut .28s steps(3)}
+@keyframes gcut{0%{clip-path:inset(0 0 60% 0);transform:translateX(-1.5%)}33%{clip-path:inset(40% 0 20% 0);transform:translateX(1.5%)}66%{clip-path:inset(10% 0 0 0);transform:translateX(-.5%)}100%{clip-path:none;transform:none}}
+.chrome{background:transparent}
+.rail{background:linear-gradient(180deg,#080808F2,#080808E0);border-right:1px solid #2A2A2A}
+.main{background:linear-gradient(180deg,#080808D9,#080808F0)}
+.prompts{background:#080808F2;border-top:1px solid #2A2A2A}
+.nav{border-radius:0;font-family:var(--f-display);font-weight:400;letter-spacing:.08em}
+.nav.on{background:var(--spot);color:#080808;clip-path:polygon(0 0,100% 0,96% 100%,0 100%)}
+.nav.on .dot{background:var(--magenta)}
+.rail .logo,.brandline{font-family:var(--f-wide);font-stretch:125%;font-weight:900;letter-spacing:-.01em}
+.rail .logo{font-size:1.15cqw;gap:.4cqw}.rail .logo svg{flex:none}
+.cta{border-radius:0;background:var(--magenta);color:#080808;font-family:var(--f-display);font-weight:400;letter-spacing:.1em;box-shadow:none;clip-path:polygon(0 0,100% 0,100% 70%,94% 100%,0 100%);position:relative}
+.cta:hover,.cta:focus-visible{transform:none;box-shadow:none;background:var(--spot);animation:jit .25s steps(2) 2;text-shadow:.15cqw 0 #FF1F2E,-.15cqw 0 #A8E8FF}
+@keyframes jit{50%{transform:translate(.15cqw,-.1cqw)}}
+.ghost{border-radius:0;border:1px solid #F1EEE8AA;font-family:var(--f-display);font-weight:400;background:#08080899}
+.ghost:hover{background:var(--spot);color:#080808}
+.chip{border-radius:0;font-family:var(--f-mono)}
+.hero,.card,.bigposter,.panel,.dept,.opt,.mem,.song,.job,.vw,.venue,.step,.timeline,.preview,.summary,.upl{border-radius:0!important}
+.hero{background:linear-gradient(90deg,#080808F5 0%,#080808CC 45%,#08080811 100%)!important;border:1px solid #2A2A2A}
+.hero h2{font-family:var(--f-display);font-weight:400;font-size:5.6cqw}
+.stamp{position:absolute;right:2.2cqw;top:1.4cqw;font-family:var(--f-black);color:var(--magenta);font-size:5cqw;transform:rotate(-8deg);text-shadow:0 0 2cqw #FF1F2E88;line-height:1}
+.tape{position:absolute;left:-2cqw;right:-2cqw;height:1.6cqw;background:repeating-linear-gradient(135deg,#FF1F2E 0 1.2cqw,#080808 1.2cqw 2.4cqw);opacity:.9}
+.sect h3,.studio-h,.showpage h2,.join h2{font-family:var(--f-display);font-weight:400}
+.card:hover,.card:focus-visible{box-shadow:0 0 0 2px var(--magenta);transform:translateY(-.4cqw) rotate(-.6deg)}
+.card .txt{background:#080808E8;padding:.7cqw .9cqw}.card .chip.tier{display:none}
+.card .name{font-family:var(--f-display);font-weight:400}
+.label{font-family:var(--f-mono)}
+/* street posters */
+.sp{position:absolute;inset:0;overflow:hidden}
+.sp .big{position:absolute;left:6%;right:6%;top:10%;font-family:var(--f-display);text-transform:uppercase;line-height:.82;letter-spacing:-.01em;word-break:break-word}
+.sp .bl{position:absolute;font-family:var(--f-black);line-height:1;white-space:nowrap}
+.sp .scr2{position:absolute;inset:0;width:100%;height:100%}
+.sp .bc{position:absolute;bottom:4%;right:6%;height:7%;width:30%;background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 3px,currentColor 3px 5px,transparent 5px 6px,currentColor 6px 7px,transparent 7px 10px)}
+.sp .cat{position:absolute;top:3.5%;left:6%;right:6%;display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.7cqw;letter-spacing:.1em}
+.sp .ht{position:absolute;inset:0;background-image:radial-gradient(currentColor 22%,transparent 24%);background-size:5px 5px;opacity:.12}
+/* title */
+.title-scr{background:transparent}
+.t-wrap{position:relative;z-index:2;text-align:center}
+.wordmark{font-family:var(--f-wide);font-stretch:125%;font-weight:900;font-size:10.4cqw;letter-spacing:-.03em;line-height:.85;color:var(--spot);position:relative;text-shadow:0 0 3cqw #A8E8FF33}
+.wordmark .v{background:none;color:var(--magenta);-webkit-background-clip:initial;background-clip:initial}
+.wordmark.g{animation:rgb 3.2s steps(1) infinite}
+@keyframes rgb{0%,92%,100%{text-shadow:0 0 3cqw #A8E8FF33}93%{text-shadow:.6cqw 0 #FF1F2E,-.6cqw 0 #A8E8FF;transform:translateX(.3cqw)}95%{text-shadow:-.4cqw 0 #FF1F2E,.4cqw 0 #A8E8FF;transform:translateX(-.4cqw) skewX(-6deg)}97%{transform:none}}
+.t-live{position:absolute;right:-1cqw;top:-4.6cqw;transform:rotate(-8deg);font-family:var(--f-black);font-size:6.5cqw;color:var(--magenta);text-shadow:0 0 2.4cqw #FF1F2EAA;pointer-events:none}
+.presents{font-family:var(--f-mono);font-size:1cqw;letter-spacing:.35em;color:var(--spot);margin:0 0 1.2cqw}
+.press{font-family:var(--f-mono);font-weight:700;font-size:1.2cqw;letter-spacing:.3em;margin-top:2.6cqw;color:var(--spot)}
+.press::before{content:"[ ";color:var(--magenta)}.press::after{content:" ]";color:var(--magenta)}
+.corner{position:absolute;z-index:2;font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--spot);line-height:1.5}
+.corner b{color:var(--magenta);font-weight:700}
+.bracket{position:absolute;z-index:2;width:2.4cqw;height:2.4cqw;border:2px solid var(--spot)}
+.tbc{width:12cqw;height:2.2cqw;color:var(--spot);background:repeating-linear-gradient(90deg,currentColor 0 2px,transparent 2px 4px,currentColor 4px 7px,transparent 7px 8px,currentColor 8px 9px,transparent 9px 13px)}
+.aimhint{position:absolute;z-index:2;left:50%;bottom:3cqw;transform:translateX(-50%);font-family:var(--f-mono);font-size:.85cqw;letter-spacing:.18em;color:var(--amber);text-transform:uppercase;white-space:nowrap}
+/* live */
+.live-scr,.join{background:transparent!important}
+.stage{background:linear-gradient(180deg,#1A1A1A,#050505)!important}
+.ledwall{position:absolute;left:30%;right:30%;bottom:28%;height:30%;background:#050505;border:1px solid #2A2A2A;display:grid;place-items:center;overflow:hidden}
+.ledwall span{font-family:var(--f-display);font-size:5cqw;color:#FF1F2E;letter-spacing:.02em;text-shadow:0 0 1.5cqw #FF1F2E;animation:rgb 2.2s steps(1) infinite}
+.ledwall::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0007 0 2px,transparent 2px 4px)}
+.crowd{background:radial-gradient(circle at 50% 0,#000 0 1.1cqw,transparent 1.15cqw) 0 0/2.6cqw 2.2cqw,radial-gradient(circle at 50% 0,#000 0 1.3cqw,transparent 1.35cqw) 1.3cqw 1.2cqw/2.6cqw 2.2cqw,linear-gradient(0deg,#000 45%,#0000)!important}
+.performer path,.performer circle{fill:#000}.performer{filter:drop-shadow(0 0 .5cqw #A8E8FF)}
+.hands{position:absolute;left:0;right:0;bottom:16%;height:14%;pointer-events:none}
+.react button,.cams button{border-radius:0;font-family:var(--f-mono);font-weight:700}
+.co2{background:var(--spot)!important;color:#080808!important;border-color:var(--spot)!important}
+.hud-top .t{font-family:var(--f-display);font-weight:400}
+.join .sync{color:var(--amber)}
+/* brand sheet */
+.sheet h2{font-family:var(--f-display);font-weight:400}
+.lg{border-radius:0}
+.sw{border-radius:0}
+.mo,.voice div,.node{border-radius:0}
+.posterwall{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;container-type:inline-size}
+.posterwall .pw{position:relative;aspect-ratio:3/4}
+@media (max-width:760px){.posterwall{grid-template-columns:repeat(2,1fr)}}
+.d-laser{background:#000!important}
+.d-laser i{position:absolute;left:50%;bottom:0;width:1px;height:140%;background:linear-gradient(0deg,#A8E8FF,transparent);transform-origin:50% 100%;box-shadow:0 0 6px #A8E8FF;animation:lf 1.9s ease-in-out infinite alternate}
+@keyframes lf{from{transform:rotate(var(--a))}to{transform:rotate(var(--b))}}
+.d-co2{background:#000!important}
+.d-co2::before{content:"";position:absolute;left:30%;right:30%;bottom:-30%;height:150%;background:radial-gradient(50% 50% at 50% 60%,#F1EEE8EE,#F1EEE800 70%);filter:blur(6px);animation:co 2.4s ease-out infinite}
+@keyframes co{0%{transform:scaleY(.1) translateY(40%);opacity:0}15%{opacity:1}100%{transform:scaleY(1.2) translateY(-10%);opacity:0}}
+.d-glitch{display:grid;place-items:center}
+.d-glitch span{font-family:var(--f-display);font-size:34px;color:var(--spot);animation:rgb 1.4s steps(1) infinite}
+.d-strobe{animation:stb 1.2s steps(1) infinite}
+@keyframes stb{0%,10%{background:#F1EEE8}11%,100%{background:#000}}
+@media (prefers-reduced-motion:reduce){.wordmark.g,.ledwall span,.d-laser i,.d-co2::before,.d-glitch span,.d-strobe,.scr.on.glitch{animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="topnav">
+    <div class="brandline"><svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><g stroke="#F1EEE8" stroke-width="1.6" stroke-linecap="square"><line x1="20" y1="34" x2="3" y2="4"/><line x1="20" y1="34" x2="37" y2="4"/></g><g stroke="#A8E8FF" stroke-width=".8" opacity=".8"><line x1="20" y1="34" x2="11" y2="4"/><line x1="20" y1="34" x2="29" y2="4"/><line x1="20" y1="34" x2="20" y2="4"/></g><rect x="16" y="33" width="8" height="5" fill="#FF1F2E"/></svg>StageVerse</div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#prototype">Prototype</a><a href="#flow">User flow</a><a href="#brand">Brand sheet</a><a href="#unreal">Unreal build</a>
+    </nav>
+  </header>
+
+  <!-- ===================== PROTOTYPE ===================== -->
+  <section class="view" id="v-prototype">
+    <div class="frame" id="frame">
+      <canvas id="lasers" aria-hidden="true"></canvas>
+
+      <!-- TITLE -->
+      <div class="scr title-scr on" data-s="title">
+        <i class="bracket" style="left:2cqw;top:2cqw;border-right:0;border-bottom:0"></i><i class="bracket" style="right:2cqw;top:2cqw;border-left:0;border-bottom:0"></i>
+        <i class="bracket" style="left:2cqw;bottom:2cqw;border-right:0;border-top:0"></i><i class="bracket" style="right:2cqw;bottom:2cqw;border-left:0;border-top:0"></i>
+        <div class="corner" style="left:5cqw;top:3.2cqw">SV—001<br><b>● LIVE</b> FROM THE VERSE</div>
+        <div class="corner" style="right:5cqw;top:3.2cqw;text-align:right">128 BPM<br>CO₂ · LASERS · LIVE</div>
+        <div class="corner" style="left:5cqw;bottom:3.6cqw"><div class="tbc"></div>TDZ // EST. 2026</div>
+        <div class="corner" style="right:5cqw;bottom:3.6cqw;text-align:right">THE STAGE<br>NEVER SLEEPS</div>
+        <div class="t-wrap">
+          <div class="presents">// THIRTYDARKZERO PRESENTS</div>
+          <div style="position:relative"><span class="t-live">Live</span><div class="wordmark g">STAGE<span class="v">V</span>ERSE</div></div>
+          <button class="press" data-go="home">Press any key</button>
+        </div>
+        <div class="aimhint">Move to aim the lasers · click the fog for CO₂</div>
+      </div>
+
+      <!-- IN-GAME CHROME (home / show / studio) -->
+      <div class="scr" data-s="app">
+        <div class="chrome">
+          <aside class="rail">
+            <div class="logo"><svg viewBox="0 0 40 40" aria-hidden="true"><g stroke="#F1EEE8" stroke-width="1.6" stroke-linecap="square"><line x1="20" y1="34" x2="3" y2="4"/><line x1="20" y1="34" x2="37" y2="4"/></g><g stroke="#A8E8FF" stroke-width=".8" opacity=".8"><line x1="20" y1="34" x2="11" y2="4"/><line x1="20" y1="34" x2="29" y2="4"/><line x1="20" y1="34" x2="20" y2="4"/></g><rect x="16" y="33" width="8" height="5" fill="#FF1F2E"/></svg>StageVerse</div>
+            <button class="nav on" data-tab="home"><i class="dot"></i>Tonight</button>
+            <button class="nav" data-tab="shows"><i class="dot"></i>Shows</button>
+            <button class="nav" data-tab="tickets"><i class="dot"></i>My tickets</button>
+            <button class="nav" data-tab="studio"><i class="dot"></i>Studio</button>
+            <div class="me"><i class="avatar"></i><div>rob_tdz<br><span style="color:var(--amber)">Artist + fan</span></div></div>
+          </aside>
+          <div class="main" id="main"></div>
+          <footer class="prompts"><span class="clock" id="clock">SHOW CLOCK 21:58:04</span><span><i class="btnglyph">A</i>Select</span><span><i class="btnglyph">B</i>Back</span><span><i class="btnglyph">☰</i>Settings</span></footer>
+        </div>
+      </div>
+
+      <!-- JOINING -->
+      <div class="scr join" data-s="join">
+        <div>
+          <div class="presents">// DOORS OPEN</div>
+          <h2 id="joinTitle">Neon Requiem</h2>
+          <div class="sync" id="syncTxt">Finding your seat · Section 114</div>
+          <div class="bar"><i id="joinBar"></i></div>
+        </div>
+      </div>
+
+      <!-- LIVE -->
+      <div class="scr live-scr" data-s="live">
+        <div class="ledwall"><span>NEON REQUIEM</span></div>
+        <div class="stage"></div>
+        <svg class="performer" viewBox="0 0 45 120" aria-hidden="true"><circle cx="22.5" cy="12" r="8" fill="#000"/><path d="M10 26 Q22 20 35 26 L38 66 L30 66 L31 118 L24 118 L22.5 78 L21 118 L14 118 L15 66 L7 66 Z" fill="#000"/><path d="M35 28 L44 6 L46 8 L38 34 Z" fill="#000"/></svg>
+        <div class="crowd"></div>
+        <div class="hud-top">
+          <span class="chip live"><i class="pulse"></i>Live</span>
+          <span class="t">Arizona Rae · Neon Requiem</span>
+          <span class="chip">14,212 watching</span>
+          <span class="tc" id="tc">00:12:41:08</span>
+        </div>
+        <div class="section-now" id="secNow">Now playing · Chorus 2 · 128 BPM</div>
+        <div class="hud-bot">
+          <div class="react" aria-label="Reactions">
+            <button data-r="LOUD">LOUD</button><button data-r="FIRE">FIRE</button><button data-r="ENCORE" style="font-size:.85cqw">ENCORE</button><button data-r="♥">♥</button>
+          </div>
+          <div class="cams" aria-label="Camera">
+            <button class="on" data-cam>My seat</button><button data-cam>Front row</button><button data-cam>Director</button><button data-cam>Drone</button>
+          </div>
+          <div style="display:flex;gap:.6cqw"><button class="ghost co2" data-co2>CO₂ blast</button><button class="ghost" data-go="leave">Leave show</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="hint"><span>Click anything, or use the keyboard: <kbd>Enter</kbd> select, <kbd>Esc</kbd> back.</span><span>Try: Tonight → Join live, or Studio → Show Producer.</span><span>Example content only.</span></div>
+  </section>
+
+  <!-- ===================== FLOW ===================== -->
+  <section class="view sheet" id="v-flow">
+    <div class="eyebrow">User flow</div>
+    <h2>Two presses to the show</h2>
+    <p class="lede">The front end is built around one promise: from the title screen, a fan is inside a live show in two presses. Everything else sits one level deep at most. There are only four places to go, and they never move.</p>
+
+    <div class="block"><div class="side"><h3>Fan</h3><p>The default path. "Tonight" always opens on whatever is live right now.</p></div>
+      <div>
+        <div class="lane-flow">
+          <div class="node"><span class="p">press 0</span><b>Title</b><span>Any key</span></div><span class="arrow">→</span>
+          <div class="node"><span class="p">press 1</span><b>Tonight</b><span>Hero = live show, Join live is pre-focused</span></div><span class="arrow">→</span>
+          <div class="node goal"><span class="p">press 2</span><b>In the show</b><span>Doors-open load, seat assigned, clock synced</span></div>
+        </div>
+        <p style="color:var(--dim);font-size:13px;margin:10px 0 18px">Optional detour: any poster opens the Show page (setlist, venue, choose your view), then Join live.</p>
+        <div class="lane-flow">
+          <div class="node"><b>Shows</b><span>Live, Upcoming, Replays. Filter by venue tier.</span></div>
+          <div class="node"><b>Show page</b><span>Join live, or Remind me when it is upcoming</span></div>
+          <div class="node"><b>My tickets</b><span>Shows you saved or bought (Phase 3)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Artist</h3><p>Studio works like a touring production office. The artist answers four questions, and every department (music, choreography, lip sync, lighting, video, FX, cameras, rights) does its job automatically. The artist only steps in where they want to, or where a department needs a decision.</p></div>
+      <div>
+        <div class="lane-flow">
+          <div class="node"><span class="p">1</span><b>The act</b><span>Solo, duo, boy/girl/mixed group, band, or DJ. Each member gets an avatar and a role.</span></div><span class="arrow">→</span>
+          <div class="node"><span class="p">2</span><b>The music</b><span>Drop in songs. Stems, BPM and sections come back; vocal lines split across members.</span></div><span class="arrow">→</span>
+          <div class="node"><span class="p">3</span><b>The moves</b><span>Genre, "performs like" style, and moves from your own dance video, the style library, or both.</span></div><span class="arrow">→</span>
+          <div class="node"><span class="p">4</span><b>The production</b><span>Arena pop, club night, rock tour, festival rave or intimate. Pick a venue.</span></div>
+        </div>
+        <div class="lane-flow" style="margin-top:10px">
+          <div class="node"><b>Office builds it</b><span>Dance locked to the beat, lip sync from vocals, instruments from stems, lights and FX on the sections</span></div><span class="arrow">→</span>
+          <div class="node"><b>Show Producer</b><span>Everything is pre-cued. Tweak any lane, or leave it.</span></div><span class="arrow">→</span>
+          <div class="node goal"><b>Publish</b><span>It joins the tour itinerary and shows up in Shows</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Rules</h3><p>What keeps it simple as features pile up in Phases 2 to 4.</p></div>
+      <div><ol class="rules">
+        <li>Four top-level places only: Tonight, Shows, My tickets, Studio. New features live inside them.</li>
+        <li>The primary action on every screen is pre-focused, so a controller user only presses A.</li>
+        <li>B always goes back one level. Nothing is ever more than two levels deep.</li>
+        <li>Live state is shown the same way everywhere: the red Live tally plus the watcher count.</li>
+        <li>No settings or sign-in before the first show. Ask for an account only when it is needed (tickets, Studio).</li>
+        <li>In a show the HUD shows four things and fades after 3 seconds without input.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- ===================== BRAND ===================== -->
+  <section class="view sheet" id="v-brand">
+    <div class="eyebrow" style="color:var(--magenta)">Brand sheet · v0.3 street</div>
+    <h2>Loud on the wall. Plain on the button.</h2>
+    <p class="lede">StageVerse looks like a wheatpasted gig poster on a wet wall outside the venue, lit by the lasers leaking out of the doors. The posters, show art and title screen get to be loud, messy and street. The parts you press stay simple and readable, so the game is still easy to use.</p>
+
+    <div class="block"><div class="side"><h3>Logo</h3><p>The wordmark is set extra wide and heavy, with the V in red. The mark is that V drawn as a laser fan from one red emitter on the floor, which is how a real laser rig sits on a stage. Under the title screen the fan is live and follows the player's cursor.</p></div>
+      <div class="logos">
+        <div class="lg" style="background:#080808;border:1px solid var(--haze-2)"><div style="position:relative"><span style="position:absolute;left:50%;top:-34px;transform:translateX(-50%) rotate(-6deg);font-family:var(--f-black);color:#FF1F2E;font-size:clamp(28px,5vw,48px);text-shadow:0 0 16px #FF1F2E99">Live</span><div style="font-family:var(--f-wide);font-stretch:125%;font-weight:900;font-size:clamp(30px,6.4vw,66px);letter-spacing:-.03em;line-height:.9">STAGE<span style="color:#FF1F2E">V</span>ERSE</div></div><small>Primary wordmark · with Live stamp</small></div>
+        <div class="lg" style="background:#FF1F2E"><svg viewBox="0 0 40 40" width="120" height="120" aria-label="StageVerse mark"><g stroke="#080808" stroke-width="1.6" stroke-linecap="square"><line x1="20" y1="34" x2="3" y2="4"/><line x1="20" y1="34" x2="37" y2="4"/></g><g stroke="#080808" stroke-width=".8" opacity=".85"><line x1="20" y1="34" x2="11" y2="4"/><line x1="20" y1="34" x2="29" y2="4"/><line x1="20" y1="34" x2="20" y2="4"/></g><rect x="16" y="33" width="8" height="5" fill="#F1EEE8"/></svg><small style="color:#080808">Mark on riot red</small></div>
+        <div class="lg" style="background:#F1EEE8;color:#080808"><svg viewBox="0 0 40 40" width="120" height="120" aria-label="StageVerse mark"><g stroke="#080808" stroke-width="1.6" stroke-linecap="square"><line x1="20" y1="34" x2="3" y2="4"/><line x1="20" y1="34" x2="37" y2="4"/></g><g stroke="#2E6BFF" stroke-width=".8" opacity=".85"><line x1="20" y1="34" x2="11" y2="4"/><line x1="20" y1="34" x2="29" y2="4"/><line x1="20" y1="34" x2="20" y2="4"/></g><rect x="16" y="33" width="8" height="5" fill="#FF1F2E"/></svg><small>Mark on paper</small></div>
+      </div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Show posters</h3><p>Every show gets a generated street poster: stacked condensed type, one blackletter word, a hand scribble, a catalog number and a barcode. Artists pick one of three paper colors; the system does the layout so every poster looks designed.</p></div>
+      <div class="posterwall" id="posterwall"></div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Color</h3><p>Three street colors and one light color. Red is for the thing to press and for live. Laser ice only ever comes from light: lasers, selection glow, data.</p></div>
+      <div class="swatches">
+        <div class="sw"><div class="c" style="background:#080808;border-bottom:1px solid var(--haze-2)"></div><div class="i"><b>Blackout</b><code>#080808</code><br>Ground</div></div>
+        <div class="sw"><div class="c" style="background:#141414"></div><div class="i"><b>Concrete</b><code>#141414</code><br>Panels</div></div>
+        <div class="sw"><div class="c" style="background:#F1EEE8"></div><div class="i"><b>Wheatpaste</b><code>#F1EEE8</code><br>Text, paper posters</div></div>
+        <div class="sw"><div class="c" style="background:#FF1F2E"></div><div class="i"><b>Riot Red</b><code>#FF1F2E</code><br>Press it · Live</div></div>
+        <div class="sw"><div class="c" style="background:#A8E8FF;box-shadow:inset 0 0 40px #fff"></div><div class="i"><b>Laser Ice</b><code>#A8E8FF</code><br>Light, selection, data</div></div>
+        <div class="sw"><div class="c" style="background:#2E6BFF"></div><div class="i"><b>Laser Blue</b><code>#2E6BFF</code><br>Secondary beams</div></div>
+      </div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Type</h3><p>Four faces, each with one job. All free on Google Fonts (OFL), so they ship inside the game.</p></div>
+      <div class="typespec">
+        <div class="ts"><span class="k">Wordmark · Archivo Expanded Black</span><div style="font-family:var(--f-wide);font-stretch:125%;font-weight:900;font-size:clamp(26px,4.4vw,48px);letter-spacing:-.02em;line-height:.95">STAGEVERSE</div></div>
+        <div class="ts"><span class="k">Headlines · Anton</span><div style="font-family:var(--f-display);font-size:clamp(34px,6vw,62px);text-transform:uppercase;line-height:.9">Neon Requiem Tour</div></div>
+        <div class="ts"><span class="k">Accent, one word max · UnifrakturMaguntia</span><div style="font-family:var(--f-black);font-size:clamp(30px,5vw,52px);color:var(--magenta)">Live tonight</div></div>
+        <div class="ts"><span class="k">Data + terminal · Space Mono</span><div style="font-family:var(--f-mono);font-size:15px;color:var(--amber)">SV—001 · 128 BPM · SEC 114 ROW F · SYNC ±12 MS</div></div>
+        <div class="ts"><span class="k">Body · Archivo</span><div style="font-size:16px;max-width:56ch">Arizona Rae opens the tour in the Arena with a 14-song set, a laser rig and CO₂ on every drop.</div></div>
+      </div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Motion</h3><p>The UI moves like a show, not like an app. Lasers are always running behind the menus at a low level and follow the cursor or right stick.</p></div>
+      <div class="motion">
+        <div class="mo"><div class="demo d-laser"><i style="--a:-50deg;--b:-10deg"></i><i style="--a:-25deg;--b:15deg"></i><i style="--a:0deg;--b:35deg"></i><i style="--a:20deg;--b:55deg"></i></div><b>Laser fan</b><p>Always on behind menus. Fans pulse on the beat. <code>128 BPM default, show BPM in a show</code></p></div>
+        <div class="mo"><div class="demo d-co2"></div><b>CO₂ blast</b><p>Big moments: Join live, Publish, a drop. White burst plus a frame flash. <code>500ms</code></p></div>
+        <div class="mo"><div class="demo d-glitch"><span>GLITCH CUT</span></div><b>Glitch cut</b><p>Every screen change is a 3-frame RGB slice. No slides, no fades. <code>280ms, steps(3)</code></p></div>
+        <div class="mo"><div class="demo d-strobe"></div><b>Strobe</b><p>Focus and select flash once. Off for anyone with reduced motion turned on. <code>1 frame</code></p></div>
+      </div>
+    </div>
+
+    <div class="block"><div class="side"><h3>Voice</h3><p>Posters can shout. Buttons always say exactly what happens.</p></div>
+      <div class="voice">
+        <div class="y"><b>Posters + title</b><br>THE STAGE NEVER SLEEPS<br>LIVE FROM THE VERSE<br>SV—001 · ONE NIGHT ONLY</div>
+        <div class="y" style="border-color:var(--magenta)"><b>Buttons + status</b><br>Join live<br>14,212 watching<br>Doors open in 4 min</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== UNREAL ===================== -->
+  <section class="view sheet" id="v-unreal">
+    <div class="eyebrow">Unreal build outline</div>
+    <h2>From prototype to UMG</h2>
+    <p class="lede">How each piece of this prototype maps to Unreal. I'll write the full build plan as a doc once you approve the direction, then put the widgets in the repo.</p>
+    <div class="tw"><table>
+      <thead><tr><th>Prototype piece</th><th>Unreal</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Screens and Back</td><td><code>CommonUI</code> activatable widget stack</td><td>One root layout with a menu layer and a modal layer. B and Esc pop the stack for free.</td></tr>
+        <tr><td>Controller prompts (A, B, ☰)</td><td><code>CommonInputActionDataTable</code> + <code>CommonActionWidget</code></td><td>Prompts swap between Xbox, PlayStation, keyboard and touch automatically.</td></tr>
+        <tr><td>Colors, type, radii</td><td><code>UStageVerseStyle</code> data asset + CommonUI text and button styles</td><td>One place to change the gel palette. Fonts imported as composite font assets.</td></tr>
+        <tr><td>Show cards and Tonight hero</td><td><code>CommonTileView</code> fed by <code>UShowListing</code> objects</td><td>Data comes from the Next.js API (<code>/shows</code>). Posters cached from the CDN.</td></tr>
+        <tr><td>Lasers and CO₂ behind the menus</td><td>The real arena level behind the UI: Niagara laser beams, exponential height fog with volumetric fog, CO₂ jets as Niagara smoke</td><td>Lasers are DMX fixtures driven by the same show-control system as the concert, so the title screen is a real idle cue. Cursor or right stick aims the fan; click or A on the fog fires a CO₂ cue. Real volumetrics on PC/console; iOS gets a baked fog card fallback.</td></tr>
+        <tr><td>Glitch cut, strobe, CO₂ flash</td><td>UMG animations + one post-process material (RGB split, scanlines, grain)</td><td>Pulses read the BPM from the show clock subsystem. All of it switches off with the reduced motion setting.</td></tr>
+        <tr><td>Live HUD</td><td>Separate HUD layer, auto-hide after 3s</td><td>Reactions go over the network as small events; camera buttons switch Cine Camera actors.</td></tr>
+        <tr><td>Studio: production office and Build a show</td><td>CommonUI widget stack + <code>UShowDraft</code> saved to the backend after each step</td><td>The choices (act, genre, style, move source, production style) become fields in <code>show.json</code>; the cloud pipeline reads them to pick choreography, lip sync and default cues.</td></tr>
+        <tr><td>Show Producer timeline</td><td>Custom <code>SCueTimeline</code> widget (Slate)</td><td>Reads and writes <code>cues/timeline.json</code> from the show package. The heaviest UI piece.</td></tr>
+        <tr><td>Phone and iPad</td><td>CommonUI input type switching + safe zones</td><td>Same widgets, larger touch targets, rail becomes a bottom bar.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+  /* ---------- section routing ---------- */
+  const views=['prototype','flow','brand','unreal'];
+  function route(){
+    const h=(location.hash||'#prototype').slice(1), v=views.includes(h)?h:'prototype';
+    views.forEach(n=>$('#v-'+n).classList.toggle('on',n===v));
+    $$('.tabs a').forEach(a=>{ if(a.getAttribute('href')==='#'+v) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current'); });
+  }
+  addEventListener('hashchange',route); route();
+
+  /* ---------- data (example content) ---------- */
+  const shows=[
+    {id:'nr',name:'Neon Requiem',who:'Arizona Rae',tier:'Arena',date:'LIVE NOW',live:true,watch:'14,212',seats:'18,000',songs:14,len:'78 min',g:['#FF1F2E','#2E6BFF','#A8E8FF'],set:['Static Halo','Glass Heart','Neon Requiem','Run It Back','Midnight Choir']},
+    {id:'lb',name:'Low Battery',who:'Arizona Rae',tier:'Club',date:'SAT 28 NOV · 21:00',g:['#2E6BFF','#2E6BFF','#141414'],seats:'800',songs:9,len:'45 min',set:['Low Battery','Afterglow','Signal Lost']},
+    {id:'ga',name:'Golden Hour Sessions',who:'Arizona Rae',tier:'Theater',date:'FRI 04 DEC · 20:30',g:['#A8E8FF','#FF3B2B','#2E6BFF'],seats:'2,400',songs:11,len:'60 min',set:['Golden Hour','Slow Burn','Velvet']},
+    {id:'nr2',name:'Neon Requiem',who:'Arizona Rae · Replay',tier:'Arena',date:'REPLAY · 21 NOV',g:['#FF1F2E','#141414','#FF1F2E'],seats:'18,000',songs:14,len:'78 min',set:['Static Halo','Glass Heart','Neon Requiem']},
+    {id:'ss',name:'Supernova',who:'Arizona Rae',tier:'Stadium',date:'2027 · PHASE 4',g:['#F1EEE8','#A8E8FF','#FF1F2E'],seats:'60,000',songs:20,len:'110 min',set:['TBA']}
+  ];
+  const SCRIB='M10 60 C 40 10, 90 20, 70 55 S 20 90, 55 95 S 110 70, 85 40 S 30 30, 40 70 C 45 85, 95 85, 90 60';
+  const PST={nr:{bg:'#FF1F2E',fg:'#080808',ac:'#F1EEE8',bl:'Requiem'},lb:{bg:'#080808',fg:'#F1EEE8',ac:'#FF1F2E',bl:'Battery'},ga:{bg:'#F1EEE8',fg:'#080808',ac:'#FF1F2E',bl:'Golden'},nr2:{bg:'#080808',fg:'#FF1F2E',ac:'#A8E8FF',bl:'Replay'},ss:{bg:'#F1EEE8',fg:'#FF1F2E',ac:'#080808',bl:'Supernova'}};
+  const poster=(s,size)=>{const k=s.date&&s.date.startsWith('REPLAY')?'nr2':s.id;const c=PST[k]||PST.nr;const big=size==='big';
+    const words=s.name.toUpperCase().split(' ');
+    return `<div class="poster sp" style="background:${c.bg};color:${c.fg}"><i class="ht"></i>
+      <div class="cat"><span>SV—${String(shows.indexOf(s)+1).padStart(3,'0')}</span><span>${s.tier.toUpperCase()}</span></div>
+      <div class="big" style="font-size:${big?6.4:3.3}cqw">${words.map((w,i)=>`<div style="${i%2?'text-align:right':''}">${w}</div>`).join('')}</div>
+      <svg class="scr2" viewBox="0 0 100 130" preserveAspectRatio="none" aria-hidden="true"><path d="${SCRIB}" transform="translate(0 ${big?20:12})" fill="none" stroke="${c.ac}" stroke-width="${big?.9:1.4}" stroke-linecap="round"/></svg>
+      <div class="bl" style="color:${c.ac};font-size:${big?5.6:2.8}cqw;left:8%;top:${big?44:40}%;transform:rotate(-9deg)">${c.bl}</div>
+      <i class="bc"></i></div>`};
+  {const pw=document.getElementById('posterwall');if(pw)pw.innerHTML=shows.slice(0,4).map(x=>`<div class="pw">${poster(x)}</div>`).join('')}
+  /* ---------- screen machine ---------- */
+  const scr=n=>{$$('.scr').forEach(e=>{const on=e.dataset.s===n;if(on&&!e.classList.contains('on')){e.classList.remove('glitch');void e.offsetWidth;e.classList.add('glitch')}e.classList.toggle('on',on)});window.LASERS&&LASERS.mode(n)};
+  let stack=[], tab='home', current='title', selShow=shows[0], selView=0, selVenue=2;
+  const main=$('#main');
+  function go(where,push=true){
+    if(push && current!==where) stack.push([current,tab,selShow]);
+    current=where;
+    if(where==='title'){scr('title');return}
+    if(where==='join'){return startJoin()}
+    if(where==='live'){scr('live');startLive();return}
+    scr('app'); render();
+  }
+  function back(){
+    if(current==='live'){stopLive();current='show';scr('app');render();return}
+    const p=stack.pop(); if(!p){return}
+    [current,tab,selShow]=p; if(current==='title'){scr('title');return}
+    if(current==='join'||current==='live'){return back()}
+    scr('app'); render();
+  }
+  function setTab(t){tab=t; go(t)}
+
+  function render(){
+    $$('.nav').forEach(b=>b.classList.toggle('on',b.dataset.tab===(['show'].includes(current)?'shows':['producer','build','building'].includes(current)?'studio':current)));
+    if(current==='home') main.innerHTML=home();
+    else if(current==='shows') main.innerHTML=list();
+    else if(current==='show') main.innerHTML=showPage();
+    else if(current==='tickets') main.innerHTML=tickets();
+    else if(current==='studio') main.innerHTML=studio();
+    else if(current==='producer') main.innerHTML=producer();
+    else if(current==='build') main.innerHTML=build();
+    else if(current==='building'){main.innerHTML=building();runBuild()}
+    const f=main.querySelector('[data-focus]'); if(f) setTimeout(()=>f.focus({preventScroll:true}),60);
+  }
+  const card=s=>`<button class="card" data-show="${s.id+(s.date.startsWith('REPLAY')?'r':'')}">${poster(s)}<span class="chip ${s.live?'live':'tier'}">${s.live?'<i class="pulse"></i>Live':s.tier}</span><div class="txt"><div class="date">${s.date}</div><div class="name">${s.name}</div><div class="who">${s.who}</div></div></button>`;
+  const findShow=id=>shows.find(s=>s.id+(s.date.startsWith('REPLAY')?'r':'')===id);
+
+  function home(){const s=shows[0];return `
+    <div class="hero">
+      <span class="stamp">Live</span>
+      <div class="meta"><span class="chip live"><i class="pulse"></i>Live</span><span class="chip">${s.watch} watching</span><span class="chip tier">Arena</span></div>
+      <h2>Arizona Rae<br>Neon Requiem</h2>
+      <p>Opening night of the tour. 14 songs, new stage, pyro on every chorus.</p>
+      <div class="row"><button class="cta" data-join="nr" data-focus>▶ Join live</button><button class="ghost" data-show="nr">Show details</button></div>
+    </div>
+    <div class="sect"><h3>Coming up</h3><span>Times in your time zone</span></div>
+    <div class="cards">${[shows[1],shows[2],shows[3],shows[4]].map(card).join('')}</div>`}
+
+  function list(){return `
+    <div class="sect" style="margin-top:0"><h3 style="font-size:3cqw">Shows</h3><span>All · Live · Upcoming · Replays</span></div>
+    <div style="display:flex;gap:.6cqw;margin-bottom:1.4cqw">${['All tiers','Club','Theater','Arena','Stadium'].map((t,i)=>`<span class="chip ${i?'':'tier'}" style="font-size:1cqw;padding:.5cqw 1cqw">${t}</span>`).join('')}</div>
+    <div class="cards" style="grid-template-columns:repeat(5,1fr)">${shows.map(card).join('')}</div>`}
+
+  function tickets(){return `
+    <div class="sect" style="margin-top:0"><h3 style="font-size:3cqw">My tickets</h3><span>Ticketing arrives in Phase 3</span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw">
+      ${[shows[1],shows[2]].map(s=>`<div style="display:grid;grid-template-columns:9cqw 1fr;gap:1.2cqw;background:var(--haze);border-radius:1cqw;padding:1cqw;position:relative;overflow:hidden"><div style="position:relative;height:12cqw;border-radius:.6cqw;overflow:hidden">${poster(s)}</div><div><div class="label" style="color:var(--amber)">${s.date}</div><div style="font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:2.4cqw;line-height:.9">${s.name}</div><div style="color:var(--dim);font-size:1cqw;margin:.4cqw 0 1cqw">${s.tier} · ${s.seats} seats</div><div style="font-family:var(--f-mono);font-size:1.1cqw">SEC 114 · ROW F · SEAT 12</div><button class="ghost" style="margin-top:1cqw;font-size:1.1cqw" data-show="${s.id}">Open</button></div></div>`).join('')}
+    </div>`}
+
+  function showPage(){const s=selShow, upcoming=!s.live && !s.date.startsWith('REPLAY');
+    const views=[['My seat','Sec 114, Row F'],['Front row','Barricade cam'],['Director','Auto-cut, like TV'],['Drone','Free orbit']];
+    return `<div class="showpage">
+      <div class="bigposter">${poster(s,'big')}<span class="chip ${s.live?'live':'tier'}" style="position:absolute;top:1cqw;left:1cqw">${s.live?'<i class="pulse"></i>Live':s.tier}</span></div>
+      <div style="min-width:0">
+        <div class="label" style="color:var(--amber)">${s.date}</div>
+        <h2>${s.name}</h2>
+        <p class="by">${s.who} · ${s.tier}</p>
+        <div class="facts"><div><b>${s.seats}</b>Seats</div><div><b>${s.songs}</b>Songs</div><div><b>${s.len}</b>Length</div>${s.live?`<div><b>${s.watch}</b>Watching</div>`:''}</div>
+        <p class="label">Choose your view · change any time in the show</p>
+        <div class="views">${views.map((v,i)=>`<button class="vw ${i===selView?'on':''}" data-view="${i}"><div class="mini" style="background:radial-gradient(${['40% 40% at 50% 30%','70% 70% at 50% 50%','50% 60% at 40% 40%','30% 30% at 60% 70%'][i]},${s.g[0]},transparent),#080808"></div><b>${v[0]}</b><span>${v[1]}</span></button>`).join('')}</div>
+        <p class="label">Setlist preview</p>
+        <div class="setlist">${s.set.map(t=>`<span>${t}</span>`).join('')}<span style="color:var(--dim)">+ more</span></div>
+        <div style="display:flex;gap:1cqw">${upcoming?`<button class="cta" data-remind data-focus>Remind me</button>`:`<button class="cta" data-join="${s.id}" data-focus>▶ ${s.live?'Join live':'Watch replay'}</button>`}<button class="ghost" data-back>Back</button></div>
+      </div></div>`}
+
+  /* ---------- Studio: production office ---------- */
+  const fig=(c='#080808')=>`<svg viewBox="0 0 45 120" aria-hidden="true"><circle cx="22.5" cy="12" r="8" fill="${c}"/><path d="M10 26 Q22 20 35 26 L38 66 L30 66 L31 118 L24 118 L22.5 78 L21 118 L14 118 L15 66 L7 66 Z" fill="${c}"/></svg>`;
+  const ACTS=[
+    {k:'Solo artist',d:'One performer',m:[['Arizona Rae','Lead vocal']]},
+    {k:'Duo',d:'Two leads, shared lines',m:[['Arizona Rae','Lead vocal'],['Add avatar','Vocal · rap']]},
+    {k:'Group',d:'Boy, girl or mixed · 3 to 7',m:[['Member 1','Leader · vocal'],['Member 2','Main dancer'],['Member 3','Rapper'],['Member 4','Vocal'],['Member 5','Dancer']]},
+    {k:'Band',d:'Instruments played from stems',m:[['Arizona Rae','Vocal'],['Add avatar','Guitar'],['Add avatar','Bass'],['Add avatar','Drums'],['Add avatar','Keys']]},
+    {k:'DJ · Electronic',d:'Decks, MC, dancers',m:[['Add avatar','DJ'],['Optional','Hype MC'],['Optional','Dancer'],['Optional','Dancer']]}];
+  const GROUPK=['Girl group','Boy group','Mixed'];
+  const GENRES=['Pop','R&B','Hip-hop','K-pop','Rock','EDM','Latin','Afrobeats'];
+  const PERSONAS=[['Pop headliner','Big, precise, owns the runway'],['R&B smooth','Body rolls, mic-stand moments'],['Rap frontman','Bounce, hype, crowd calls'],['Idol choreo','Tight synced formations'],['Rock frontman','Headbangs, mic swings, runs the ramp'],['DJ host','Hands up, builds every drop']];
+  const SRC=[['My dance video','Your own moves, captured from video'],['Style library','Pro choreography for the genre'],['Both','Your moves, cleaned up in the genre style']];
+  const PROD=[['Arena pop','LED wall, lasers, pyro on choruses'],['Club night','Low ceiling, strobes, haze'],['Rock tour','Truss, white beams, sparks'],['Festival rave','Lasers, CO₂ jets, confetti drops'],['Intimate','Warm spots, one camera, no pyro']];
+  const SONGS=[['Cathedral Heart','144 BPM','3:16'],['Digital Halo','99 BPM','3:02'],['Heaven in High Heels','112 BPM','3:01'],['Velvet Electricity','108 BPM','2:58']];
+  let act=0,groupK=0,genre=0,persona=0,src=2,energy=70,prodS=0,wstep=0,buildT;
+  const opt=(on,attr,i,b,s,extra='')=>`<button class="opt ${on?'on':''}" data-${attr}="${i}" ${extra}><b>${b}</b>${s?`<span>${s}</span>`:''}</button>`;
+
+  function studio(){
+    const depts=[['Music','4 songs · stems · beat grid','ok'],['Act','Solo · Arizona Rae','ok'],['Choreography','Pop headliner · her video + library','ok'],['Lip sync','From the vocal stem','ok'],['Lighting','Arena pop · 212 cues','ok'],['LED video','Gel wash pack','ok'],['Pyro & FX','Arm the chorus hits','you'],['Cameras','Director cut · 6 cams','ok'],['Rights','Consent on file · 20 Nov','ok']];
+    const itin=[['SAT 21 NOV','Neon Requiem','Arena','Played','var(--dim)'],['TONIGHT','Neon Requiem','Arena','Live','var(--live)'],['SAT 28 NOV','Low Battery','Club','On sale','var(--amber)'],['FRI 04 DEC','Golden Hour Sessions','Theater','In production','var(--magenta)']];
+    return `<div class="office-h"><div><div class="label" style="color:var(--amber)">Studio · Production office</div><h2 class="studio-h">Neon Requiem Tour</h2></div><button class="cta" data-build data-focus>+ Build a new show</button></div>
+      <div class="office">
+        <div class="panel"><p class="label">Itinerary</p>${itin.map(r=>`<div class="itin"><span class="d">${r[0]}</span><span class="n">${r[1]}<small>${r[2]}</small></span><span class="s" style="color:${r[4]}">${r[3]}</span></div>`).join('')}</div>
+        <div class="panel"><p class="label">Departments · Golden Hour Sessions · 8 of 9 ready</p><div class="depts">${depts.map(d=>`<button class="dept ${d[2]}" data-go="producer"><span class="st">${d[2]==='ok'?'✓ Ready':'Needs you'}</span><b>${d[0]}</b><span>${d[1]}</span></button>`).join('')}</div></div>
+      </div>`}
+
+  function build(){
+    const steps=['The act','The music','The moves','The production'];
+    let body='';
+    if(wstep===0){const A=ACTS[act];body=`
+      <div class="wz-cols"><div><p class="label">What kind of act?</p><div class="opts c5">${ACTS.map((a,i)=>opt(i===act,'act',i,a.k,a.d)).join('')}</div>
+        ${act===2?`<p class="label" style="margin-top:1.2cqw">Group type</p><div class="opts c3">${GROUPK.map((g,i)=>opt(i===groupK,'gk',i,g,'')).join('')}</div>`:''}</div></div>
+      <p class="label" style="margin-top:1.4cqw">Line-up · ${A.m.length} ${A.m.length>1?'members':'member'} · each gets an avatar and a role</p>
+      <div class="lineup">${A.m.map(m=>`<div class="mem ${/Add|Optional|Member/.test(m[0])?'empty':''}"><div class="mfig">${fig(/Add|Optional/.test(m[0])?'#2A2A2A':'#F1EEE8')}</div><b>${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`}
+    if(wstep===1){body=`
+      <p class="label">Setlist · drop in songs, we pull out the stems, beat grid and sections</p>
+      <div class="songs">${SONGS.map((s,i)=>`<div class="song"><span class="no">${String(i+1).padStart(2,'0')}</span><b>${s[0]}</b><span class="chips"><i>${s[1]}</i><i>${s[2]}</i><i>Vocals</i><i>Drums</i><i>Bass</i><i>Synths</i></span><span class="ok">✓ Analysed</span></div>`).join('')}
+        <button class="song add">+ Add songs · WAV, MP3, FLAC</button></div>
+      ${ACTS[act].m.length>1?`<p class="hintline">Vocal lines are split across ${ACTS[act].m.length} members from the lyrics timing. You can reassign any line.</p>`:`<p class="hintline">Lip sync is made from the vocal stem automatically.</p>`}`}
+    if(wstep===2){const n=ACTS[act].m.length,dur=(60/[120,95,90,118,140,128,100,105][genre]*2*(1.6-energy/100)).toFixed(2);body=`
+      <div class="moves">
+        <div><p class="label">Genre</p><div class="opts c4">${GENRES.map((g,i)=>opt(i===genre,'genre',i,g,'')).join('')}</div>
+          <p class="label" style="margin-top:1cqw">Performs like</p><div class="opts c3">${PERSONAS.map((p,i)=>opt(i===persona,'persona',i,p[0],p[1])).join('')}</div>
+          <p class="label" style="margin-top:1cqw">Where the moves come from</p><div class="opts c3">${SRC.map((s,i)=>opt(i===src,'src',i,s[0],s[1])).join('')}</div></div>
+        <div class="preview"><p class="label" style="padding:1cqw 1cqw 0">Preview · ${GENRES[genre]} · ${PERSONAS[persona][0]}</p>
+          <div class="formation" style="--bob:${dur}s">${Array.from({length:n},(_,i)=>`<i style="animation-delay:-${(i*0.13).toFixed(2)}s;${n>1&&i===Math.floor(n/2)?'transform:scale(1.12)':''}">${fig('#F1EEE8')}</i>`).join('')}</div>
+          <label class="energy" for="energy">Energy <input id="energy" type="range" min="20" max="100" value="${energy}"> <span id="ev">${energy}</span></label>
+          ${src!==1?`<button class="upl">⬆ Upload dance video · phone video is fine</button>`:''}
+        </div></div>`}
+    if(wstep===3){body=`
+      <p class="label">Production style · sets lights, LED video, FX and cameras. Change anything later.</p>
+      <div class="opts c5">${PROD.map((p,i)=>opt(i===prodS,'prod',i,p[0],p[1])).join('')}</div>
+      <p class="label" style="margin-top:1.4cqw">Venue</p>
+      <div class="opts c4">${[['Club','800 seats'],['Theater','2,400 seats'],['Arena','18,000 seats'],['Stadium','Phase 4']].map((v,i)=>opt(i===selVenue,'venue',i,v[0],v[1],i===3?'disabled':'')).join('')}</div>
+      <div class="summary">${ACTS[act].k}${act===2?' · '+GROUPK[groupK]:''} · ${SONGS.length} songs · ${GENRES[genre]} · ${PERSONAS[persona][0]} · ${SRC[src][0]} · ${PROD[prodS][0]}</div>`}
+    return `<div class="office-h"><div><div class="label" style="color:var(--amber)">Studio · Build a show</div><h2 class="studio-h">${steps[wstep]}</h2></div><span class="label">Step ${wstep+1} of 4 · saved as you go</span></div>
+      <div class="wsteps">${steps.map((s,i)=>`<button class="ws ${i<wstep?'done':i===wstep?'cur':''}" data-ws="${i}">${i<wstep?'✓ ':''}${s}</button>`).join('')}</div>
+      <div class="wbody">${body}</div>
+      <div class="wfoot"><button class="ghost" data-wback>${wstep?'Back':'Cancel'}</button>${wstep<3?`<button class="cta" data-ws="${wstep+1}" data-focus>Next · ${steps[wstep+1]}</button>`:`<button class="cta" data-produce data-focus>Build my show</button>`}</div>`}
+
+  function building(){
+    const n=ACTS[act].m.length;
+    const jobs=[['Music','Stems, beat grid and song sections'],['Choreography',`${src===1?'Library moves':'Your video captured and'} styled as ${PERSONAS[persona][0]}, locked to the beat`],['Lip sync',`Mouth and face from the vocal stem${n>1?', per member':''}`],
+      act===3?['Band','Drums, guitar, bass and keys played from their stems']:act===4?['DJ','Deck moves timed to the drops']:['Formations',n>1?`${n}-member blocking for every section`:'Runway and ramp moments on the choruses'],
+      ['Lighting',`${PROD[prodS][0]} looks on every section`],['LED video','Wall content cut to the sections'],['Pyro & FX','Hits placed on the big moments, ready to arm'],['Cameras','Director cut for viewers at home'],['Rights','Consent and song rights checked']];
+    return `<div class="office-h"><div><div class="label" style="color:var(--amber)">Production office at work</div><h2 class="studio-h">Building your show</h2></div><span class="label" id="bcount">0 of ${jobs.length}</span></div>
+      <div class="jobs">${jobs.map((j,i)=>`<div class="job" id="job${i}"><i class="tick"></i><b>${j[0]}</b><span>${j[1]}</span></div>`).join('')}</div>
+      <div class="wfoot"><span class="hintline" style="margin:0">Real processing takes a few minutes. We notify you when it is done.</span><button class="cta" data-go="producer" id="openProd" disabled style="opacity:.35">Open Show Producer</button></div>`}
+  function runBuild(){clearInterval(buildT);let i=0;const jobs=$$('.job');buildT=setInterval(()=>{if(i<jobs.length){jobs[i].classList.add('done');i++;$('#bcount').textContent=i+' of '+jobs.length}else{clearInterval(buildT);const b=$('#openProd');b.disabled=false;b.style.opacity=1;b.focus()}},380)}
+
+  function producer(){
+    const venues=[['Club','800'],['Theater','2.4K'],['Arena','18K'],['Stadium','60K']];
+    const secs=[['Intro',8,'#5A5753'],['Verse',16,'#2E6BFF'],['Chorus',12,'#FF1F2E'],['Verse 2',14,'#2E6BFF'],['Chorus 2',12,'#FF1F2E'],['Bridge',10,'#A8E8FF'],['Outro',8,'#5A5753']];
+    const total=secs.reduce((a,s)=>a+s[1],0);let acc=0;const starts=secs.map(s=>{const x=acc;acc+=s[1];return x/total*100});
+    const lanes=[['Lights',[[0,14,'#2E6BFF'],[14,22,'#FF1F2E'],[36,10,'#2E6BFF'],[46,18,'#FF1F2E'],[64,14,'#A8E8FF'],[78,22,'#2E6BFF']]],
+      ['Lasers',[[25,9,'#2E6BFF'],[57,9,'#2E6BFF'],[70,6,'#2E6BFF']]],
+      ['Pyro',[[25,1.2,'#A8E8FF'],[29,1.2,'#A8E8FF'],[57,1.2,'#A8E8FF'],[61,1.2,'#A8E8FF'],[88,1.2,'#A8E8FF']]],
+      ['Confetti',[[86,6,'#F1EEE8']]],
+      ['Camera',[[0,25,'#5A5753'],[25,11,'#9A9794'],[36,21,'#5A5753'],[57,21,'#9A9794'],[78,22,'#5A5753']]]];
+    return `<div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.2cqw"><div><div class="label" style="color:var(--amber)">Show Producer</div><h2 class="studio-h">Neon Requiem</h2></div><div style="display:flex;gap:.8cqw"><button class="ghost" data-back>Back</button><button class="ghost" data-join="nr">Preview from a seat</button><button class="cta" data-publish data-focus>Publish</button></div></div>
+      <div class="producer">
+        <div class="venues"><p class="label">Venue tier</p>${venues.map((v,i)=>`<button class="venue ${i===selVenue?'on':''}" data-venue="${i}" ${i===3?'disabled title="Phase 4"':''}><b>${v[0]}</b><span>${i===3?'PHASE 4':v[1]+' seats'}</span></button>`).join('')}
+          <p class="label" style="margin-top:1cqw">Stage kit</p><button class="venue on"><b style="font-size:1.2cqw">End stage · LED wall</b></button></div>
+        <div class="timeline">
+          <div class="tl-head"><span>128 BPM · 4/4 · 3:42</span><span>Cues snap to the beat</span></div>
+          <div class="secs">${secs.map(s=>`<div style="flex:${s[1]};background:${s[2]}">${s[0]}</div>`).join('')}</div>
+          <div style="position:relative">${lanes.map(l=>`<div class="lane"><span>${l[0]}</span><div class="trk">${l[1].map(c=>`<i class="cue" style="left:${c[0]}%;width:${c[1]}%;background:${c[2]}"></i>`).join('')}</div></div>`).join('')}
+            <i class="playhead" style="left:calc(6.1cqw + ${starts[4]}% * .86)"></i></div>
+          <div class="tl-head" style="margin:.8cqw 0 0"><span>Drag a cue onto a section. Pyro needs arm + fire.</span><span style="color:var(--amber)">26 cues</span></div>
+        </div>
+      </div>`}
+
+  /* joining + live */
+  let joinT;
+  function startJoin(){scr('join');$('#joinTitle').textContent=selShow.name;const bar=$('#joinBar');bar.style.transition='none';bar.style.width='0';
+    const msgs=['Finding your seat · Section 114','Loading the Arena','Syncing show clock · ±12 ms','Doors open'];let i=0;$('#syncTxt').textContent=msgs[0];
+    requestAnimationFrame(()=>{requestAnimationFrame(()=>{bar.style.transition='width 2.4s linear';bar.style.width='100%'})});
+    clearInterval(joinT);joinT=setInterval(()=>{i++;if(i<msgs.length)$('#syncTxt').textContent=msgs[i];else{clearInterval(joinT);current='live';scr('live');startLive()}},650)}
+  let liveT, frames=12*60*60*30+41*30*0;
+  function startLive(){stopLive();let f=(12*60+41)*30+8;liveT=setInterval(()=>{f+=1;const s=Math.floor(f/30);$('#tc').textContent=['00',String(Math.floor(s/60)).padStart(2,'0'),String(s%60).padStart(2,'0'),String(f%30).padStart(2,'0')].join(':')},33)}
+  function stopLive(){clearInterval(liveT)}
+
+  /* clock */
+  setInterval(()=>{const d=new Date();$('#clock').textContent='SHOW CLOCK '+d.toTimeString().slice(0,8)},1000);
+
+  /* ---------- events ---------- */
+  const frame=$('#frame');
+  frame.addEventListener('click',e=>{
+    const t=e.target.closest('button'); if(!t) { if(current==='title'||current==='live'){window.LASERS&&LASERS.co2()} return }
+    if(t.dataset.go==='home'){tab='home';go('home');return}
+    if(t.dataset.go==='leave'){back();return}
+    if(t.dataset.go==='producer'){go('producer');return}
+    if(t.dataset.tab){stack=[['title','home',selShow]];setTab(t.dataset.tab);return}
+    if(t.dataset.show){selShow=findShow(t.dataset.show)||shows.find(s=>s.id===t.dataset.show);selView=0;go('show');return}
+    if(t.dataset.join){selShow=shows.find(s=>s.id===t.dataset.join);go('join');return}
+    if(t.dataset.view){selView=+t.dataset.view;render();return}
+    if(t.dataset.venue){selVenue=+t.dataset.venue;render();return}
+    if('build' in t.dataset){wstep=0;go('build');return}
+    if(t.dataset.ws){wstep=+t.dataset.ws;render();return}
+    if('wback' in t.dataset){if(wstep){wstep--;render()}else back();return}
+    if('produce' in t.dataset){go('building');return}
+    if(t.dataset.act){act=+t.dataset.act;persona=[0,0,3,4,5][act];if(act===4)genre=5;if(act===3)genre=4;if(act===2&&genre<2)genre=3;render();return}
+    if(t.dataset.gk){groupK=+t.dataset.gk;render();return}
+    if(t.dataset.genre){genre=+t.dataset.genre;render();return}
+    if(t.dataset.persona){persona=+t.dataset.persona;render();return}
+    if(t.dataset.src){src=+t.dataset.src;render();return}
+    if(t.dataset.prod){prodS=+t.dataset.prod;render();return}
+    if('back' in t.dataset){back();return}
+    if('remind' in t.dataset){t.textContent='✓ Reminder set';return}
+    if('publish' in t.dataset){t.textContent='✓ Published';return}
+    if('co2' in t.dataset){window.LASERS&&LASERS.co2();return}
+    if('cam' in t.dataset){$$('[data-cam]').forEach(b=>b.classList.toggle('on',b===t));return}
+    if(t.dataset.r){const el=document.createElement('div');el.className='float';el.textContent=t.dataset.r;el.style.left=(20+Math.random()*60)+'%';el.style.bottom='14%';el.style.color=['#FF1F2E','#A8E8FF','#F1EEE8'][Math.floor(Math.random()*3)];$('[data-s="live"]').appendChild(el);setTimeout(()=>el.remove(),1700);return}
+  });
+  frame.addEventListener('input',e=>{if(e.target.id==='energy'){energy=+e.target.value;$('#ev').textContent=energy;const f=$('.formation');if(f)f.style.setProperty('--bob',(60/[120,95,90,118,140,128,100,105][genre]*2*(1.6-energy/100)).toFixed(2)+'s')}});
+  document.addEventListener('keydown',e=>{
+    if(!$('#v-prototype').classList.contains('on'))return;
+    if(current==='title' && !e.metaKey && !e.ctrlKey && e.key!=='Tab'){e.preventDefault();go('home');return}
+    if(e.target.id==='energy')return;
+    if(e.key==='Escape'||e.key==='Backspace'&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();back()}
+  });
+})();
+</script>
+<script>
+/* ---------- laser + CO2 fog engine (WebGL) ---------- */
+(function(){
+  const frame=document.getElementById('frame'), cv=document.getElementById('lasers');
+  const gl=cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});
+  if(!gl){frame.classList.add('nogl');return}
+  const vs=`attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}`;
+  const fs=`precision highp float;
+  uniform vec2 R;uniform float T;uniform vec2 M;uniform float B;uniform float I;uniform float W;uniform vec3 C1;uniform vec3 C2;
+  float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+  float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+  float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
+  float beam(vec2 p,vec2 o,float ang){vec2 d=vec2(sin(ang),cos(ang));vec2 q=p-o;float t=dot(q,d);if(t<0.)return 0.;float e=length(q-d*t);float w=.0016+t*.0018;return exp(-e*e/(w*w))+.10*exp(-e*e/(w*w*40.));}
+  void main(){
+    vec2 uv=gl_FragCoord.xy/R;float asp=R.x/R.y;vec2 p=(uv-.5)*vec2(asp,1.);
+    float beat=pow(.5+.5*cos(T*6.2831*128./60.),6.);
+    /* fog: slow rolling CO2 haze, denser low, plus jets on burst */
+    vec2 fp=p*vec2(1.3,2.)+vec2(T*.025,-T*.05);
+    float f=fbm(fp*2.2+fbm(fp*1.3+T*.04)*1.4);
+    float low=smoothstep(.55,-.55,p.y);
+    float jets=0.;
+    for(int k=0;k<2;k++){float sx=k==0?-.42:.42;sx*=asp*.9;float col=exp(-pow((p.x-sx)*(5.-B*2.5),2.));jets+=col*smoothstep(-.5,.5,-p.y+B*1.2-.2)*fbm(vec2(p.x*6.,p.y*3.-T*2.5));}
+    float dens=smoothstep(.25,.95,f)*(.55+1.2*low)+jets*B*1.8;
+    dens=clamp(dens,0.,1.6);
+    /* lasers: two top emitters fanning down, one floor emitter fanning up */
+    float spread=mix(.035,.13,M.x);float aim=(M.x-.5)*.9;float tilt=(M.y-.5)*.6;
+    float L1=0.,L2=0.;
+    for(int i=0;i<10;i++){float fi=float(i)-4.5;
+      float sw=sin(T*.7+fi*.3)*.25;
+      L1+=beam(p,vec2(-.30*asp,.62),3.1416+aim+fi*spread+sw*.4+tilt);
+      L1+=beam(p,vec2(.30*asp,.62),3.1416-aim-fi*spread-sw*.4-tilt);
+      L2+=beam(p,vec2(0.,-.62),fi*(spread*1.6)+sin(T*.9)*.35+aim*.6);}
+    float vis=.03+dens*1.6;
+    vec3 col=L1*C1*vis*(.6+.7*beat)+L2*C2*vis*(.5+.8*beat);
+    /* fog catches light: glow where dense and beams near */
+    col+=dens*(.045+.22*(L1+L2))*mix(C1,C2,.5)+dens*.03*vec3(.7,.75,.8);
+    col+=vec3(.9,.06,.1)*low*.06*(1.+B);
+    col+=B*.15*vec3(.9,.95,1.)*dens;
+    col*=I;
+    col=1.-exp(-col*1.7);
+    col+=(h(uv*R+fract(T))-.5)*.05;
+    float vig=smoothstep(1.25,.35,length(p*vec2(.8,1.)));
+    gl_FragColor=vec4(col*vig,1.);
+  }`;
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.error(gl.getShaderInfoLog(o));return o};
+  const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);gl.useProgram(pr);
+  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+  const al=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(al);gl.vertexAttribPointer(al,2,gl.FLOAT,false,0,0);
+  const U={};['R','T','M','B','I','W','C1','C2'].forEach(k=>U[k]=gl.getUniformLocation(pr,k));
+  const MODES={title:{I:1.15,c1:[.66,.91,1],c2:[1,.12,.18]},app:{I:.55,c1:[.66,.91,1],c2:[1,.12,.18]},join:{I:.8,c1:[.95,.97,1],c2:[.66,.91,1]},live:{I:1.25,c1:[.66,.91,1],c2:[1,.12,.18]}};
+  let mode=MODES.title,cur={I:1.15},m=[.5,.5],mt=[.5,.5],burst=0,t0=performance.now();
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.LASERS={mode:k=>{mode=MODES[k]||MODES.app},co2:()=>{burst=1;frame.classList.remove('flash');void frame.offsetWidth;frame.classList.add('flash')}};
+  frame.addEventListener('pointermove',e=>{const r=frame.getBoundingClientRect();mt=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height]});
+  function size(){const r=frame.getBoundingClientRect();const s=Math.min(1,900/r.width);cv.width=Math.max(2,Math.round(r.width*s));cv.height=Math.max(2,Math.round(r.height*s));gl.viewport(0,0,cv.width,cv.height)}
+  new ResizeObserver(size).observe(frame);size();
+  function loop(now){
+    const t=reduce?12:(now-t0)/1000;
+    m[0]+=(mt[0]-m[0])*.06;m[1]+=(mt[1]-m[1])*.06;burst*=.975;cur.I+=(mode.I-cur.I)*.05;
+    gl.uniform2f(U.R,cv.width,cv.height);gl.uniform1f(U.T,t);gl.uniform2f(U.M,m[0],m[1]);gl.uniform1f(U.B,burst);gl.uniform1f(U.I,cur.I);
+    gl.uniform3fv(U.C1,mode.c1);gl.uniform3fv(U.C2,mode.c2);
+    gl.drawArrays(gl.TRIANGLES,0,3);requestAnimationFrame(loop)}
+  requestAnimationFrame(loop);
+})();
+</script>

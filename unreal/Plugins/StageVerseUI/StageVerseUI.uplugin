@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "StageVerse UI",
+	"Description": "StageVerse front end: CommonUI root layout and screens, brand style asset, sample show data, and the laser and CO2 controller that runs behind the menus.",
+	"Category": "StageVerse",
+	"CreatedBy": "ThirtyDarkZero",
+	"CanContainContent": true,
+	"Modules": [
+		{
+			"Name": "StageVerseUI",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{ "Name": "CommonUI", "Enabled": true },
+		{ "Name": "EnhancedInput", "Enabled": true },
+		{ "Name": "Niagara", "Enabled": true }
+	]
+}
