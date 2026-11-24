@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stageverse.dev/schema/beats.v1.schema.json",
+  "title": "StageVerse music analysis (analysis/beats.json), v1",
+  "description": "Written by the GPU pipeline's analysis stage. All times are milliseconds from the start of the master track, ascending.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "bpm", "beats", "downbeats", "sections"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "analyzer": { "type": "string", "description": "Tool and version, e.g. 'allin1/1.1'." },
+    "bpm": { "type": "number", "minimum": 40, "maximum": 240, "description": "Median tempo." },
+    "beats": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "integer", "minimum": 0 }
+    },
+    "downbeats": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 0 },
+      "description": "Subset of beats that start a bar."
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "startMs", "endMs"],
+        "properties": {
+          "label": {
+            "enum": ["intro", "verse", "prechorus", "chorus", "bridge", "drop", "breakdown", "solo", "outro", "other"]
+          },
+          "startMs": { "type": "integer", "minimum": 0 },
+          "endMs": { "type": "integer", "minimum": 1 },
+          "energy": { "type": "number", "minimum": 0, "maximum": 1, "description": "Mean loudness of the section, normalised across the song." }
+        }
+      }
+    },
+    "energy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hopMs", "values"],
+      "description": "Loudness envelope for audio-reactive effects.",
+      "properties": {
+        "hopMs": { "type": "integer", "minimum": 10, "maximum": 1000 },
+        "values": { "type": "array", "items": { "type": "number", "minimum": 0, "maximum": 1 } }
+      }
+    }
+  }
+}

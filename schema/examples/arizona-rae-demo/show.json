@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "showId": "shw_01JDXR4E5V9Q8M7K6H5G4F3E2D",
+  "version": 1,
+  "title": "Arizona Rae: Demo Show",
+  "artistId": "art_01JDXR4E5V9Q8M7K6H5G4F3E2A",
+  "durationMs": 180000,
+  "venue": {
+    "tier": "arena",
+    "venueId": "arena_main_01",
+    "stageKit": "kit_end_stage"
+  },
+  "act": {
+    "type": "solo",
+    "genre": "pop",
+    "styleTags": [
+      "dance_pop",
+      "rnb"
+    ]
+  },
+  "audio": {
+    "master": "audio/master.ogg",
+    "stems": {
+      "vocals": "audio/stems/vocals.ogg",
+      "drums": "audio/stems/drums.ogg",
+      "bass": "audio/stems/bass.ogg",
+      "other": "audio/stems/other.ogg"
+    },
+    "sampleRate": 48000
+  },
+  "analysis": "analysis/beats.json",
+  "performers": [
+    {
+      "performerId": "arizona_rae",
+      "role": "artist",
+      "avatarId": "av_01JDXR4E5V9Q8M7K6H5G4F3E2B",
+      "consentIds": [
+        "cns_01JDXR4E5V9Q8M7K6H5G4F3E2C"
+      ],
+      "body": "motion/body_arizona_rae.fbx",
+      "face": "motion/face_arizona_rae.json",
+      "offsetMs": 0,
+      "mark": "center",
+      "style": {
+        "dance": "pop",
+        "persona": "diva"
+      }
+    }
+  ],
+  "cues": "cues/timeline.json",
+  "rights": {
+    "trackLicense": "lic_01JDXR4E5V9Q8M7K6H5G4F3E2E",
+    "aiTool": {
+      "name": "TBD",
+      "plan": "TBD"
+    },
+    "aiDisclosure": true,
+    "rightsAttestedAt": "2026-11-22T00:00:00Z"
+  },
+  "createdAt": "2026-11-22T00:00:00Z"
+}

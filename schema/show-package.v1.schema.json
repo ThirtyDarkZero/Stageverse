@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stageverse.dev/schema/show-package.v1.schema.json",
+  "title": "StageVerse show package manifest (show.json), v1",
+  "description": "A show package is an immutable, versioned folder. This manifest describes everything a client needs to play the show. Paths are relative to the package root.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "showId",
+    "version",
+    "title",
+    "artistId",
+    "durationMs",
+    "venue",
+    "audio",
+    "analysis",
+    "performers",
+    "cues",
+    "rights",
+    "createdAt"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "showId": {
+      "$ref": "#/$defs/id",
+      "pattern": "^shw_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Incremented on every edit. A published version is never modified."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "artistId": {
+      "$ref": "#/$defs/id",
+      "pattern": "^art_[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "durationMs": {
+      "type": "integer",
+      "minimum": 1000,
+      "maximum": 3600000
+    },
+    "venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tier",
+        "venueId",
+        "stageKit"
+      ],
+      "properties": {
+        "tier": {
+          "enum": [
+            "club",
+            "theater",
+            "arena",
+            "stadium"
+          ]
+        },
+        "venueId": {
+          "$ref": "#/$defs/slug"
+        },
+        "stageKit": {
+          "$ref": "#/$defs/slug"
+        }
+      }
+    },
+    "act": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "description": "What kind of act this is. Optional in v1; a show without it is treated as a solo act.",
+      "properties": {
+        "type": {
+          "enum": [
+            "solo",
+            "group",
+            "dj",
+            "band"
+          ],
+          "default": "solo"
+        },
+        "genre": {
+          "$ref": "#/$defs/slug",
+          "description": "Primary genre, e.g. pop, hip_hop, kpop, rnb, edm, house, rock."
+        },
+        "styleTags": {
+          "type": "array",
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/slug"
+          }
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "master",
+        "stems",
+        "sampleRate"
+      ],
+      "properties": {
+        "master": {
+          "$ref": "#/$defs/path"
+        },
+        "stems": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vocals",
+            "drums",
+            "bass",
+            "other"
+          ],
+          "properties": {
+            "vocals": {
+              "$ref": "#/$defs/path"
+            },
+            "drums": {
+              "$ref": "#/$defs/path"
+            },
+            "bass": {
+              "$ref": "#/$defs/path"
+            },
+            "other": {
+              "$ref": "#/$defs/path"
+            }
+          }
+        },
+        "sampleRate": {
+          "enum": [
+            44100,
+            48000
+          ]
+        },
+        "loudnessLufs": {
+          "type": "number",
+          "minimum": -40,
+          "maximum": 0
+        }
+      }
+    },
+    "analysis": {
+      "$ref": "#/$defs/path",
+      "description": "Beat, downbeat, section and energy data. Validated by beats.v1.schema.json."
+    },
+    "performers": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "$ref": "#/$defs/performer"
+      }
+    },
+    "dancers": {
+      "type": "array",
+      "description": "Phase 2. Background dancers driven by the choreography library.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot",
+          "clipSet"
+        ],
+        "properties": {
+          "slot": {
+            "$ref": "#/$defs/slug"
+          },
+          "clipSet": {
+            "$ref": "#/$defs/slug"
+          },
+          "syncTo": {
+            "enum": [
+              "beats",
+              "downbeats",
+              "sections"
+            ],
+            "default": "beats"
+          }
+        }
+      }
+    },
+    "cues": {
+      "$ref": "#/$defs/path",
+      "description": "Cue timeline. Validated by cue-timeline.v1.schema.json."
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trackLicense",
+        "aiTool",
+        "aiDisclosure",
+        "rightsAttestedAt"
+      ],
+      "properties": {
+        "trackLicense": {
+          "$ref": "#/$defs/id",
+          "pattern": "^lic_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "aiTool": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "plan"
+          ],
+          "description": "Which AI music tool and plan produced the track. Free tiers often do not grant commercial rights.",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "plan": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            }
+          }
+        },
+        "aiDisclosure": {
+          "const": true,
+          "description": "The show is labelled to fans as AI-generated."
+        },
+        "rightsAttestedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "checksums": {
+      "type": "object",
+      "description": "sha256 of every file in the package, keyed by relative path.",
+      "propertyNames": {
+        "$ref": "#/$defs/path"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^sha256:[0-9a-f]{64}$"
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "path": {
+      "type": "string",
+      "description": "Relative path inside the package. No leading slash, no '..', no backslashes.",
+      "pattern": "^(?!/)(?!.*\\.\\.)[A-Za-z0-9_][A-Za-z0-9_./-]*$",
+      "maxLength": 200
+    },
+    "performer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "performerId",
+        "role",
+        "avatarId",
+        "consentIds",
+        "body"
+      ],
+      "properties": {
+        "performerId": {
+          "$ref": "#/$defs/slug"
+        },
+        "role": {
+          "enum": [
+            "artist",
+            "featured",
+            "lead",
+            "member",
+            "dj",
+            "guitar",
+            "bass",
+            "drums",
+            "keys"
+          ],
+          "description": "artist/featured for solo acts; lead/member for groups; dj; instrument roles for bands."
+        },
+        "avatarId": {
+          "$ref": "#/$defs/id",
+          "pattern": "^av_[0-9A-HJKMNP-TV-Z]{26}$"
+        },
+        "consentIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Signed consent records covering every real person behind this performer: whoever performed the motion, and anyone whose face, body or voice the avatar resembles. A package without consent does not validate.",
+          "items": {
+            "$ref": "#/$defs/id",
+            "pattern": "^cns_[0-9A-HJKMNP-TV-Z]{26}$"
+          }
+        },
+        "body": {
+          "$ref": "#/$defs/path",
+          "description": "Body animation retargeted to the shared UE5 Manny skeleton, FBX, 30 fps."
+        },
+        "face": {
+          "$ref": "#/$defs/path",
+          "description": "ARKit-52 blendshape curves, JSON, 60 fps."
+        },
+        "offsetMs": {
+          "type": "integer",
+          "default": 0,
+          "minimum": -10000,
+          "maximum": 10000,
+          "description": "Shift applied to body and face motion so the performance lines up with the master track."
+        },
+        "mark": {
+          "$ref": "#/$defs/slug",
+          "default": "center",
+          "description": "Named stage position defined by the stage kit."
+        },
+        "style": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Phase 2: how the avatar moves when it is not (only) driven by mocap.",
+          "properties": {
+            "dance": {
+              "$ref": "#/$defs/slug",
+              "description": "Dance style preset, e.g. pop, hip_hop, kpop, rnb, latin, house."
+            },
+            "persona": {
+              "$ref": "#/$defs/slug",
+              "description": "Stage persona preset, e.g. diva, rapper, frontman, dj."
+            }
+          }
+        }
+      }
+    }
+  }
+}
