@@ -1,0 +1,27 @@
+{
+  "name": "StageVerse brand v0.3 street",
+  "approved": "2026-11-24",
+  "color": {
+    "blackout": "#080808",
+    "concrete": "#141414",
+    "concreteWorn": "#2A2A2A",
+    "wheatpaste": "#F1EEE8",
+    "fadedPrint": "#9A9794",
+    "riotRed": "#FF1F2E",
+    "laserIce": "#A8E8FF",
+    "laserBlue": "#2E6BFF"
+  },
+  "type": {
+    "wordmark": "Archivo Expanded Black (wdth 125, wght 900)",
+    "headline": "Anton",
+    "accent": "UnifrakturMaguntia",
+    "data": "Space Mono",
+    "body": "Archivo"
+  },
+  "motion": {
+    "glitchCutSeconds": 0.28,
+    "co2FlashSeconds": 0.5,
+    "hudFadeDelaySeconds": 3,
+    "menuBPM": 128
+  }
+}
