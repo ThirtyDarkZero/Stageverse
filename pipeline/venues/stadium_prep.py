@@ -9,8 +9,8 @@ What it does:
   4. Exports one FBX per part to unreal/SourceArt/Venues/Stadium_Main/ and writes
      markers.json with the stage zone, performer marks, FOH and field zones.
 
-DO NOT COMMIT THE FBX OUTPUT until Rob has confirmed the model's licence allows use in a
-distributed game (see docs/venues/stadium_main.md). markers.json is ours and can be committed.
+Licence: Rob confirmed on 2026-11-24 the Fab licence allows use in the game, so the FBX parts
+and copied textures are committed via Git LFS. Restyle before release (docs/venues/stadium_main.md).
 
 Run with the bpy wheel (Python 3.11):
     python pipeline/venues/stadium_prep.py --obj "/path/Sofi stadium.obj" [--out unreal/SourceArt/Venues/Stadium_Main]
@@ -105,8 +105,26 @@ def normalise_frame() -> dict:
     return {"field_size_m": [round(hi.x - lo.x, 2), round(hi.y - lo.y, 2)], "moved_by_m": [round(-c, 2) for c in centre]}
 
 
+def collect_textures(out: Path) -> list[str]:
+    """Copy every texture once into out/Textures and point the images there."""
+    import shutil
+    tex = out / "Textures"
+    tex.mkdir(parents=True, exist_ok=True)
+    names = []
+    for img in bpy.data.images:
+        src = Path(bpy.path.abspath(img.filepath))
+        if not img.filepath or not src.exists():
+            continue
+        dst = tex / src.name.replace(" ", "_")
+        shutil.copyfile(src, dst)
+        img.filepath = str(dst.resolve())
+        names.append(dst.name)
+    return sorted(set(names))
+
+
 def export_parts(out: Path) -> list[dict]:
     out.mkdir(parents=True, exist_ok=True)
+    collect_textures(out)
     parts = []
     for src, part in PARTS.items():
         ob = bpy.data.objects.get(src)
@@ -118,7 +136,8 @@ def export_parts(out: Path) -> list[dict]:
         ob.name = f"SM_{VENUE}_{part}"
         f = out / f"SM_{VENUE}_{part}.fbx"
         bpy.ops.export_scene.fbx(filepath=str(f), use_selection=True, apply_unit_scale=True,
-                                 axis_forward="-Y", axis_up="Z", mesh_smooth_type="FACE", add_leaf_bones=False)
+                                 axis_forward="-Y", axis_up="Z", mesh_smooth_type="FACE", add_leaf_bones=False,
+                                 path_mode="RELATIVE", embed_textures=False)
         tris = sum(len(p.vertices) - 2 for p in ob.data.polygons)
         parts.append({"file": f.name, "part": part, "source_object": src, "tris": tris})
     return parts

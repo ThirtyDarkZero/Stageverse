@@ -1,13 +1,13 @@
 # Stadium_Main (from the purchased stadium model)
 
-**Status: not cleared to ship.** The stadium is wired in as a selectable venue (`stadium_main_01`, tier `stadium`) with three stage kits, but the mesh stays out of git until the two checks below are done.
+**Status:** model licence confirmed by Rob on 2026-11-24; the de-branded mesh is in the repo via Git LFS. The real-venue likeness (check 2) is still open: restyle before public release.
 
 ## Source
 
 - File: `sofi-stadium.zip` in project files (bought on Fab). An OBJ replica of a real NFL stadium, exported from Blender 3.6.2, 5.07M tris (4.63M of them one merged seat mesh), low-res JPG textures, no LODs.
 - The zip has **no licence file, readme or author credit**, so the licence can only be confirmed from the Fab listing in Rob's library.
 
-## Check 1: model licence (Rob)
+## Check 1: model licence (done 2026-11-24, Rob confirmed)
 
 Open the item in your Fab library and note which licence it was bought under:
 - **Fab Standard License**: allows use in a distributed commercial game. OK to proceed.
@@ -31,7 +31,7 @@ uv venv -p 3.11 .bpy && VIRTUAL_ENV=.bpy uv pip install bpy==5.0.1
 .bpy/bin/python pipeline/venues/stadium_prep.py --obj "/path/Sofi stadium.obj"
 ```
 
-Outputs `unreal/SourceArt/Venues/Stadium_Main/SM_Stadium_Main_*.fbx` (ignored by git) and `markers.json` (committed). The field centre is the origin, the field's long axis is X, and the end stage sits past the -X end line, matching every other venue. Verified in the cloud: field 110 x 63 m, logo removed, 17 parts.
+Outputs `unreal/SourceArt/Venues/Stadium_Main/SM_Stadium_Main_*.fbx` (Git LFS) plus copied textures and `markers.json` (committed). The field centre is the origin, the field's long axis is X, and the end stage sits past the -X end line, matching every other venue. Verified in the cloud: field 110 x 63 m, logo removed, 17 parts.
 
 ## Before it ships in a build
 
