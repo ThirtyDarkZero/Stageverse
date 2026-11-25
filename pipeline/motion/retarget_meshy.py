@@ -170,7 +170,7 @@ def main() -> None:
     print(f"ANIM {a.name}: {len(P)} frames at {fps:.3f} fps")
 
     a.out.parent.mkdir(parents=True, exist_ok=True)
-    bpy.ops.export_scene.fbx(filepath=str(a.out), use_selection=False, object_types={"ARMATURE", "MESH"},
+    bpy.ops.export_scene.fbx(filepath=str(a.out), use_selection=False, apply_unit_scale=True, apply_scale_options="FBX_SCALE_ALL", object_types={"ARMATURE", "MESH"},
                              add_leaf_bones=False, bake_anim=True, bake_anim_use_all_actions=False,
                              bake_anim_use_nla_strips=False, bake_anim_force_startend_keying=True,
                              bake_anim_simplify_factor=0.0, path_mode="STRIP", embed_textures=False,

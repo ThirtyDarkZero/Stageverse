@@ -35,6 +35,7 @@ def args():
     ap.add_argument("--mark", default="center")
     ap.add_argument("--yaw", type=float, default=-90.0)  # FBX from Blender faces +Y; -90 turns her to the audience (+X)
     ap.add_argument("--reimport", action="store_true")
+    ap.add_argument("--import-only", action="store_true", help="refresh the mesh asset but leave the actor where it is")
     return ap.parse_args(argv)
 
 
@@ -64,6 +65,8 @@ def import_fbx(fbx, name, reimport):
     ui.set_editor_property("create_physics_asset", True)
     ui.skeletal_mesh_import_data.set_editor_property("import_morph_targets", True)
     ui.skeletal_mesh_import_data.set_editor_property("convert_scene", True)
+    # FBX files from pipeline/ are in metres with the armature at scale 1; let UE convert to cm
+    ui.skeletal_mesh_import_data.set_editor_property("convert_scene_unit", True)
     task = unreal.AssetImportTask()
     task.set_editor_property("filename", fbx)
     task.set_editor_property("destination_path", dest)
@@ -96,6 +99,11 @@ def main():
     if not les.load_level(a.level):
         raise RuntimeError(f"could not load {a.level}")
     mesh = import_fbx(a.fbx, a.name, a.reimport)
+    if a.import_only:
+        b = mesh.get_bounds()
+        log(f"mesh refreshed, height {b.box_extent.z * 2 / 100.0:.2f} m; actor left in place")
+        les.save_current_level()
+        return
     mark = next((m for m in kit["marks"] if m["id"] == a.mark), None)
     if not mark:
         raise RuntimeError(f"mark {a.mark} not in {kit['stageKit']}: {[m['id'] for m in kit['marks']]}")

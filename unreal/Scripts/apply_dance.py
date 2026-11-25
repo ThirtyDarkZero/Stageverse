@@ -50,6 +50,7 @@ def import_anim(fbx, name):
     ui.set_editor_property("skeleton", skeleton)
     ui.set_editor_property("mesh_type_to_import", unreal.FBXImportType.FBXIT_ANIMATION)
     ui.anim_sequence_import_data.set_editor_property("convert_scene", True)
+    ui.anim_sequence_import_data.set_editor_property("convert_scene_unit", True)  # metres -> cm, same as the mesh
     ui.anim_sequence_import_data.set_editor_property("import_bone_tracks", True)
     ui.anim_sequence_import_data.set_editor_property("remove_redundant_keys", False)
     task = unreal.AssetImportTask()

@@ -71,7 +71,7 @@ def main() -> None:
     print("GLBINFO " + json.dumps(info))
 
     a.fbx.parent.mkdir(parents=True, exist_ok=True)
-    bpy.ops.export_scene.fbx(filepath=str(a.fbx), use_selection=False, apply_unit_scale=True,
+    bpy.ops.export_scene.fbx(filepath=str(a.fbx), use_selection=False, apply_unit_scale=True, apply_scale_options="FBX_SCALE_ALL",  # armature node at scale 1, so UE never puts a x100 on Hips
                              object_types={"ARMATURE", "MESH"}, add_leaf_bones=False,
                              bake_anim=False, path_mode="COPY", embed_textures=True,
                              mesh_smooth_type="FACE", primary_bone_axis="Y", secondary_bone_axis="X")
