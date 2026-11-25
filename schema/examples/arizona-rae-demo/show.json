@@ -8,7 +8,7 @@
   "venue": {
     "tier": "arena",
     "venueId": "arena_main_01",
-    "stageKit": "kit_end_stage"
+    "stageKit": "arena_halo"
   },
   "act": {
     "type": "solo",

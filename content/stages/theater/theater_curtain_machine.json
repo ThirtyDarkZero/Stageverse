@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "tier": "theater",
+  "stageKit": "theater_curtain_machine",
+  "name": "Curtain Machine",
+  "venueId": "theater_main_01",
+  "shape": "proscenium",
+  "concept": "Five veils between the artist and the crowd are stripped away one chorus at a time until nothing is left.",
+  "object": "Five projection gauzes on traveller tracks plus a red drop curtain",
+  "photoMoment": "The red drop falling at the final chorus, revealing the artist in a white field.",
+  "palette": [
+    "#080808",
+    "#FF1F2E",
+    "#F1EEE8"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -22.5,
+      "y": 0,
+      "w": 13,
+      "d": 15,
+      "z": 1.3,
+      "h": 0.0
+    },
+    {
+      "id": "gauze_1",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -17.6,
+      "y": 0,
+      "w": 0.1,
+      "d": 15,
+      "z": 1.3,
+      "h": 8.0,
+      "lineset": "LS_01",
+      "note": "Projection gauze, splits as two travellers or flies out."
+    },
+    {
+      "id": "gauze_2",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -19.4,
+      "y": 0,
+      "w": 0.1,
+      "d": 15,
+      "z": 1.3,
+      "h": 8.0,
+      "lineset": "LS_07",
+      "note": "Projection gauze, splits as two travellers or flies out."
+    },
+    {
+      "id": "gauze_3",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -21.2,
+      "y": 0,
+      "w": 0.1,
+      "d": 15,
+      "z": 1.3,
+      "h": 8.0,
+      "lineset": "LS_13",
+      "note": "Projection gauze, splits as two travellers or flies out."
+    },
+    {
+      "id": "gauze_4",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -23.0,
+      "y": 0,
+      "w": 0.1,
+      "d": 15,
+      "z": 1.3,
+      "h": 8.0,
+      "lineset": "LS_19",
+      "note": "Projection gauze, splits as two travellers or flies out."
+    },
+    {
+      "id": "gauze_5",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -24.8,
+      "y": 0,
+      "w": 0.1,
+      "d": 15,
+      "z": 1.3,
+      "h": 8.0,
+      "lineset": "LS_25",
+      "note": "Projection gauze, splits as two travellers or flies out."
+    },
+    {
+      "id": "drop_red",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -26.6,
+      "y": 0,
+      "w": 0.1,
+      "d": 15,
+      "z": 1.3,
+      "h": 8.5,
+      "lineset": "LS_31",
+      "note": "Kabuki drop: falls in one cue."
+    },
+    {
+      "id": "led_wall",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -28.8,
+      "y": 0,
+      "w": 0.25,
+      "d": 13,
+      "z": 1.3,
+      "h": 7.0
+    },
+    {
+      "id": "projector_foh",
+      "kind": "fixture_array",
+      "shape": "rect",
+      "x": 8.0,
+      "y": 0,
+      "w": 1,
+      "d": 4,
+      "z": 6.2,
+      "h": 0.0,
+      "note": "Projectors on the balcony rail."
+    }
+  ],
+  "marks": [
+    {
+      "id": "behind_veils",
+      "x": -25.5,
+      "y": 0,
+      "z": 1.3
+    },
+    {
+      "id": "center",
+      "x": -21.0,
+      "y": 0,
+      "z": 1.3
+    },
+    {
+      "id": "downstage",
+      "x": -17.0,
+      "y": 0,
+      "z": 1.3
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "led_wall",
+      "gauze_projection"
+    ],
+    "lightGroups": [
+      "backlight",
+      "key_front",
+      "side_light",
+      "follow_spot"
+    ],
+    "pyroPositions": [
+      "spark_sl",
+      "spark_sr",
+      "haze_us"
+    ],
+    "kinetics": [
+      "gauze_1",
+      "gauze_2",
+      "gauze_3",
+      "gauze_4",
+      "gauze_5",
+      "drop_red"
+    ]
+  },
+  "fx": [
+    {
+      "id": "spark_sl",
+      "x": -13.6,
+      "y": 5.5,
+      "z": 1.3,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "spark_sr",
+      "x": -13.6,
+      "y": -5.5,
+      "z": 1.3,
+      "effects": [
+        "spark_fountain"
+      ]
+    },
+    {
+      "id": "haze_us",
+      "x": -28.0,
+      "y": 0,
+      "z": 1.3,
+      "effects": [
+        "fog"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Veils",
+      "when": "intro",
+      "state": "All five gauzes in; artist behind them as layered silhouettes.",
+      "light": "Backlight only, projected text on gauze 1."
+    },
+    {
+      "name": "Peel",
+      "when": "each chorus",
+      "state": "One gauze goes per chorus (travels off or flies out).",
+      "light": "Each layer gets one colour; red reaches the front last."
+    },
+    {
+      "name": "Void",
+      "when": "bridge",
+      "state": "No gauze left: black box, one follow spot.",
+      "light": "Follow spot only."
+    },
+    {
+      "name": "Kabuki",
+      "when": "final chorus",
+      "state": "Red drop falls, LED wall behind goes full white; cold sparks.",
+      "light": "White and red, blackout on the last word."
+    }
+  ],
+  "buildNotes": "Gauzes render as translucent masked planes with a projection decal; keep layer count at 5 for overdraw. Cold spark only."
+}

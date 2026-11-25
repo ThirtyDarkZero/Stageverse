@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "tier": "stadium",
+  "stageKit": "stadium_orbit",
+  "name": "Orbit",
+  "venueId": "stadium_main_01",
+  "shape": "in_the_round",
+  "concept": "The artist is the centre of gravity: a stage at midfield with everything, including the crowd, in orbit around her.",
+  "object": "A 40 m floating ring of light held by four towers over a circular stage and a ring runway",
+  "photoMoment": "The ring lowered and tilted over the artist, lasers from all four towers meeting above her head.",
+  "palette": [
+    "#080808",
+    "#A8E8FF",
+    "#2E6BFF",
+    "#F1EEE8"
+  ],
+  "elements": [
+    {
+      "id": "deck_center",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 0,
+      "y": 0,
+      "r": 12.0,
+      "z": 2.0,
+      "h": 0.0
+    },
+    {
+      "id": "turntable",
+      "kind": "turntable",
+      "shape": "disc",
+      "x": 0,
+      "y": 0,
+      "r": 5.0,
+      "z": 2.0,
+      "h": 0.0
+    },
+    {
+      "id": "ring_runway",
+      "kind": "deck",
+      "shape": "ring",
+      "x": 0,
+      "y": 0,
+      "r": 22.0,
+      "width": 4.0,
+      "z": 1.6,
+      "h": 0.0
+    },
+    {
+      "id": "bridge_e",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 16.0,
+      "y": 0,
+      "w": 8,
+      "d": 3,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "bridge_w",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -16.0,
+      "y": 0,
+      "w": 8,
+      "d": 3,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "bridge_n",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 0,
+      "y": 16.0,
+      "w": 3,
+      "d": 8,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "bridge_s",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 0,
+      "y": -16.0,
+      "w": 3,
+      "d": 8,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "tower_ne",
+      "kind": "truss",
+      "shape": "rect",
+      "x": 30,
+      "y": 30,
+      "w": 4,
+      "d": 4,
+      "z": 0,
+      "h": 40
+    },
+    {
+      "id": "tower_nw",
+      "kind": "truss",
+      "shape": "rect",
+      "x": -30,
+      "y": 30,
+      "w": 4,
+      "d": 4,
+      "z": 0,
+      "h": 40
+    },
+    {
+      "id": "tower_se",
+      "kind": "truss",
+      "shape": "rect",
+      "x": 30,
+      "y": -30,
+      "w": 4,
+      "d": 4,
+      "z": 0,
+      "h": 40
+    },
+    {
+      "id": "tower_sw",
+      "kind": "truss",
+      "shape": "rect",
+      "x": -30,
+      "y": -30,
+      "w": 4,
+      "d": 4,
+      "z": 0,
+      "h": 40
+    },
+    {
+      "id": "orbit_ring",
+      "kind": "kinetic",
+      "shape": "ring",
+      "x": 0,
+      "y": 0,
+      "r": 20.0,
+      "width": 2.0,
+      "z": 30.0,
+      "h": 0.0,
+      "travel_m": [
+        12.0,
+        32.0
+      ],
+      "tilt_deg": [
+        0,
+        25
+      ],
+      "note": "LED ring held on a cable net between the four towers."
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": 0,
+      "y": 0,
+      "z": 2.0
+    },
+    {
+      "id": "ring_e",
+      "x": 22,
+      "y": 0,
+      "z": 1.6
+    },
+    {
+      "id": "ring_w",
+      "x": -22,
+      "y": 0,
+      "z": 1.6
+    },
+    {
+      "id": "ring_n",
+      "x": 0,
+      "y": 22,
+      "z": 1.6
+    },
+    {
+      "id": "ring_s",
+      "x": 0,
+      "y": -22,
+      "z": 1.6
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "orbit_ring",
+      "deck_edge",
+      "tower_imag"
+    ],
+    "lightGroups": [
+      "tower_lasers",
+      "ring_beams",
+      "key_360",
+      "stadium_blinders"
+    ],
+    "pyroPositions": [
+      "flame_ne",
+      "flame_nw",
+      "flame_se",
+      "flame_sw",
+      "confetti_ring"
+    ],
+    "kinetics": [
+      "orbit_ring",
+      "turntable"
+    ]
+  },
+  "fx": [
+    {
+      "id": "flame_ne",
+      "x": 30,
+      "y": 30,
+      "z": 40.0,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_nw",
+      "x": -30,
+      "y": 30,
+      "z": 40.0,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_se",
+      "x": 30,
+      "y": -30,
+      "z": 40.0,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_sw",
+      "x": -30,
+      "y": -30,
+      "z": 40.0,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "confetti_ring",
+      "x": 0,
+      "y": 0,
+      "z": 30.0,
+      "effects": [
+        "confetti",
+        "streamer"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Eclipse",
+      "when": "opener",
+      "state": "Ring high and dark; one white beam on the artist from directly above.",
+      "light": "Black stadium, single beam."
+    },
+    {
+      "name": "Rotation",
+      "when": "songs 2-5",
+      "state": "Turntable spins slowly; ring chases around in time with the bar.",
+      "light": "Ice and blue."
+    },
+    {
+      "name": "Orbit",
+      "when": "middle section",
+      "state": "Artist walks the ring runway past every section of the floor.",
+      "light": "Key 360, blinders sweep with her."
+    },
+    {
+      "name": "Gravity",
+      "when": "closer",
+      "state": "Ring lowers to 12 m and tilts; lasers from the four towers meet over the stage; flames on top of the towers.",
+      "light": "Full white, confetti from the ring."
+    }
+  ],
+  "buildNotes": "Centre stage blocks about 2,000 floor spots; seats all the way round. Towers placed outside the field width so floor sightlines stay clear. In-game: ring is one mesh; cable net is decorative splines."
+}

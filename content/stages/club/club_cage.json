@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "tier": "club",
+  "stageKit": "club_cage",
+  "name": "Cage",
+  "venueId": "club_main_01",
+  "shape": "in_the_round",
+  "concept": "The artist starts locked in a cage of light in the middle of the crowd and breaks it open.",
+  "object": "A 4 x 4 m riser in the centre of the floor wrapped by 64 vertical light tubes that rise from the floor",
+  "photoMoment": "The tubes dropping into the floor in one sweep while the crowd closes in around the riser.",
+  "palette": [
+    "#080808",
+    "#FF1F2E",
+    "#A8E8FF"
+  ],
+  "elements": [
+    {
+      "id": "riser_center",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 0,
+      "y": 0,
+      "w": 4,
+      "d": 4,
+      "z": 0.8,
+      "h": 0.0,
+      "note": "Crowd on all four sides."
+    },
+    {
+      "id": "cage_tubes",
+      "kind": "kinetic",
+      "shape": "ring",
+      "x": 0,
+      "y": 0,
+      "r": 3.0,
+      "width": 0.3,
+      "z": 0.0,
+      "h": 4.0,
+      "travel_m": [
+        0.0,
+        4.0
+      ],
+      "note": "64 pixel tubes on a 6 x 6 m square footprint (16 per side), rising out of floor pods."
+    },
+    {
+      "id": "booth_dj",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -11.5,
+      "y": 0,
+      "w": 5,
+      "d": 8,
+      "z": 1.0,
+      "h": 0.0,
+      "note": "Main deck becomes the DJ / band booth."
+    },
+    {
+      "id": "led_back",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -13.9,
+      "y": 0,
+      "w": 0.2,
+      "d": 8,
+      "z": 1.0,
+      "h": 3.0
+    },
+    {
+      "id": "grid_over",
+      "kind": "truss",
+      "shape": "rect",
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "d": 6,
+      "z": 4.6,
+      "h": 0.0,
+      "note": "Square truss over the riser: key lights and 4 beams."
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": 0,
+      "y": 0,
+      "z": 0.8
+    },
+    {
+      "id": "riser_sl",
+      "x": 0,
+      "y": 1.5,
+      "z": 0.8
+    },
+    {
+      "id": "riser_sr",
+      "x": 0,
+      "y": -1.5,
+      "z": 0.8
+    },
+    {
+      "id": "booth",
+      "x": -11.5,
+      "y": 0,
+      "z": 1.0
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "led_back"
+    ],
+    "lightGroups": [
+      "cage_tubes",
+      "over_key",
+      "over_beams",
+      "strobe_room"
+    ],
+    "pyroPositions": [
+      "co2_ne",
+      "co2_nw",
+      "co2_se",
+      "co2_sw"
+    ],
+    "kinetics": [
+      "cage_tubes"
+    ]
+  },
+  "fx": [
+    {
+      "id": "co2_ne",
+      "x": 3,
+      "y": 3,
+      "z": 0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_nw",
+      "x": -3,
+      "y": 3,
+      "z": 0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_se",
+      "x": 3,
+      "y": -3,
+      "z": 0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_sw",
+      "x": -3,
+      "y": -3,
+      "z": 0,
+      "effects": [
+        "co2_jet"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Locked",
+      "when": "intro and verse",
+      "state": "Tubes fully up at 4 m, artist inside.",
+      "light": "Red tubes, cold ice key from above."
+    },
+    {
+      "name": "Bars",
+      "when": "choruses",
+      "state": "Tubes chase around the square; single tubes drop and return on hits.",
+      "light": "Red and ice alternating per bar."
+    },
+    {
+      "name": "Break-out",
+      "when": "the drop",
+      "state": "All 64 tubes drop into the floor in one sweep; crowd closes in.",
+      "light": "Blackout for one beat, then white beams from the truss."
+    },
+    {
+      "name": "Rave",
+      "when": "final chorus",
+      "state": "Tubes pulse at floor height like a lit floor edge; CO2 from the four corners.",
+      "light": "Strobes and ice, end on a red flash."
+    }
+  ],
+  "buildNotes": "Needs a central security ring of 1 m. In-game: tubes are instanced; the riser blocks crowd spawn in a 7 x 7 m square at the floor centre."
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860">
+<rect width="1200" height="860" fill="#080808"/>
+<style>text{font-family:"Space Mono","JetBrains Mono",monospace;fill:#F1EEE8}.h{font-family:Anton,"Big Shoulders Display",Impact,sans-serif;font-size:52px;letter-spacing:1px}.s{font-size:15px}.l{font-size:11px;opacity:.8}</style>
+<text class="h" x="40" y="62">CAGE</text>
+<text class="s" x="40" y="90" fill="#FF1F2E" style="fill:#FF1F2E">CLUB · IN THE ROUND · club_cage</text>
+<rect x="396.9" y="150.6" width="406.2" height="568.8" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<rect x="396.9" y="252.2" width="406.2" height="467.2" fill="#F1EEE8" fill-opacity=".04" stroke="none"/>
+<rect x="559.4" y="394.4" width="81.2" height="81.2" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="518.8" y="150.6" width="162.5" height="101.6" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="518.8" y="150.6" width="162.5" height="4.1" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.0" fill-opacity="0.85"/>
+<rect x="539.1" y="374.1" width="121.9" height="121.9" fill="none" stroke="#F1EEE8" stroke-width="0.8" stroke-dasharray="1 2"/>
+<rect x="539.1" y="374.1" width="121.9" height="121.9" fill="none" stroke="#FF1F2E" stroke-width="6.1" stroke-dasharray="3 3"/>
+<circle cx="660.9" cy="495.9" r="4" fill="#FF1F2E"/>
+<circle cx="660.9" cy="374.1" r="4" fill="#FF1F2E"/>
+<circle cx="539.1" cy="495.9" r="4" fill="#FF1F2E"/>
+<circle cx="539.1" cy="374.1" r="4" fill="#FF1F2E"/>
+<path d="M595.0 435.0h10M600.0 430.0v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M625.5 435.0h10M630.5 430.0v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M564.5 435.0h10M569.5 430.0v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 201.4h10M600.0 196.4v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M40 830h203.1" stroke="#F1EEE8" stroke-width="2"/><text class="l" x="40" y="822">10 m</text>
+<rect x="283.1" y="818" width="14" height="10" fill="#141414" stroke="#F1EEE8" stroke-width="1.5"/><text class="l" x="303.1" y="827">deck</text>
+<rect x="373.1" y="818" width="14" height="10" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.5"/><text class="l" x="393.1" y="827">LED</text>
+<rect x="463.1" y="818" width="14" height="10" fill="none" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="483.1" y="827">kinetic</text>
+<rect x="553.1" y="818" width="14" height="10" fill="none" stroke="#2E6BFF" stroke-width="1.5"/><text class="l" x="573.1" y="827">scrim</text>
+<rect x="643.1" y="818" width="14" height="10" fill="#FF1F2E" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="663.1" y="827">FX</text>
+<text class="l" x="733.1" y="827">+ performer mark · stage at top, audience below</text>
+</svg>

@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "tier": "arena",
+  "stageKit": "arena_fault_line",
+  "name": "Fault Line",
+  "venueId": "arena_main_01",
+  "shape": "end_stage_runway_bstage",
+  "concept": "The stage is solid ground that cracks open: light pours out of the fractures and the runway is the crack.",
+  "object": "A fractured stage floor of tilting LED plates and three leaning monolith screens",
+  "photoMoment": "The artist on a plate tilted 12 degrees, red light pouring up through the crack beside her, flames along the runway.",
+  "palette": [
+    "#080808",
+    "#141414",
+    "#FF1F2E",
+    "#A8E8FF"
+  ],
+  "elements": [
+    {
+      "id": "plate_1",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -24.5,
+      "y": 7.0,
+      "w": 6.5,
+      "d": 7.0,
+      "z": 1.8,
+      "h": 0.0,
+      "tilt_deg": [
+        0,
+        12
+      ],
+      "note": "LED floor plate on 2 actuators."
+    },
+    {
+      "id": "plate_2",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -24.5,
+      "y": -7.0,
+      "w": 6.5,
+      "d": 7.0,
+      "z": 1.8,
+      "h": 0.0,
+      "tilt_deg": [
+        0,
+        12
+      ],
+      "note": "LED floor plate on 2 actuators."
+    },
+    {
+      "id": "plate_3",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -17.5,
+      "y": 7.5,
+      "w": 6.5,
+      "d": 7.0,
+      "z": 1.8,
+      "h": 0.0,
+      "tilt_deg": [
+        0,
+        12
+      ],
+      "note": "LED floor plate on 2 actuators."
+    },
+    {
+      "id": "plate_4",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -17.5,
+      "y": -7.5,
+      "w": 6.5,
+      "d": 7.0,
+      "z": 1.8,
+      "h": 0.0,
+      "tilt_deg": [
+        0,
+        12
+      ],
+      "note": "LED floor plate on 2 actuators."
+    },
+    {
+      "id": "plate_5",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -21.0,
+      "y": 0.0,
+      "w": 6.5,
+      "d": 7.0,
+      "z": 1.8,
+      "h": 0.0,
+      "tilt_deg": [
+        0,
+        12
+      ],
+      "note": "LED floor plate on 2 actuators."
+    },
+    {
+      "id": "crack",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -6.75,
+      "y": 0,
+      "w": 14.5,
+      "d": 1.0,
+      "z": 1.6,
+      "h": 0.0,
+      "note": "LED trench down the runway centreline."
+    },
+    {
+      "id": "runway",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -6.75,
+      "y": 0,
+      "w": 14.5,
+      "d": 3,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "bstage",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 5.0,
+      "y": 0,
+      "r": 4.5,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "mono_c",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -28.0,
+      "y": 0,
+      "w": 0.4,
+      "d": 8,
+      "z": 1.8,
+      "h": 12,
+      "tilt_deg": [
+        -10,
+        10
+      ]
+    },
+    {
+      "id": "mono_sl",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -27.0,
+      "y": 8.5,
+      "w": 0.4,
+      "d": 6,
+      "z": 1.8,
+      "h": 14,
+      "tilt_deg": [
+        -10,
+        10
+      ]
+    },
+    {
+      "id": "mono_sr",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -27.0,
+      "y": -8.5,
+      "w": 0.4,
+      "d": 6,
+      "z": 1.8,
+      "h": 14,
+      "tilt_deg": [
+        -10,
+        10
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": -21.0,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "plate_sl",
+      "x": -17.5,
+      "y": 7.5,
+      "z": 1.8
+    },
+    {
+      "id": "plate_sr",
+      "x": -17.5,
+      "y": -7.5,
+      "z": 1.8
+    },
+    {
+      "id": "runway_mid",
+      "x": -6.75,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "bstage",
+      "x": 5.0,
+      "y": 0,
+      "z": 1.8
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "plates",
+      "crack",
+      "mono_c",
+      "mono_sl",
+      "mono_sr"
+    ],
+    "lightGroups": [
+      "crack_uplight",
+      "key_front",
+      "side_beams",
+      "audience_blinders",
+      "lasers"
+    ],
+    "pyroPositions": [
+      "flame_runway_1",
+      "flame_runway_2",
+      "flame_runway_3",
+      "flame_runway_4",
+      "co2_ds_sl",
+      "co2_ds_sr"
+    ],
+    "kinetics": [
+      "plate_1",
+      "plate_2",
+      "plate_3",
+      "plate_4",
+      "plate_5",
+      "mono_c",
+      "mono_sl",
+      "mono_sr"
+    ]
+  },
+  "fx": [
+    {
+      "id": "flame_runway_1",
+      "x": -13.0,
+      "y": 1.8,
+      "z": 1.8,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_runway_2",
+      "x": -9.0,
+      "y": -1.8,
+      "z": 1.8,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_runway_3",
+      "x": -5.0,
+      "y": 1.8,
+      "z": 1.8,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "flame_runway_4",
+      "x": -1.0,
+      "y": -1.8,
+      "z": 1.8,
+      "effects": [
+        "flame"
+      ]
+    },
+    {
+      "id": "co2_ds_sl",
+      "x": -14.5,
+      "y": 9.0,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_ds_sr",
+      "x": -14.5,
+      "y": -9.0,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Plate",
+      "when": "opener",
+      "state": "Plates flat and the three monoliths aligned as one wall.",
+      "light": "Cold ice texture like stone, white key."
+    },
+    {
+      "name": "Rupture",
+      "when": "first big drop",
+      "state": "Monoliths split and lean apart; plates tilt out of level.",
+      "light": "Red light up through every gap, lasers through the cracks."
+    },
+    {
+      "name": "Crossing",
+      "when": "runway song",
+      "state": "Artist walks the crack to the B-stage; trench chases under her.",
+      "light": "Red trench, ice on the crowd."
+    },
+    {
+      "name": "Eruption",
+      "when": "closer",
+      "state": "All plates at 12 degrees; flames along the runway on each downbeat.",
+      "light": "Full red, white blinders on the final hit."
+    }
+  ],
+  "buildNotes": "Tilt max 12 degrees for performer safety. Flames are outdoor-rated in real life; acceptable in the arena kit with 6 m clearance. In-game: plates share one material; crack glow is an emissive panel plus lights."
+}

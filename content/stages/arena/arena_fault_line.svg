@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860">
+<rect width="1200" height="860" fill="#080808"/>
+<style>text{font-family:"Space Mono","JetBrains Mono",monospace;fill:#F1EEE8}.h{font-family:Anton,"Big Shoulders Display",Impact,sans-serif;font-size:52px;letter-spacing:1px}.s{font-size:15px}.l{font-size:11px;opacity:.8}</style>
+<text class="h" x="40" y="62">FAULT LINE</text>
+<text class="s" x="40" y="90" fill="#FF1F2E" style="fill:#FF1F2E">ARENA · END STAGE RUNWAY BSTAGE · arena_fault_line</text>
+<ellipse cx="600.0" cy="435.0" rx="247.0" ry="312.0" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<ellipse cx="600.0" cy="435.0" rx="143.0" ry="221.0" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<rect x="502.5" y="353.8" width="195.0" height="279.5" fill="#F1EEE8" fill-opacity=".04" stroke="none"/>
+<rect x="590.2" y="344.0" width="19.5" height="94.2" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<circle cx="600.0" cy="467.5" r="29.2" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="596.8" y="344.0" width="6.5" height="94.2" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.0" fill-opacity="0.85"/>
+<rect x="622.8" y="254.6" width="45.5" height="42.2" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="531.8" y="254.6" width="45.5" height="42.2" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="626.0" y="300.1" width="45.5" height="42.2" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="528.5" y="300.1" width="45.5" height="42.2" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="577.2" y="277.4" width="45.5" height="42.2" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="574.0" y="251.7" width="52.0" height="2.6" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="635.8" y="258.2" width="39.0" height="2.6" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="525.2" y="258.2" width="39.0" height="2.6" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<circle cx="611.7" cy="350.5" r="4" fill="#FF1F2E"/>
+<circle cx="588.3" cy="376.5" r="4" fill="#FF1F2E"/>
+<circle cx="611.7" cy="402.5" r="4" fill="#FF1F2E"/>
+<circle cx="588.3" cy="428.5" r="4" fill="#FF1F2E"/>
+<circle cx="658.5" cy="340.8" r="4" fill="#FF1F2E"/>
+<circle cx="541.5" cy="340.8" r="4" fill="#FF1F2E"/>
+<path d="M595.0 298.5h10M600.0 293.5v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M643.8 321.2h10M648.8 316.2v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M546.2 321.2h10M551.2 316.2v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 391.1h10M600.0 386.1v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 467.5h10M600.0 462.5v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M40 830h130.0" stroke="#F1EEE8" stroke-width="2"/><text class="l" x="40" y="822">20 m</text>
+<rect x="210.0" y="818" width="14" height="10" fill="#141414" stroke="#F1EEE8" stroke-width="1.5"/><text class="l" x="230.0" y="827">deck</text>
+<rect x="300.0" y="818" width="14" height="10" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.5"/><text class="l" x="320.0" y="827">LED</text>
+<rect x="390.0" y="818" width="14" height="10" fill="none" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="410.0" y="827">kinetic</text>
+<rect x="480.0" y="818" width="14" height="10" fill="none" stroke="#2E6BFF" stroke-width="1.5"/><text class="l" x="500.0" y="827">scrim</text>
+<rect x="570.0" y="818" width="14" height="10" fill="#FF1F2E" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="590.0" y="827">FX</text>
+<text class="l" x="660.0" y="827">+ performer mark · stage at top, audience below</text>
+</svg>

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "tier": "theater",
+  "stageKit": "theater_staircase",
+  "name": "Staircase",
+  "venueId": "theater_main_01",
+  "shape": "proscenium",
+  "concept": "One monumental white stair: the show is an entrance, a descent, a seat and an exit.",
+  "object": "A 10 m wide stair rising 5 m to a doorway upstage, every riser an LED strip",
+  "photoMoment": "The artist in silhouette in the doorway at the top of the stair, every riser lit white below her.",
+  "palette": [
+    "#F1EEE8",
+    "#080808",
+    "#A8E8FF"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -22.5,
+      "y": 0,
+      "w": 13,
+      "d": 15,
+      "z": 1.3,
+      "h": 0.0
+    },
+    {
+      "id": "stair",
+      "kind": "structure",
+      "shape": "rect",
+      "x": -23.0,
+      "y": 0,
+      "w": 8,
+      "d": 10,
+      "z": 1.3,
+      "h": 5.0,
+      "steps": 20,
+      "note": "20 risers of 25 cm, 40 cm treads; LED strip in each riser; treads take projection."
+    },
+    {
+      "id": "landing_door",
+      "kind": "structure",
+      "shape": "rect",
+      "x": -27.6,
+      "y": 0,
+      "w": 1.2,
+      "d": 3,
+      "z": 6.3,
+      "h": 3.2,
+      "note": "Doorway at the top with a white backlight behind."
+    },
+    {
+      "id": "scrim_sl",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -21.0,
+      "y": 6.5,
+      "w": 8,
+      "d": 0.1,
+      "z": 1.3,
+      "h": 8.0
+    },
+    {
+      "id": "scrim_sr",
+      "kind": "scrim",
+      "shape": "rect",
+      "x": -21.0,
+      "y": -6.5,
+      "w": 8,
+      "d": 0.1,
+      "z": 1.3,
+      "h": 8.0
+    }
+  ],
+  "marks": [
+    {
+      "id": "door",
+      "x": -27.6,
+      "y": 0,
+      "z": 6.3
+    },
+    {
+      "id": "stair_mid",
+      "x": -23.0,
+      "y": 0,
+      "z": 3.8
+    },
+    {
+      "id": "center",
+      "x": -18.6,
+      "y": 0,
+      "z": 1.3
+    },
+    {
+      "id": "downstage",
+      "x": -17.0,
+      "y": 0,
+      "z": 1.3
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "stair_risers",
+      "stair_treads"
+    ],
+    "lightGroups": [
+      "door_backlight",
+      "risers",
+      "key_front",
+      "side_light",
+      "follow_spot"
+    ],
+    "pyroPositions": [
+      "confetti_house",
+      "haze_us"
+    ],
+    "kinetics": []
+  },
+  "fx": [
+    {
+      "id": "confetti_house",
+      "x": -8.0,
+      "y": 0,
+      "z": 10.0,
+      "effects": [
+        "confetti"
+      ]
+    },
+    {
+      "id": "haze_us",
+      "x": -28.0,
+      "y": 0,
+      "z": 1.3,
+      "effects": [
+        "fog"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Entrance",
+      "when": "intro",
+      "state": "Artist appears in the doorway, backlit, and holds.",
+      "light": "Single white backlight through haze, stair dark."
+    },
+    {
+      "name": "Descent",
+      "when": "verse and chorus",
+      "state": "Artist walks down; risers light one step per beat beneath her.",
+      "light": "White risers, ice side light."
+    },
+    {
+      "name": "Seated",
+      "when": "ballad / bridge",
+      "state": "Artist sits on the stair; treads show slow projected texture.",
+      "light": "One follow spot, everything else off."
+    },
+    {
+      "name": "Exit",
+      "when": "final chorus and outro",
+      "state": "Artist climbs back up into the white door; confetti over the house.",
+      "light": "Full white, door flares, blackout."
+    }
+  ],
+  "buildNotes": "Stair is a static set piece (no kinetics), so it is the cheapest design to build first. Rail-free stair: keep choreography slow on it."
+}

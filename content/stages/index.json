@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "pipeline/tools/stage_designs.py",
+  "venues": [
+    {
+      "venueId": "club_main_01",
+      "tier": "club",
+      "name": "Club (original)",
+      "capacity": 800,
+      "blockout": null,
+      "stageKits": [
+        "club_low_ceiling",
+        "club_tunnel",
+        "club_cage"
+      ]
+    },
+    {
+      "venueId": "theater_main_01",
+      "tier": "theater",
+      "name": "Theater_Main",
+      "capacity": 2379,
+      "blockout": "unreal/SourceArt/Venues/Theater_Main",
+      "stageKits": [
+        "theater_false_frame",
+        "theater_staircase",
+        "theater_curtain_machine"
+      ]
+    },
+    {
+      "venueId": "arena_main_01",
+      "tier": "arena",
+      "name": "Arena_Main",
+      "capacity": 18652,
+      "blockout": "unreal/SourceArt/Venues/Arena_Main",
+      "stageKits": [
+        "arena_halo",
+        "arena_fault_line",
+        "arena_satellite"
+      ]
+    },
+    {
+      "venueId": "stadium_main_01",
+      "tier": "stadium",
+      "name": "Stadium_Main (de-branded, from the stadium model)",
+      "capacity": 70000,
+      "blockout": null,
+      "stageKits": [
+        "stadium_horizon",
+        "stadium_orbit",
+        "stadium_monument"
+      ]
+    }
+  ],
+  "designs": [
+    {
+      "stageKit": "club_low_ceiling",
+      "name": "Low Ceiling",
+      "tier": "club",
+      "venueId": "club_main_01",
+      "shape": "end_stage",
+      "concept": "The ceiling is the instrument: a grid of light batons breathes, presses down on the crowd, then lets go.",
+      "palette": [
+        "#080808",
+        "#A8E8FF",
+        "#FF1F2E",
+        "#F1EEE8"
+      ],
+      "spec": "club/club_low_ceiling.json",
+      "plan": "club/club_low_ceiling.svg"
+    },
+    {
+      "stageKit": "club_tunnel",
+      "name": "Tunnel",
+      "tier": "club",
+      "venueId": "club_main_01",
+      "shape": "end_stage",
+      "concept": "A corridor of light frames pulls the eye to one point; the artist is always at the end of the tunnel.",
+      "palette": [
+        "#080808",
+        "#F1EEE8",
+        "#FF1F2E"
+      ],
+      "spec": "club/club_tunnel.json",
+      "plan": "club/club_tunnel.svg"
+    },
+    {
+      "stageKit": "club_cage",
+      "name": "Cage",
+      "tier": "club",
+      "venueId": "club_main_01",
+      "shape": "in_the_round",
+      "concept": "The artist starts locked in a cage of light in the middle of the crowd and breaks it open.",
+      "palette": [
+        "#080808",
+        "#FF1F2E",
+        "#A8E8FF"
+      ],
+      "spec": "club/club_cage.json",
+      "plan": "club/club_cage.svg"
+    },
+    {
+      "stageKit": "theater_false_frame",
+      "name": "False Frame",
+      "tier": "theater",
+      "venueId": "theater_main_01",
+      "shape": "proscenium",
+      "concept": "A picture frame inside the picture frame: the artist starts as a portrait, then the frame breaks and the room opens up.",
+      "palette": [
+        "#080808",
+        "#F1EEE8",
+        "#FF1F2E"
+      ],
+      "spec": "theater/theater_false_frame.json",
+      "plan": "theater/theater_false_frame.svg"
+    },
+    {
+      "stageKit": "theater_staircase",
+      "name": "Staircase",
+      "tier": "theater",
+      "venueId": "theater_main_01",
+      "shape": "proscenium",
+      "concept": "One monumental white stair: the show is an entrance, a descent, a seat and an exit.",
+      "palette": [
+        "#F1EEE8",
+        "#080808",
+        "#A8E8FF"
+      ],
+      "spec": "theater/theater_staircase.json",
+      "plan": "theater/theater_staircase.svg"
+    },
+    {
+      "stageKit": "theater_curtain_machine",
+      "name": "Curtain Machine",
+      "tier": "theater",
+      "venueId": "theater_main_01",
+      "shape": "proscenium",
+      "concept": "Five veils between the artist and the crowd are stripped away one chorus at a time until nothing is left.",
+      "palette": [
+        "#080808",
+        "#FF1F2E",
+        "#F1EEE8"
+      ],
+      "spec": "theater/theater_curtain_machine.json",
+      "plan": "theater/theater_curtain_machine.svg"
+    },
+    {
+      "stageKit": "arena_halo",
+      "name": "Halo",
+      "tier": "arena",
+      "venueId": "arena_main_01",
+      "shape": "end_stage_runway_bstage",
+      "concept": "A ring of light hangs over the crowd like a promise; the whole show is the artist's walk to stand inside it.",
+      "palette": [
+        "#080808",
+        "#F1EEE8",
+        "#A8E8FF",
+        "#FF1F2E"
+      ],
+      "spec": "arena/arena_halo.json",
+      "plan": "arena/arena_halo.svg"
+    },
+    {
+      "stageKit": "arena_fault_line",
+      "name": "Fault Line",
+      "tier": "arena",
+      "venueId": "arena_main_01",
+      "shape": "end_stage_runway_bstage",
+      "concept": "The stage is solid ground that cracks open: light pours out of the fractures and the runway is the crack.",
+      "palette": [
+        "#080808",
+        "#141414",
+        "#FF1F2E",
+        "#A8E8FF"
+      ],
+      "spec": "arena/arena_fault_line.json",
+      "plan": "arena/arena_fault_line.svg"
+    },
+    {
+      "stageKit": "arena_satellite",
+      "name": "Satellite",
+      "tier": "arena",
+      "venueId": "arena_main_01",
+      "shape": "in_the_round",
+      "concept": "A broadcast tower in the middle of the room sends the artist out to every side of the bowl.",
+      "palette": [
+        "#080808",
+        "#2E6BFF",
+        "#A8E8FF",
+        "#F1EEE8"
+      ],
+      "spec": "arena/arena_satellite.json",
+      "plan": "arena/arena_satellite.svg"
+    },
+    {
+      "stageKit": "stadium_horizon",
+      "name": "Horizon",
+      "tier": "stadium",
+      "venueId": "stadium_main_01",
+      "shape": "end_stage_runway_bstage",
+      "concept": "A city skyline of light the artist builds one tower at a time, then walks away from to meet the crowd.",
+      "palette": [
+        "#080808",
+        "#F1EEE8",
+        "#FF1F2E",
+        "#A8E8FF"
+      ],
+      "spec": "stadium/stadium_horizon.json",
+      "plan": "stadium/stadium_horizon.svg"
+    },
+    {
+      "stageKit": "stadium_orbit",
+      "name": "Orbit",
+      "tier": "stadium",
+      "venueId": "stadium_main_01",
+      "shape": "in_the_round",
+      "concept": "The artist is the centre of gravity: a stage at midfield with everything, including the crowd, in orbit around her.",
+      "palette": [
+        "#080808",
+        "#A8E8FF",
+        "#2E6BFF",
+        "#F1EEE8"
+      ],
+      "spec": "stadium/stadium_orbit.json",
+      "plan": "stadium/stadium_orbit.svg"
+    },
+    {
+      "stageKit": "stadium_monument",
+      "name": "Monument",
+      "tier": "stadium",
+      "venueId": "stadium_main_01",
+      "shape": "end_stage_thrust",
+      "concept": "A sealed 30 m monolith stands at the end of the field; the show is about getting it to open.",
+      "palette": [
+        "#080808",
+        "#F1EEE8",
+        "#FF1F2E"
+      ],
+      "spec": "stadium/stadium_monument.json",
+      "plan": "stadium/stadium_monument.svg"
+    }
+  ]
+}

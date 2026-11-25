@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "tier": "arena",
+  "stageKit": "arena_satellite",
+  "name": "Satellite",
+  "venueId": "arena_main_01",
+  "shape": "in_the_round",
+  "concept": "A broadcast tower in the middle of the room sends the artist out to every side of the bowl.",
+  "object": "An overhead inverted cube of four LED faces that separate, drop and open like petals",
+  "photoMoment": "The cube faces open outward like petals at 6 m, lasers fanning from each corner to the upper bowl.",
+  "palette": [
+    "#080808",
+    "#2E6BFF",
+    "#A8E8FF",
+    "#F1EEE8"
+  ],
+  "elements": [
+    {
+      "id": "deck_center",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 0,
+      "y": 0,
+      "w": 14,
+      "d": 14,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "turntable",
+      "kind": "turntable",
+      "shape": "disc",
+      "x": 0,
+      "y": 0,
+      "r": 4.0,
+      "z": 1.8,
+      "h": 0.0
+    },
+    {
+      "id": "center_lift",
+      "kind": "lift",
+      "shape": "disc",
+      "x": 0,
+      "y": 0,
+      "r": 1.5,
+      "z": 1.8,
+      "h": 0.0,
+      "travel_m": [
+        -2.0,
+        3.0
+      ]
+    },
+    {
+      "id": "spoke_e",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 13.0,
+      "y": 0,
+      "w": 12,
+      "d": 2.5,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "spoke_w",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -13.0,
+      "y": 0,
+      "w": 12,
+      "d": 2.5,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "spoke_n",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 0,
+      "y": 12.0,
+      "w": 2.5,
+      "d": 10,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "spoke_s",
+      "kind": "deck",
+      "shape": "rect",
+      "x": 0,
+      "y": -12.0,
+      "w": 2.5,
+      "d": 10,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "satellite_e",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 20.5,
+      "y": 0,
+      "r": 2.5,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "satellite_w",
+      "kind": "deck",
+      "shape": "disc",
+      "x": -20.5,
+      "y": 0,
+      "r": 2.5,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "satellite_n",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 0,
+      "y": 18.5,
+      "r": 2.5,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "satellite_s",
+      "kind": "deck",
+      "shape": "disc",
+      "x": 0,
+      "y": -18.5,
+      "r": 2.5,
+      "z": 1.2,
+      "h": 0.0
+    },
+    {
+      "id": "cube_e",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": 6.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 12,
+      "z": 14.0,
+      "h": 7.0,
+      "travel_m": [
+        6.0,
+        14.0
+      ],
+      "tilt_deg": [
+        0,
+        45
+      ]
+    },
+    {
+      "id": "cube_w",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": -6.0,
+      "y": 0,
+      "w": 0.3,
+      "d": 12,
+      "z": 14.0,
+      "h": 7.0,
+      "travel_m": [
+        6.0,
+        14.0
+      ],
+      "tilt_deg": [
+        0,
+        45
+      ]
+    },
+    {
+      "id": "cube_n",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": 0,
+      "y": 6.0,
+      "w": 12,
+      "d": 0.3,
+      "z": 14.0,
+      "h": 7.0,
+      "travel_m": [
+        6.0,
+        14.0
+      ],
+      "tilt_deg": [
+        0,
+        45
+      ]
+    },
+    {
+      "id": "cube_s",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": 0,
+      "y": -6.0,
+      "w": 12,
+      "d": 0.3,
+      "z": 14.0,
+      "h": 7.0,
+      "travel_m": [
+        6.0,
+        14.0
+      ],
+      "tilt_deg": [
+        0,
+        45
+      ]
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": 0,
+      "y": 0,
+      "z": 1.8
+    },
+    {
+      "id": "sat_e",
+      "x": 20.5,
+      "y": 0,
+      "z": 1.2
+    },
+    {
+      "id": "sat_w",
+      "x": -20.5,
+      "y": 0,
+      "z": 1.2
+    },
+    {
+      "id": "sat_n",
+      "x": 0,
+      "y": 18.5,
+      "z": 1.2
+    },
+    {
+      "id": "sat_s",
+      "x": 0,
+      "y": -18.5,
+      "z": 1.2
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "cube_e",
+      "cube_w",
+      "cube_n",
+      "cube_s",
+      "deck_edge"
+    ],
+    "lightGroups": [
+      "cube_inner",
+      "corner_lasers",
+      "key_360",
+      "audience_blinders"
+    ],
+    "pyroPositions": [
+      "co2_ne",
+      "co2_nw",
+      "co2_se",
+      "co2_sw",
+      "confetti_center"
+    ],
+    "kinetics": [
+      "cube_e",
+      "cube_w",
+      "cube_n",
+      "cube_s",
+      "turntable",
+      "center_lift"
+    ]
+  },
+  "fx": [
+    {
+      "id": "co2_ne",
+      "x": 7,
+      "y": 7,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_nw",
+      "x": -7,
+      "y": 7,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_se",
+      "x": 7,
+      "y": -7,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_sw",
+      "x": -7,
+      "y": -7,
+      "z": 1.8,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "confetti_center",
+      "x": 0,
+      "y": 0,
+      "z": 22.0,
+      "effects": [
+        "confetti"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Signal",
+      "when": "opener",
+      "state": "Cube closed at 14 m; artist rises on the centre lift inside its light.",
+      "light": "Blue cube, single white key from above."
+    },
+    {
+      "name": "Broadcast",
+      "when": "songs 2-4",
+      "state": "Faces separate outward and show four-way IMAG; turntable rotates slowly.",
+      "light": "Ice and blue, lasers on choruses."
+    },
+    {
+      "name": "Satellites",
+      "when": "middle section",
+      "state": "Artist visits each satellite stage; one face follows as a screen for that side.",
+      "light": "Key 360 on the artist, blinders per side."
+    },
+    {
+      "name": "Petals",
+      "when": "closer",
+      "state": "Cube drops to 6 m and the faces tilt 45 degrees open; lasers fan from the corners.",
+      "light": "Full white and blue, confetti."
+    }
+  ],
+  "buildNotes": "In-the-round uses the full bowl (about 22,260). Centre-hung board hidden. Crowd spawn must avoid spokes and satellites. In-game: 4 face meshes, turntable rotates the deck mesh only."
+}

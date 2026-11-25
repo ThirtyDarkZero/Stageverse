@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "tier": "club",
+  "stageKit": "club_low_ceiling",
+  "name": "Low Ceiling",
+  "venueId": "club_main_01",
+  "shape": "end_stage",
+  "concept": "The ceiling is the instrument: a grid of light batons breathes, presses down on the crowd, then lets go.",
+  "object": "48 kinetic pixel batons hung in a 6 x 8 grid over the whole room",
+  "photoMoment": "The batons dropped to just above raised hands, all red, the artist on the crowd riser with the grid sloping toward her.",
+  "palette": [
+    "#080808",
+    "#A8E8FF",
+    "#FF1F2E",
+    "#F1EEE8"
+  ],
+  "elements": [
+    {
+      "id": "deck_main",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -11.5,
+      "y": 0,
+      "w": 5,
+      "d": 10,
+      "z": 1.0,
+      "h": 0.0
+    },
+    {
+      "id": "riser_crowd",
+      "kind": "deck",
+      "shape": "rect",
+      "x": -6.5,
+      "y": 0,
+      "w": 2,
+      "d": 2,
+      "z": 0.6,
+      "h": 0.0,
+      "note": "Low riser in the crowd, reached by steps off the deck."
+    },
+    {
+      "id": "baton_grid",
+      "kind": "kinetic",
+      "shape": "rect",
+      "x": 0,
+      "y": 0,
+      "w": 20,
+      "d": 16,
+      "z": 4.2,
+      "h": 0.1,
+      "travel_m": [
+        2.6,
+        4.4
+      ],
+      "note": "48 batons, 6 rows (X) x 8 columns (Y), each 2.4 m pixel tube on its own winch. Moves as waves."
+    },
+    {
+      "id": "led_back",
+      "kind": "led_surface",
+      "shape": "rect",
+      "x": -13.9,
+      "y": 0,
+      "w": 0.2,
+      "d": 6,
+      "z": 1.0,
+      "h": 3.0,
+      "note": "Small, low upstage strip; texture only."
+    },
+    {
+      "id": "fixtures_floor",
+      "kind": "fixture_array",
+      "shape": "rect",
+      "x": -9.4,
+      "y": 0,
+      "w": 0.4,
+      "d": 9,
+      "z": 1.0,
+      "h": 0.0,
+      "note": "8 floor wash/beam fixtures along the deck edge, uplighting the batons."
+    }
+  ],
+  "marks": [
+    {
+      "id": "center",
+      "x": -11.5,
+      "y": 0,
+      "z": 1.0
+    },
+    {
+      "id": "downstage",
+      "x": -9.6,
+      "y": 0,
+      "z": 1.0
+    },
+    {
+      "id": "crowd_riser",
+      "x": -6.5,
+      "y": 0,
+      "z": 0.6
+    }
+  ],
+  "cueTargets": {
+    "ledSurfaces": [
+      "led_back"
+    ],
+    "lightGroups": [
+      "batons",
+      "floor_uplight",
+      "key_front",
+      "strobe_room"
+    ],
+    "pyroPositions": [
+      "co2_sl",
+      "co2_sr",
+      "confetti_center"
+    ],
+    "kinetics": [
+      "baton_grid"
+    ]
+  },
+  "fx": [
+    {
+      "id": "co2_sl",
+      "x": -9.5,
+      "y": 4.5,
+      "z": 1.0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "co2_sr",
+      "x": -9.5,
+      "y": -4.5,
+      "z": 1.0,
+      "effects": [
+        "co2_jet"
+      ]
+    },
+    {
+      "id": "confetti_center",
+      "x": 0,
+      "y": 0,
+      "z": 4.6,
+      "effects": [
+        "confetti"
+      ]
+    }
+  ],
+  "acts": [
+    {
+      "name": "Hum",
+      "when": "intro and first verse",
+      "state": "Batons flat at 4.4 m, barely glowing.",
+      "light": "Ice blue, key light only on the artist."
+    },
+    {
+      "name": "Breathing",
+      "when": "choruses",
+      "state": "Batons ripple in waves from the stage to the back wall, one row per beat.",
+      "light": "Ice with paper-white peaks on the downbeat."
+    },
+    {
+      "name": "Pressure",
+      "when": "bridge into the last drop",
+      "state": "Batons drop to 2.6 m and tilt toward the stage; the artist moves to the crowd riser.",
+      "light": "Riot red, room strobes on the snare."
+    },
+    {
+      "name": "Release",
+      "when": "final chorus",
+      "state": "Batons snap back to 4.4 m; CO2 and confetti.",
+      "light": "Full paper white, then blackout on the last word."
+    }
+  ],
+  "buildNotes": "Ceiling 5 m, so batons never go below 2.6 m over the floor. In-game: 48 instanced meshes, one material instance, wave motion driven by a curve on the cue clock. No flames indoors."
+}

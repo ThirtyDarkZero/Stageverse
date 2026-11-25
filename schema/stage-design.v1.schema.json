@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stageverse.dev/schema/stage-design.v1.schema.json",
+  "title": "StageVerse stage design (stage kit), v1",
+  "description": "One stage design the Show Producer offers in its picker. show.json selects it with venue.stageKit. Coordinates are metres in the venue frame: Z up, stage at -X, audience toward +X, symmetric about X (same frame as the venue's markers.json). Element ids, marks and cueTargets are the names the cue timeline can drive.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "stageKit", "name", "tier", "venueId", "shape", "concept", "object", "photoMoment", "palette", "elements", "marks", "cueTargets", "fx", "acts", "buildNotes"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "stageKit": { "$ref": "#/$defs/slug" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "tier": { "enum": ["club", "theater", "arena", "stadium"] },
+    "venueId": { "$ref": "#/$defs/slug" },
+    "shape": { "enum": ["end_stage", "end_stage_thrust", "end_stage_runway_bstage", "proscenium", "in_the_round", "360"] },
+    "concept": { "type": "string", "minLength": 10, "maxLength": 200, "description": "The one-sentence idea." },
+    "object": { "type": "string", "description": "The dominant scenic object or gesture." },
+    "photoMoment": { "type": "string" },
+    "palette": { "type": "array", "minItems": 2, "maxItems": 6, "items": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" } },
+    "elements": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/element" } },
+    "marks": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "object", "additionalProperties": false, "required": ["id", "x", "y", "z"],
+        "properties": { "id": { "$ref": "#/$defs/slug" }, "x": { "type": "number" }, "y": { "type": "number" }, "z": { "type": "number" } } }
+    },
+    "cueTargets": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ledSurfaces", "lightGroups", "pyroPositions", "kinetics"],
+      "properties": {
+        "ledSurfaces": { "$ref": "#/$defs/slugList", "description": "Values for led cue 'surface'." },
+        "lightGroups": { "$ref": "#/$defs/slugList", "description": "Values for lights cue 'group'." },
+        "pyroPositions": { "$ref": "#/$defs/slugList", "description": "Values for pyro cue 'positions'. Each must be an fx[].id." },
+        "kinetics": { "$ref": "#/$defs/slugList", "description": "Element ids a 'kinetic' cue track can move." }
+      }
+    },
+    "fx": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": false, "required": ["id", "x", "y", "z", "effects"],
+        "properties": {
+          "id": { "$ref": "#/$defs/slug" }, "x": { "type": "number" }, "y": { "type": "number" }, "z": { "type": "number" },
+          "effects": { "type": "array", "minItems": 1, "items": { "enum": ["co2_jet", "flame", "spark_fountain", "confetti", "streamer", "fog"] } } } }
+    },
+    "acts": {
+      "type": "array", "minItems": 3, "maxItems": 5,
+      "items": { "type": "object", "additionalProperties": false, "required": ["name", "when", "state", "light"],
+        "properties": { "name": { "type": "string" }, "when": { "type": "string" }, "state": { "type": "string" }, "light": { "type": "string" } } }
+    },
+    "buildNotes": { "type": "string" }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$", "maxLength": 64 },
+    "slugList": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/slug" } },
+    "element": {
+      "type": "object",
+      "required": ["id", "kind", "shape", "x", "y", "z", "h"],
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "kind": { "enum": ["deck", "lift", "turntable", "led_surface", "kinetic", "truss", "structure", "scrim", "fixture_array", "fx_zone"] },
+        "shape": { "enum": ["rect", "disc", "ring"] },
+        "x": { "type": "number" }, "y": { "type": "number" }, "z": { "type": "number", "description": "Base height (deck top or trim)." },
+        "h": { "type": "number", "minimum": 0 },
+        "w": { "type": "number", "exclusiveMinimum": 0, "description": "Size along X." },
+        "d": { "type": "number", "exclusiveMinimum": 0, "description": "Size along Y." },
+        "r": { "type": "number", "exclusiveMinimum": 0 },
+        "width": { "type": "number", "exclusiveMinimum": 0, "description": "Ring band width." },
+        "travel_m": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+        "tilt_deg": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+        "note": { "type": "string" }
+      },
+      "allOf": [
+        { "if": { "properties": { "shape": { "const": "rect" } } }, "then": { "required": ["w", "d"] } },
+        { "if": { "properties": { "shape": { "const": "disc" } } }, "then": { "required": ["r"] } },
+        { "if": { "properties": { "shape": { "const": "ring" } } }, "then": { "required": ["r", "width"] } }
+      ]
+    }
+  }
+}

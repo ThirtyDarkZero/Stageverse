@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860">
+<rect width="1200" height="860" fill="#080808"/>
+<style>text{font-family:"Space Mono","JetBrains Mono",monospace;fill:#F1EEE8}.h{font-family:Anton,"Big Shoulders Display",Impact,sans-serif;font-size:52px;letter-spacing:1px}.s{font-size:15px}.l{font-size:11px;opacity:.8}</style>
+<text class="h" x="40" y="62">FALSE FRAME</text>
+<text class="s" x="40" y="90" fill="#FF1F2E" style="fill:#FF1F2E">THEATER · PROSCENIUM · theater_false_frame</text>
+<rect x="437.5" y="295.7" width="325.0" height="441.1" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<rect x="414.3" y="133.2" width="371.4" height="162.5" fill="none" stroke="#F1EEE8" stroke-opacity=".25" stroke-width="1"/>
+<rect x="437.5" y="336.3" width="325.0" height="400.4" fill="#F1EEE8" fill-opacity=".04" stroke="none"/>
+<rect x="512.9" y="144.8" width="174.1" height="150.9" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="512.9" y="295.7" width="174.1" height="23.2" fill="#141414" stroke="#F1EEE8" stroke-width="1.2"/>
+<rect x="524.6" y="145.7" width="150.9" height="2.9" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.0" fill-opacity="0.85"/>
+<rect x="536.2" y="270.2" width="127.7" height="4.6" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<rect x="530.4" y="173.8" width="139.3" height="92.9" fill="none" stroke="#FF1F2E" stroke-width="2.0"/>
+<circle cx="663.8" cy="323.6" r="4" fill="#FF1F2E"/>
+<circle cx="536.2" cy="323.6" r="4" fill="#FF1F2E"/>
+<circle cx="600.0" cy="388.6" r="4" fill="#FF1F2E"/>
+<path d="M595.0 237.7h10M600.0 232.7v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 263.2h10M600.0 258.2v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 307.3h10M600.0 302.3v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M595.0 179.6h10M600.0 174.6v10" stroke="#F1EEE8" stroke-width="1.6"/>
+<path d="M40 830h116.1" stroke="#F1EEE8" stroke-width="2"/><text class="l" x="40" y="822">10 m</text>
+<rect x="196.1" y="818" width="14" height="10" fill="#141414" stroke="#F1EEE8" stroke-width="1.5"/><text class="l" x="216.1" y="827">deck</text>
+<rect x="286.1" y="818" width="14" height="10" fill="#A8E8FF" stroke="#A8E8FF" stroke-width="1.5"/><text class="l" x="306.1" y="827">LED</text>
+<rect x="376.1" y="818" width="14" height="10" fill="none" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="396.1" y="827">kinetic</text>
+<rect x="466.1" y="818" width="14" height="10" fill="none" stroke="#2E6BFF" stroke-width="1.5"/><text class="l" x="486.1" y="827">scrim</text>
+<rect x="556.1" y="818" width="14" height="10" fill="#FF1F2E" stroke="#FF1F2E" stroke-width="1.5"/><text class="l" x="576.1" y="827">FX</text>
+<text class="l" x="646.1" y="827">+ performer mark · stage at top, audience below</text>
+</svg>
