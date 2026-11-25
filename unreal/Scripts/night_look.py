@@ -104,7 +104,7 @@ def environment():
     s = ppv.get_editor_property("settings")
     for prop, val in [
         ("override_auto_exposure_method", True), ("auto_exposure_method", unreal.AutoExposureMethod.AEM_MANUAL),
-        ("override_auto_exposure_bias", True), ("auto_exposure_bias", 2.0),
+        ("override_auto_exposure_bias", True), ("auto_exposure_bias", 10.0),  # tuned by eye on Rob's Mac 2026-11-24
         ("override_bloom_intensity", True), ("bloom_intensity", 1.2),
         ("override_vignette_intensity", True), ("vignette_intensity", 0.5),
     ]:
@@ -168,6 +168,33 @@ def rig(kit, floor_z):
     log(f"rig: {n} fixtures")
 
 
+def led_night(kit):
+    """Swap LED surfaces to a softer, saturated night material so they glow instead of clipping to white."""
+    path = "/Game/StageVerse/Materials/M_SV_LED_Night"
+    if unreal.EditorAssetLibrary.does_asset_exist(path):
+        mat = unreal.EditorAssetLibrary.load_asset(path)
+    else:
+        mat = unreal.AssetToolsHelpers.get_asset_tools().create_asset(
+            "M_SV_LED_Night", "/Game/StageVerse/Materials", unreal.Material, unreal.MaterialFactoryNew())
+        mel = unreal.MaterialEditingLibrary
+        base = mel.create_material_expression(mat, unreal.MaterialExpressionConstant3Vector, -400, 0)
+        base.set_editor_property("constant", unreal.LinearColor(0.0, 0.0, 0.0, 1))
+        mel.connect_material_property(base, "", unreal.MaterialProperty.MP_BASE_COLOR)
+        emi = mel.create_material_expression(mat, unreal.MaterialExpressionConstant3Vector, -400, 200)
+        emi.set_editor_property("constant", unreal.LinearColor(0.05, 0.22, 0.9, 1))  # deep Laser Blue/Ice glow
+        mel.connect_material_property(emi, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+        mel.recompile_material(mat)
+        unreal.EditorAssetLibrary.save_loaded_asset(mat)
+    ids = {e["id"] for e in kit["elements"] if e["kind"] == "led_surface"}
+    n = 0
+    for a in sub().get_all_level_actors():
+        label = a.get_actor_label()
+        if label.startswith(kit["stageKit"] + "_") and label[len(kit["stageKit"]) + 1:] in ids:
+            a.static_mesh_component.set_material(0, mat)
+            n += 1
+    log(f"LED surfaces -> night material ({n})")
+
+
 def floor_top():
     for a in sub().get_all_level_actors():
         if a.get_actor_label() == "Floor_ConcreteSubfloor":
@@ -183,6 +210,7 @@ def main():
     if not les.load_level(a.level):
         raise RuntimeError(f"could not load {a.level}")
     environment()
+    led_night(kit)
     rig(kit, floor_top())
     les.save_current_level()
     log("night look done")
