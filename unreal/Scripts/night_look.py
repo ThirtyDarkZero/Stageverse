@@ -46,6 +46,9 @@ def args():
     ap = argparse.ArgumentParser()
     ap.add_argument("--kit", required=True)
     ap.add_argument("--level", required=True)
+    # Follow-spot strength in candelas. The night exposure is set very bright (bias 10) so the dark bowl reads;
+    # 400000 cd blew the performer out to white, so a key of ~8000 cd keeps skin and costume detail.
+    ap.add_argument("--follow-cd", type=float, default=8000.0)
     return ap.parse_args(argv)
 
 
@@ -132,7 +135,7 @@ def spot(label, folder, loc, target, color, cone, intensity_cd, shadows=False, h
     return a
 
 
-def rig(kit, floor_z):
+def rig(kit, floor_z, follow_cd=8000.0):
     folder = f"Show/{kit['stageKit']}/Lights"
     for a in list(sub().get_all_level_actors()):
         if str(a.get_folder_path()).startswith(folder):
@@ -144,7 +147,7 @@ def rig(kit, floor_z):
     for i, m in enumerate(kit["marks"]):
         src = ue(m["x"] + 45.0, (-12 if i % 2 else 12), floor_z + 22.0)
         dst = ue(m["x"], m["y"], floor_z + m["z"] + 1.0)
-        spot(f"Follow_{m['id']}", folder, src, dst, PAPER, 3.0, 400000.0, shadows=True, haze=1.5)
+        spot(f"Follow_{m['id']}", folder, src, dst, PAPER, 3.0, follow_cd, shadows=True, haze=0.3)
         n += 1
     # Beams on top of every tall LED surface: one out over the crowd, one up into the roof.
     palette = [ICE, RED, PAPER]
@@ -211,7 +214,7 @@ def main():
         raise RuntimeError(f"could not load {a.level}")
     environment()
     led_night(kit)
-    rig(kit, floor_top())
+    rig(kit, floor_top(), a.follow_cd)
     les.save_current_level()
     log("night look done")
 

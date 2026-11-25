@@ -152,7 +152,8 @@ def build_element(e, folder, floor_z):
 def clear_folder(folder):
     sub = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
     for a in list(actors()):
-        if str(a.get_folder_path()).startswith(folder):
+        path = str(a.get_folder_path())
+        if path.startswith(folder) and "/Performers" not in path:  # performers are placed by place_performer.py
             sub.destroy_actor(a)
 
 
